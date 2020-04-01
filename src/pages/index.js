@@ -1,21 +1,50 @@
 import React from "react"
-import { Link } from "gatsby"
-
+import styled from "styled-components"
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
+import { useStaticQuery, graphql } from "gatsby"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+import CbyStyledBackgroundSection from "../components/BGImage/BGImageThree"
+import HomeHeroContent from "../components/home/HomeHeroContent"
+
+const IndexPage = () => {
+  const HeroImage = useStaticQuery(graphql`
+    query {
+      image: file(relativePath: { eq: "home/home-hero-img.jpg" }) {
+        id
+        childImageSharp {
+          fixed(width: 300) {
+            ...GatsbyImageSharpFixed_tracedSVG
+          }
+          fluid(
+            maxWidth: 1980
+            duotone: { highlight: "#47b9d6", shadow: "#214f95" }
+            toFormat: PNG
+          ) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  `)
+
+  return (
+    <Layout>
+      <SEO title="Home" />
+      {/* <Hero /> */}
+      {/* <StyledBackgroundSection /> */}
+      <CbyStyledBackgroundSection fluid={HeroImage.image.childImageSharp.fluid}>
+        <HomeHeroContent />
+      </CbyStyledBackgroundSection>
+      <p>Some text</p>
+      <p>Some text</p>
+      <p>Some text</p>
+      <p>Some text</p>
+      <p>Some text</p>
+      <p>Some text</p>
+      <p>Some text</p>
+    </Layout>
+  )
+}
 
 export default IndexPage

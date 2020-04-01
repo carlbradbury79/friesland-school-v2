@@ -1,4 +1,4 @@
-html {
+/* html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -619,4 +619,43 @@ pre tt:after {
   html {
     font-size: 100%;
   }
+} */
+
+:root {
+  /* Color info needed */
+  --light-shade: #f2e8e9;
+  --light-accent: #47b9d6;
+  --primary: #214f95;
+  --dark-accent: #6d6689;
+  --dark-shade: #16141c;
+  --light-shade-alpha: rgba(242, 232, 233, 0.3);
+  --light-accent-alpha: #47b9d6;
+  --primary-alpha: rgba(33, 79, 149, 0.9);
+  --dark-accent-alpha: #6d6689;
+  --dark-shade-alpha: #16141c;
+}
+
+* {
+  box-sizing: border-box;
+  /* margin: 0;
+  padding: 0; */
+}
+
+body {
+  color: var(--dark-shade);
+  font-family: "Lato";
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: var(--dark-shade);
+}
+
+p {
+  font-size: 20px;
+}
+
+#testId {
+  color: red;
 }
