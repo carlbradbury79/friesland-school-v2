@@ -36,13 +36,20 @@ const IndexPage = () => {
       <CbyStyledBackgroundSection fluid={HeroImage.image.childImageSharp.fluid}>
         <HomeHeroContent />
       </CbyStyledBackgroundSection>
-      <p>Some text</p>
-      <p>Some text</p>
-      <p>Some text</p>
-      <p>Some text</p>
-      <p>Some text</p>
-      <p>Some text</p>
-      <p>Some text</p>
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita
+        quibusdam aut ea. Ipsa quasi id et aspernatur, quaerat iure repellat
+        accusamus omnis recusandae eaque sit sed consequuntur? Illum
+        consequuntur maiores commodi facere. Voluptate temporibus esse est
+        officiis architecto minus eum molestias dolor eligendi ullam voluptates
+        voluptatibus corporis debitis, impedit animi.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores,
+        rem quis adipisci unde facere placeat accusamus, ipsa incidunt animi
+        alias reiciendis veritatis quam. Sapiente quisquam distinctio commodi
+        unde perspiciatis aut.
+      </p>
     </Layout>
   )
 }

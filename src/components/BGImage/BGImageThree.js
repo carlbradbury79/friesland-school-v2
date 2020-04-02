@@ -18,6 +18,12 @@ const CbyBackgroundSection = ({ className, fluid, children }) => {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media (max-width: 600px) {
+      flex-direction: column;
+      justify-content: space-between;
+      height: 700px;
+    }
   `
   return (
     <CbyBackgroundImage
