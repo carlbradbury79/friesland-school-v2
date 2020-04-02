@@ -1,8 +1,15 @@
 import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faComment } from "@fortawesome/free-solid-svg-icons"
 
 const ArticlesList = styled.div`
+  text-align: center;
+
+  h3 {
+    text-align: center;
+  }
   ul {
     padding: 0;
     margin: 0;
@@ -10,7 +17,13 @@ const ArticlesList = styled.div`
   }
 
   ul li {
-    margin-bottom: 1rem;
+    /* margin-bottom: 1rem; */
+    padding: 1rem 40px;
+  }
+
+  ul li:last-child {
+    /* border-bottom: 1px solid var(--light-shade); */
+    margin-bottom: 3rem;
   }
 
   ul li a {
@@ -26,7 +39,7 @@ const ArticlesList = styled.div`
 const HomeArticles = () => {
   const Articles = useStaticQuery(graphql`
     query MyQuery {
-      allWordpressPost(limit: 5) {
+      allWordpressPost(limit: 4) {
         edges {
           node {
             title
@@ -46,13 +59,18 @@ const HomeArticles = () => {
   console.log("articles", Articles.allWordpressPost.edges)
   return (
     <ArticlesList>
-      <h3>Latest</h3>
+      <h3>Latest News</h3>
       <ul>
         {Articles.allWordpressPost.edges.map(article => {
           console.log(article.node.title)
           return (
             <li key={article.node.id}>
-              <Link to={article.node.path}>{article.node.title}</Link>
+              <Link to={article.node.path}>
+                {/* {article.node.date} */}
+                <FontAwesomeIcon icon={faComment} />
+                <span> </span>
+                {article.node.title}
+              </Link>
             </li>
           )
         })}

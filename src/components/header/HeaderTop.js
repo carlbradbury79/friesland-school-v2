@@ -23,6 +23,9 @@ const HeaderTopContainer = styled.div`
 
   div span {
     margin-left: 5px;
+    @media (max-width: 360px) {
+      font-size: 0.7rem;
+    }
   }
   div span a {
     color: var(--light-shade);

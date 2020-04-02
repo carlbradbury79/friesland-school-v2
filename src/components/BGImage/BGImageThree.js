@@ -13,7 +13,7 @@ const CbyBackgroundSection = ({ className, fluid, children }) => {
   `
 
   const CbyBackgroundImage = styled(BackgroundImage)`
-    height: 100vh;
+    height: 500px;
     width: 100vw;
     display: flex;
     align-items: center;

@@ -53,6 +53,10 @@ const LogoContainer = styled(Link)`
     @media (max-width: 400px) {
       font-size: 1.6rem;
     }
+
+    @media (max-width: 340px) {
+      font-size: 1.2rem;
+    }
   }
 `
 

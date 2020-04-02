@@ -133,16 +133,23 @@ const Overlay = ({ show }) => {
         <div>
           <h2>Keeping in Touch</h2>
           <ul>
-            <li>Gallery</li>
+            <li>
+              <Link to="/blog/news">Blog</Link>
+            </li>
+            <li>
+              <a href="https://www.flickr.com/photos/frieslandschool/sets/">
+                Gallery
+              </a>
+            </li>
             <li>Staff Details</li>
             <li>Contact</li>
             <ul>
               <li>
                 {" "}
-                <Link to="/">
+                <a href="https://twitter.com/frieslandschool?lang=en">
                   {" "}
                   <FontAwesomeIcon icon={faTwitter} />
-                </Link>
+                </a>
               </li>
             </ul>
           </ul>
