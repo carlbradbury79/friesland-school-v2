@@ -60,6 +60,7 @@ module.exports = {
           // "**/media",
           "**/tags",
           "**/taxonomies",
+          "**/menus",
         ],
         baseUrl: "frieslandschool.com",
         protocol: "http",

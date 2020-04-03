@@ -6,6 +6,7 @@ import { Link } from "gatsby"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTwitter } from "@fortawesome/free-brands-svg-icons"
 import Hamburger from "../nav/Hamburger"
+import NavDropdown from "../nav/NavDropdown"
 
 const Header = styled.div`
   height: 100%;
@@ -98,6 +99,9 @@ const HeaderBottom = ({ handleOverlayMenu, show }) => {
             <FontAwesomeIcon icon={faTwitter} />
           </Link>
         </li> */}
+        <li>
+          <NavDropdown menuId="81" />
+        </li>
         <li>
           <Hamburger handleOverlayMenu={handleOverlayMenu} show={show} />
         </li>

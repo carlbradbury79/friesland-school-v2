@@ -11,6 +11,10 @@ const HamburgerToggle = styled.div`
   border: none;
   cursor: pointer;
 
+  @media (min-width: 991px) {
+    display: none;
+  }
+
   .hamburger-line {
     width: 30px;
     height: 3px;
