@@ -626,11 +626,12 @@ pre tt:after {
   --light-shade: #f2e8e9;
   --light-accent: #47b9d6;
   --primary: #214f95;
-  --dark-accent: #6d6689;
+  /* --dark-accent: #6d6689; */
+  --dark-accent: #94606b;
   --dark-shade: #16141c;
   --light-shade-alpha: rgba(242, 232, 233, 0.3);
   --light-accent-alpha: #47b9d6;
-  --primary-alpha: rgba(33, 79, 149, 0.9);
+  --primary-alpha: rgba(33, 79, 149, 0.8);
   --dark-accent-alpha: #6d6689;
   --dark-shade-alpha: #16141c;
 }
@@ -646,16 +647,22 @@ body {
   font-family: "Lato";
   margin: 0;
   padding: 0;
+  /* background: #eee; */
 }
 
 a {
   color: var(--dark-shade);
+  text-decoration: none;
+  font-family: "Open Sans", sans-serif;
+}
+
+h1 {
+  font-family: "Cormorant Garamond", serif;
+  color: #000;
 }
 
 p {
-  font-size: 20px;
-}
-
-#testId {
-  color: red;
+  font-size: 16px;
+  color: #3c3c3c;
+  font-family: "Open Sans", arial, sans-serif;
 }

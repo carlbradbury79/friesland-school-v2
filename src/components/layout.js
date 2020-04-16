@@ -5,12 +5,14 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
+import React, { useState } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-import styled from "styled-components"
-import Header from "./header/Header"
+import Header from "./newHeader/Header"
 import "./layout.css"
+import Footer from "./footer/Footer"
+import { useSpring } from "react-spring"
+import OverlayHooks from "./newHeader/OverlayHooks"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -23,17 +25,43 @@ const Layout = ({ children }) => {
     }
   `)
 
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [curriculumMenuOpen, setCurriculumMenuOpen] = useState(false)
+
+  const displayMenuAnimation = useSpring({
+    // opacity: menuOpen ? 1 : 0,
+    transform: menuOpen ? `translateY(0)` : `translateY(-200%)`,
+  })
+
+  const displayCurriculumMenuAnimation = useSpring({
+    // opacity: menuOpen ? 1 : 0,
+    transform: curriculumMenuOpen ? `translateY(0)` : `translateY(-200%)`,
+  })
+
+  const handleOverlayMenu = () => {
+    setMenuOpen(!menuOpen)
+  }
+
+  const handleCurriculumMenu = () => {
+    setCurriculumMenuOpen(!curriculumMenuOpen)
+  }
+
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
+      <Header
+        siteTitle={data.site.siteMetadata.title}
+        handleOverlayMenu={handleOverlayMenu}
+      />
+      <OverlayHooks style={displayMenuAnimation} />
       <div>
         <main>{children}</main>
 
-        <footer>
+        <Footer />
+        {/* <footer>
           © {new Date().getFullYear()}, Built with
           {` `}
           <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
+        </footer> */}
       </div>
     </>
   )

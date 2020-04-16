@@ -1,11 +1,10 @@
 import React from "react"
 import styled from "styled-components"
 import HomeArticles from "./HomeArticles"
-import { Link } from "gatsby"
 import HomeLinks from "./HomeLinks"
 
 const HeroContent = styled.div`
-  padding: 10px;
+  /* padding: 10px; */
   color: var(--light-shade);
 
   h1 {
@@ -37,25 +36,25 @@ const ContentWrapper = styled.div`
   }
 `
 
-const HomeHeroBtn = styled.button`
-  color: #fff;
-  border: 1px solid var(--light-shade);
-  background: transparent;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  padding: 0.5rem 1rem;
-  margin-right: 1rem;
+// const HomeHeroBtn = styled.button`
+//   color: #fff;
+//   border: 1px solid var(--light-shade);
+//   background: transparent;
+//   cursor: pointer;
+//   border-radius: 5px;
+//   font-size: 1.2rem;
+//   padding: 0.5rem 1rem;
+//   margin-right: 1rem;
 
-  :hover {
-    transition: opacity 0.2s linear;
-    opacity: 0.5;
-  }
+//   :hover {
+//     transition: opacity 0.2s linear;
+//     opacity: 0.5;
+//   }
 
-  :focus {
-    outline: 0;
-  }
-`
+//   :focus {
+//     outline: 0;
+//   }
+// `
 
 const HomeHeroContent = () => {
   return (

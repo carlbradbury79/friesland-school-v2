@@ -1,55 +1,50 @@
 import React from "react"
-import styled from "styled-components"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { useStaticQuery, graphql } from "gatsby"
+import styled from "styled-components"
 
-import CbyStyledBackgroundSection from "../components/BGImage/BGImageThree"
-import HomeHeroContent from "../components/home/HomeHeroContent"
+// import CbyStyledBackgroundSection from "../components/BGImage/BGImageThree"
+// import HomeHeroContent from "../components/home/HomeHeroContent"
+import FeaturedNews from "../components/home/FeaturedNews"
+import StyledHeroLeft from "../components/home/hero/HeroImageLeft"
+import StyledHeroRight from "../components/home/hero/HeroImageRight"
+// import TwitterFeed from "../components/twitterFeed/TwitterFeed"
+
+const HeroContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
+  div {
+    height: 400px;
+    flex: 1;
+  }
+`
+
+const Welcome = styled.h1`
+  text-align: center;
+`
 
 const IndexPage = () => {
-  const HeroImage = useStaticQuery(graphql`
-    query {
-      image: file(relativePath: { eq: "home/home-hero-img.jpg" }) {
-        id
-        childImageSharp {
-          fixed(width: 300) {
-            ...GatsbyImageSharpFixed_tracedSVG
-          }
-          fluid(
-            maxWidth: 1980
-            duotone: { highlight: "#47b9d6", shadow: "#214f95" }
-            toFormat: PNG
-          ) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  `)
-
   return (
     <Layout>
       <SEO title="Home" />
-      {/* <Hero /> */}
-      {/* <StyledBackgroundSection /> */}
-      <CbyStyledBackgroundSection fluid={HeroImage.image.childImageSharp.fluid}>
-        <HomeHeroContent />
-      </CbyStyledBackgroundSection>
-      <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita
-        quibusdam aut ea. Ipsa quasi id et aspernatur, quaerat iure repellat
-        accusamus omnis recusandae eaque sit sed consequuntur? Illum
-        consequuntur maiores commodi facere. Voluptate temporibus esse est
-        officiis architecto minus eum molestias dolor eligendi ullam voluptates
-        voluptatibus corporis debitis, impedit animi.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores,
-        rem quis adipisci unde facere placeat accusamus, ipsa incidunt animi
-        alias reiciendis veritatis quam. Sapiente quisquam distinctio commodi
-        unde perspiciatis aut.
-      </p>
+
+      <Welcome>Welcome to Friesland School</Welcome>
+      <HeroContainer>
+        <div>
+          <StyledHeroLeft></StyledHeroLeft>
+        </div>
+        <div>
+          <StyledHeroRight></StyledHeroRight>
+        </div>
+      </HeroContainer>
+
+      <FeaturedNews />
+      {/* <TwitterFeed /> */}
     </Layout>
   )
 }

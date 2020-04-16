@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 import HeaderTop from "./HeaderTop"
 import HeaderBottom from "./HeaderBottom"
-import Overlay from "../nav/Overlay"
-
+import Overlay from "../nav/OverlayHooks"
+import { useSpring } from "react-spring"
 import styled from "styled-components"
 
 const WholeHeader = styled.header`
@@ -14,6 +14,10 @@ const WholeHeader = styled.header`
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false)
+  const displayMenuAnimation = useSpring({
+    opacity: menuOpen ? 1 : 0,
+  })
+
   const handleOverlayMenu = () => {
     console.log("click")
     setMenuOpen(!menuOpen)
@@ -21,7 +25,7 @@ const Header = () => {
   }
   return (
     <WholeHeader>
-      <Overlay show={menuOpen} />
+      <Overlay style={displayMenuAnimation} />
       <HeaderTop />
       <HeaderBottom handleOverlayMenu={handleOverlayMenu} show={menuOpen} />
     </WholeHeader>

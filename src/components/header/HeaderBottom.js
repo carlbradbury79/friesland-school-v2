@@ -3,18 +3,21 @@ import styled from "styled-components"
 import Logo from "./Logo"
 // import Img from "gatsby-image"
 import { Link } from "gatsby"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faTwitter } from "@fortawesome/free-brands-svg-icons"
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+// import { faTwitter } from "@fortawesome/free-brands-svg-icons"
 import Hamburger from "../nav/Hamburger"
 import NavDropdown from "../nav/NavDropdown"
 
-const Header = styled.div`
+// import { useSpring, animated } from "react-spring"
+
+const StyledHeaderBottom = styled.div`
   height: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 10px 10px;
+  border-bottom: 1px solid #c6d1db;
   ul {
     display: flex;
     flex-direction: row;
@@ -48,57 +51,35 @@ const LogoContainer = styled(Link)`
   h1 {
     margin: 0;
     padding: 0;
+    font-family: "Cormarant Garamond", serif;
+    font-weight: 600;
   }
 
   h1 {
-    @media (max-width: 400px) {
+    @media (max-width: 430px) {
       font-size: 1.6rem;
     }
 
-    @media (max-width: 340px) {
+    @media (max-width: 366px) {
       font-size: 1.2rem;
     }
   }
 `
 
 const HeaderBottom = ({ handleOverlayMenu, show }) => {
+  // const fadeIn = useSpring({
+  //   opacity: 1,
+  //   from: { opacity: 0 },
+  //   config: { duration: 1000 },
+  // })
+
   return (
-    <Header>
+    <StyledHeaderBottom>
       <LogoContainer to="/">
         <Logo /> <h1>FRIESLAND SCHOOL</h1>
       </LogoContainer>
 
       <ul>
-        {/* <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/">Curriculum</Link>
-        </li>
-        <li>
-          <Link to="/">Information</Link>
-        </li>
-        <li>
-          <Link to="/">Vacancies</Link>
-        </li>
-        <li>
-          <Link to="/">Lettings</Link>
-        </li>
-        <li>
-          <Link to="/">PTA</Link>
-        </li>
-        <li>
-          <Link to="/">Tickets</Link>
-        </li>
-        <li>
-          <Link to="/">Contact</Link>
-        </li> */}
-        {/* <li className="twitterIcon">
-          <Link to="/">
-            {" "}
-            <FontAwesomeIcon icon={faTwitter} />
-          </Link>
-        </li> */}
         <li>
           <NavDropdown menuId="81" />
         </li>
@@ -106,7 +87,7 @@ const HeaderBottom = ({ handleOverlayMenu, show }) => {
           <Hamburger handleOverlayMenu={handleOverlayMenu} show={show} />
         </li>
       </ul>
-    </Header>
+    </StyledHeaderBottom>
   )
 }
 

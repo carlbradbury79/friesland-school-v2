@@ -32,6 +32,7 @@ exports.createPages = async ({ graphql, actions }) => {
             slug
             path
             status
+
             categories {
               id
             }
@@ -76,7 +77,7 @@ exports.createPages = async ({ graphql, actions }) => {
       paginate({
         createPage,
         items: filteredPosts,
-        itemsPerPage: 10,
+        itemsPerPage: 6,
         pathPrefix: `blog/${catEdge.node.slug}`,
         component: slash(archiveTemplate),
         context: {
@@ -97,7 +98,7 @@ exports.createPages = async ({ graphql, actions }) => {
         component: slash(pageTemplate),
         context: {
           id: edge.node.id,
-          //   parent: edge.node.wordpress_parent,
+          parent: edge.node.wordpress_parent,
           wpId: edge.node.wordpress_id,
         },
       })

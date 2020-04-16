@@ -1,67 +1,41 @@
 /* eslint-disable react/no-danger */
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 // import ArchiveSidebar from '../components/archive/ArchiveSidebar';
-// import BreadCrumb from '../components/BreadCrumb';
-// import Pagination from '../components/archive/Pagination';
+import BreadCrumb from "../components/utils/BreadCrumb"
+import Pagination from "../components/archive/Pagination"
 // import PageHero from '../components/PageHero';
+import BlogCard from "../components/utils/NewBlogCard"
 
 import styled from "styled-components"
 
 const PageContent = styled.article`
-  margin: 20px 0 0 0;
+  background-color: #f2f2f2;
 `
 
-const StyledH2 = styled.h2`
+const ArticleGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+
+  @media (max-width: 1000px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 500px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+`
+
+const ArchiveTitle = styled.h1`
+  font-family: "Cormarant Garamond", serif;
+  color: #000;
+  font-size: 3rem;
   font-weight: 500;
-  font-size: 1.8rem;
-  :hover {
-    color: #d22e26;
-  }
-`
-
-const StyledDate = styled.div`
-  font-family: "Teko";
-  font-size: 1.1rem;
-  font-weight: 600;
-`
-
-const StyledReadMore = styled(Link)`
-  font-family: "Teko", Arial, Helvetica, sans-serif;
-  font-size: 1rem;
-  font-weight: 800;
-  color: #fff;
-  position: relative;
-  width: 70px;
-  height: 30px;
-  display: block;
-  background: #000;
-  padding: 3px 0 0 10px;
-  margin-bottom: 30px;
-
-  :after {
-    left: 100%;
-    top: 50%;
-    border: solid transparent;
-    content: "";
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none;
-    border-left-color: #000;
-    border-width: 15px;
-    margin-top: -15px;
-  }
-
-  :hover {
-    background: #d22e26;
-  }
-
-  :hover:after {
-    border-left-color: #d22e26;
-  }
+  text-align: center;
 `
 
 const archiveTemplate = ({
@@ -77,49 +51,28 @@ const archiveTemplate = ({
 }) => (
   <Layout>
     {/* <PageHero img={file.childImageSharp.fluid} /> */}
-    {/* <BreadCrumb
+    <BreadCrumb
       parent={{
-        link: "/trends/alla-trendspaningar",
-        title: "trends",
+        slug: "/blog/news",
+        title: "Blog",
       }}
-    /> */}
+    />
 
     <div className="container">
       <div className="row" style={{ marginBottom: "40px" }}>
         {/* <ArchiveSidebar catId={catId} categories={categories} /> */}
-        <PageContent className="col-lg-9">
-          {/* <Pagination
+        <PageContent>
+          <ArchiveTitle dangerouslySetInnerHTML={{ __html: catName }} />
+          <ArticleGrid>
+            {allWordpressPost.edges.map(post => {
+              return <BlogCard key={post.node.id} post={post} />
+            })}
+          </ArticleGrid>
+          <Pagination
             catSlug={catSlug}
             page={humanPageNumber}
             totalPages={numberOfPages}
-          /> */}
-          <h1 dangerouslySetInnerHTML={{ __html: catName }} />
-          {allWordpressPost.edges.map(post => (
-            <article key={post.node.id} className="entry-content">
-              <Link to={`/${post.node.path}/`}>
-                <StyledH2
-                  dangerouslySetInnerHTML={{ __html: post.node.title }}
-                />
-              </Link>
-              <StyledDate
-                dangerouslySetInnerHTML={{
-                  __html: post.node.date.replace(/\W+/g, " "),
-                }}
-              />
-              <p dangerouslySetInnerHTML={{ __html: post.node.excerpt }} />
-              <StyledReadMore to={`/${post.node.path}`}>
-                Read More
-              </StyledReadMore>
-              <div className="dot_divider">
-                <hr />
-              </div>
-            </article>
-          ))}
-          {/* <Pagination
-            catSlug={catSlug}
-            page={humanPageNumber}
-            totalPages={numberOfPages}
-          /> */}
+          />
         </PageContent>
       </div>
     </div>
@@ -137,16 +90,34 @@ export const pageQuery = graphql`
     ) {
       edges {
         node {
+          author
+          categories {
+            id
+            name
+            path
+            slug
+          }
           id
           title
           excerpt
           slug
-          date(formatString: "DD, MMM, YYYY")
+          date(formatString: "DD MMM YYYY")
           path
+          featured_media {
+            source_url
+            localFile {
+              url
+              childImageSharp {
+                fluid(maxWidth: 1000, cropFocus: ATTENTION) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
         }
       }
     }
-    file(relativePath: { eq: "archive_headerImage.jpg" }) {
+    file(relativePath: { eq: "gatsby-astronaut.png" }) {
       childImageSharp {
         fluid(quality: 100, maxWidth: 4000) {
           ...GatsbyImageSharpFluid_withWebp

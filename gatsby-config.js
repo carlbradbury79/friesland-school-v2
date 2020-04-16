@@ -16,7 +16,8 @@ module.exports = {
       options: {
         fonts: [
           `Lato`,
-          `source sans pro\:300,400,400i,700`, // you can also specify font weights and styles
+          `Open Sans`, // you can also specify font weights and styles
+          "Cormorant Garamond",
         ],
         display: "swap",
       },
@@ -57,19 +58,16 @@ module.exports = {
           "**/categories",
           "**/posts",
           "**/pages",
-          // "**/media",
+          "**/media",
           "**/tags",
           "**/taxonomies",
           "**/menus",
         ],
-        baseUrl: "frieslandschool.com",
+        baseUrl: "frieslandschoolv2.local",
+        // baseUrl: "frieslandschool.com",
         protocol: "http",
         hostingWPCOM: false,
         useACF: true,
-        searchAndReplaceContentUrls: {
-          sourceUrl: "http://frieslandschool.com",
-          replacementUrl: "",
-        },
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

@@ -1,11 +1,12 @@
 import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
-import styled from "styled-components"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTwitter } from "@fortawesome/free-brands-svg-icons"
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons"
+import styled from "styled-components"
+// import NavigationWrapper from "./DropdownStyles"
 
-const NavDropdown = ({ menuId }) => {
+const NavDropdown = () => {
   const NavigationWrapper = styled.nav`
     margin: 5px 0 10px 0; /* just to give some spacing */
     color: #212121;
@@ -121,9 +122,8 @@ const NavDropdown = ({ menuId }) => {
       }
     }
   `
-
   const menu = useStaticQuery(graphql`
-    query menuQuery {
+    query newMenuQuery {
       allWordpressWpApiMenusMenusItems(filter: { wordpress_id: { eq: 27 } }) {
         totalCount
         edges {
@@ -172,14 +172,14 @@ const NavDropdown = ({ menuId }) => {
                       <li key={iChild}>
                         {child.title === "Twitter" ? (
                           <Link
-                            to={child.object_slug}
+                            to={`/${child.object_slug}`}
                             activeClassName="nav-active"
                           >
                             <FontAwesomeIcon icon={faTwitter} /> Twitter
                           </Link>
                         ) : (
                           <a
-                            href={child.object_slug}
+                            href={`/${child.object_slug}`}
                             // activeClassName="nav-active"
                           >
                             {child.title}

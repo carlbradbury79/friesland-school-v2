@@ -1,20 +1,12 @@
 import React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
-import { keyframes } from "styled-components"
+// import { keyframes } from "styled-components"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTwitter } from "@fortawesome/free-brands-svg-icons"
 
-const fadeIn = keyframes`
-
-from {
-    opacity: 0;
-} to {
-    opacity: 1;
-}`
-
 const OverlayMenu = styled.nav`
-  background: var(--primary-alpha);
+  background: var(--primary);
   color: var(--light-shade);
   position: fixed;
   top: 86px;
@@ -30,14 +22,19 @@ const OverlayMenu = styled.nav`
   justify-content: space-around;
   padding: 20px;
 
+  @media (max-width: 430px) {
+    position: fixed;
+    top: 80px;
+  }
+
+  @media (max-width: 366px) {
+    top: 74px;
+  }
+
   @media (max-width: 600px) {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-  }
-
-  .open {
-    transition: ${fadeIn} 2s ease-out;
   }
 
   div {
@@ -76,10 +73,12 @@ const OverlayMenu = styled.nav`
 `
 const Overlay = ({ show }) => {
   console.log("overlay", Overlay.classList)
+
   let overlayClass = "overlayMenu"
   if (show) {
     overlayClass = "overlayMenu open"
     console.log("on")
+
     return (
       <OverlayMenu className={overlayClass}>
         <div>

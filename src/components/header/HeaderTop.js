@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPhone, faEnvelope } from "@fortawesome/free-solid-svg-icons"
 
 const HeaderTopContainer = styled.div`
-  background: var(--dark-shade);
+  background: #004c97;
   color: var(--light-shade);
   display: flex;
   flex-direction: row;
