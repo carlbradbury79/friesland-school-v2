@@ -6,4 +6,4 @@
 
 // You can delete this file if you're not using it
 
-// export { wrapRootElement } from "./src/components/twitterFeed/wrapRootElement"
+export { wrapRootElement } from "./src/components/twitterFeed/wrapRootElement"

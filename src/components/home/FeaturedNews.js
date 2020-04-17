@@ -24,6 +24,7 @@ const FeaturedNewsContainer = styled.div`
   grid-column-gap: 36px;
   grid-row-gap: 36px;
   padding: 0 40px;
+  margin-bottom: 5rem;
 
   a {
     color: #004c97;

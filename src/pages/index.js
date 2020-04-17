@@ -9,7 +9,7 @@ import styled from "styled-components"
 import FeaturedNews from "../components/home/FeaturedNews"
 import StyledHeroLeft from "../components/home/hero/HeroImageLeft"
 import StyledHeroRight from "../components/home/hero/HeroImageRight"
-// import TwitterFeed from "../components/twitterFeed/TwitterFeed"
+import TwitterFeed from "../components/twitterFeed/TwitterFeed"
 
 const HeroContainer = styled.div`
   display: flex;
@@ -44,7 +44,7 @@ const IndexPage = () => {
       </HeroContainer>
 
       <FeaturedNews />
-      {/* <TwitterFeed /> */}
+      <TwitterFeed />
     </Layout>
   )
 }
