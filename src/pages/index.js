@@ -1,7 +1,7 @@
 import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { useStaticQuery, graphql } from "gatsby"
+// import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
 
 // import CbyStyledBackgroundSection from "../components/BGImage/BGImageThree"

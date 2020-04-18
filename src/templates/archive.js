@@ -51,13 +51,13 @@ const archiveTemplate = ({
 }) => (
   <Layout>
     {/* <PageHero img={file.childImageSharp.fluid} /> */}
+    {console.log("arch", catName)}{" "}
     <BreadCrumb
       parent={{
-        slug: "/blog/news",
-        title: "Blog",
+        slug: `/blog/${catSlug}`,
+        title: catName,
       }}
     />
-
     <div className="container">
       <div className="row" style={{ marginBottom: "40px" }}>
         {/* <ArchiveSidebar catId={catId} categories={categories} /> */}

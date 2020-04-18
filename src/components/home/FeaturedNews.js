@@ -2,10 +2,10 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import FeaturedNewsCard from "./FeaturedNewsCard"
 import styled from "styled-components"
-import FeaturedNewsSlider from "./FeaturedNewsSlider"
+import FeaturedNewsSlider from "./NewFeaturedNewsSlider"
 
 const FeaturedNewsSection = styled.section`
-  margin: 2rem 0;
+  /* margin: 2rem 0; */
 
   h1 {
     margin-top: 4rem;
@@ -59,6 +59,9 @@ const FeaturedNews = () => {
               localFile {
                 id
                 childImageSharp {
+                  fixed(width: 500, height: 400, cropFocus: NORTH, fit: COVER) {
+                    ...GatsbyImageSharpFixed
+                  }
                   fluid(maxWidth: 2000, maxHeight: 1500, cropFocus: CENTER) {
                     ...GatsbyImageSharpFluid
                   }

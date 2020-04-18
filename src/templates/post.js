@@ -69,10 +69,11 @@ const postTemplate = ({ data: { post } }) => (
           categories={post.categories}
         /> */}
     <PostContent>
+      {console.log("cat", post.categories[0].name)}
       <BreadCrumb
         parent={{
-          link: "/blog/news",
-          title: "News",
+          slug: `/blog/${post.categories[0].slug}`,
+          title: post.categories[0].name,
         }}
       />
       <h1 dangerouslySetInnerHTML={{ __html: post.title }} />
@@ -101,6 +102,10 @@ export const pageQuery = graphql`
       title
       status
       link
+      categories {
+        name
+        slug
+      }
       author
       featured_media {
         id

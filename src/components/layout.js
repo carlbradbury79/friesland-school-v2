@@ -33,18 +33,18 @@ const Layout = ({ children }) => {
     transform: menuOpen ? `translateY(0)` : `translateY(-200%)`,
   })
 
-  const displayCurriculumMenuAnimation = useSpring({
-    // opacity: menuOpen ? 1 : 0,
-    transform: curriculumMenuOpen ? `translateY(0)` : `translateY(-200%)`,
-  })
+  // const displayCurriculumMenuAnimation = useSpring({
+  //   // opacity: menuOpen ? 1 : 0,
+  //   transform: curriculumMenuOpen ? `translateY(0)` : `translateY(-200%)`,
+  // })
 
   const handleOverlayMenu = () => {
     setMenuOpen(!menuOpen)
   }
 
-  const handleCurriculumMenu = () => {
-    setCurriculumMenuOpen(!curriculumMenuOpen)
-  }
+  // const handleCurriculumMenu = () => {
+  //   setCurriculumMenuOpen(!curriculumMenuOpen)
+  // }
 
   return (
     <>

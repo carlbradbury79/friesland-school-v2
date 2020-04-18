@@ -90,8 +90,6 @@ const BlogCard = ({ post }) => {
       ? altImage.image.childImageSharp.fluid
       : post.node.featured_media.localFile.childImageSharp.fluid
 
-  const length = 140
-
   return (
     <StyledArticle>
       <StyledBackgroundImage fluid={altBgImage}>

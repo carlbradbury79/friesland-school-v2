@@ -4,7 +4,7 @@ import { Link } from "gatsby"
 export const WholeHeader = styled.header`
   position: sticky;
   top: 0;
-  z-index: 50;
+  z-index: 150;
   background: #fff;
 `
 
