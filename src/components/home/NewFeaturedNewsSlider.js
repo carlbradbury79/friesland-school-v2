@@ -1,4 +1,4 @@
-import { render } from "react-dom"
+// import { render } from "react-dom"
 import React, { useState, useCallback } from "react"
 import { useTransition, animated } from "react-spring"
 import { useStaticQuery, graphql, Link } from "gatsby"
@@ -12,7 +12,7 @@ import Img from "gatsby-image"
 
 const Button = styled.button`
   position: absolute;
-  */top: calc(100% / 2);
+  top: calc(100% / 2);
   border: none;
   background: var(--light-shade-alpha);
   color: var(--dark-shade);
@@ -24,6 +24,10 @@ const Button = styled.button`
 
 const Next = styled(Button)`
   right: 0;
+`
+
+const Prev = styled(Button)`
+  left: 0;
 `
 
 const FeaturedNewsSlider = ({ post }) => {
@@ -62,7 +66,12 @@ const FeaturedNewsSlider = ({ post }) => {
         />
         <p>{post[0].node.date}</p>
         <h1>{post[0].node.title}</h1>
-
+        {/* <Prev onClick={handlePrevious}>
+          <FontAwesomeIcon icon={faArrowLeft} />
+        </Prev>
+        <Next onClick={handleNext}>
+          <FontAwesomeIcon icon={faArrowRight} />
+        </Next> */}
         <Link to={`/${post[0].node.slug}`}>Read More...</Link>
       </animated.div>
     ),
@@ -79,7 +88,12 @@ const FeaturedNewsSlider = ({ post }) => {
         />
         <p>{post[1].node.date}</p>
         <h1>{post[1].node.title}</h1>
-
+        {/* <Prev onClick={handlePrevious}>
+          <FontAwesomeIcon icon={faArrowLeft} />
+        </Prev>
+        <Next onClick={handleNext}>
+          <FontAwesomeIcon icon={faArrowRight} />
+        </Next> */}
         <Link to={`/${post[1].node.slug}`}>Read More...</Link>
       </animated.div>
     ),
@@ -95,7 +109,12 @@ const FeaturedNewsSlider = ({ post }) => {
         />
         <p>{post[2].node.date}</p>
         <h1>{post[2].node.title}</h1>
-
+        {/* <Prev onClick={handlePrevious}>
+          <FontAwesomeIcon icon={faArrowLeft} />
+        </Prev>
+        <Next onClick={handleNext}>
+          <FontAwesomeIcon icon={faArrowRight} />
+        </Next> */}
         <Link to={`/${post[2].node.slug}`}>Read More...</Link>
       </animated.div>
     ),
@@ -111,28 +130,55 @@ const FeaturedNewsSlider = ({ post }) => {
         />
         <p>{post[3].node.date}</p>
         <h1>{post[3].node.title}</h1>
-
+        {/* <Prev onClick={handlePrevious}>
+          <FontAwesomeIcon icon={faArrowLeft} />
+        </Prev>
+        <Next onClick={handleNext}>
+          <FontAwesomeIcon icon={faArrowRight} />
+        </Next> */}
         <Link to={`/${post[3].node.slug}`}>Read More...</Link>
       </animated.div>
     ),
   ]
 
-  const [index, set] = useState(0)
-  const onClick = useCallback(() => set(state => (state + 1) % 4), [])
+  const [index, setIndex] = useState(0)
+  const [backForth, setBackForth] = useState()
+
+  // const onClick = useCallback(() => setIndex(state => (state + 1) % 3), [])
 
   const transitions = useTransition(index, p => p, {
-    from: { opacity: 0, transform: "translate3d(100%,0,0)" },
+    from: {
+      opacity: 0,
+      transform: backForth ? "translate3d(100%,0,0)" : "translate3d(-100%,0,0)",
+    },
     enter: { opacity: 1, transform: "translate3d(0%,0,0)" },
-    leave: { opacity: 0, transform: "translate3d(-50%,0,0)" },
+    leave: {
+      opacity: 0,
+      transform: backForth ? "translate3d(-50%,0,0)" : "translate3d(50%,0,0)",
+    },
   })
 
+  const length = post.length - 1
+
+  const handleNext = () => {
+    index === length ? setIndex(0) : setIndex(index + 1)
+    setBackForth(true)
+  }
+  const handlePrevious = () => {
+    index === 0 ? setIndex(length) : setIndex(index - 1)
+    setBackForth(false)
+  }
+
   return (
-    <div className="simple-trans-main" onClick={onClick}>
+    <div className="simple-trans-main">
       {transitions.map(({ item, props, key }) => {
         const Page = pages[item]
         return <Page key={key} style={props} post={post} />
       })}
-      <Next onClick={onClick}>
+      <Prev onClick={handlePrevious}>
+        <FontAwesomeIcon icon={faArrowLeft} />
+      </Prev>
+      <Next onClick={handleNext}>
         <FontAwesomeIcon icon={faArrowRight} />
       </Next>
     </div>

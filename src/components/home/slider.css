@@ -63,13 +63,13 @@ body {
   margin-top: 0;
 }
 
-a {
+.simple-trans-main div a {
   font-size: 1.2rem;
   text-align: center;
   color: var(--primary);
   margin-bottom: 3rem;
 }
 
-p {
+.simple-trans-main div p {
   text-align: center;
 }

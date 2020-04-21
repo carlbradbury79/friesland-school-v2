@@ -1,5 +1,5 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 import FeaturedNewsCard from "./FeaturedNewsCard"
 import styled from "styled-components"
 import FeaturedNewsSlider from "./NewFeaturedNewsSlider"
@@ -42,6 +42,24 @@ const FeaturedNewsContainer = styled.div`
     grid-template-columns: repeat(1, 1fr);
     padding: 0 10px;
     display: none;
+  }
+`
+
+const FeaturedNewsLink = styled(Link)`
+  background: #fff;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  padding: 10px 20px;
+  display: block;
+  margin: auto;
+  width: 200px;
+  text-align: center;
+  margin-bottom: 4rem;
+  :hover {
+    background: var(--primary);
+    color: #fff;
+    border: 2px solid #fff;
+    text-decoration: none;
   }
 `
 
@@ -88,6 +106,7 @@ const FeaturedNews = () => {
         })}
       </FeaturedNewsContainer>
       <FeaturedNewsSlider post={FeaturedNewsArticles} />
+      <FeaturedNewsLink to="/blog/news">More Articles</FeaturedNewsLink>
     </FeaturedNewsSection>
   )
 }

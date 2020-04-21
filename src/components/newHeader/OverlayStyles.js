@@ -65,5 +65,7 @@ export const OverlayMenu = styled(animated.nav)`
   }
   h2 {
     margin-bottom: 1rem;
+    color: #fff;
+    font-family: "Open Sans", sans-serif;
   }
 `

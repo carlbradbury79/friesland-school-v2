@@ -20,6 +20,7 @@ const ArticleGrid = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 10px;
   grid-row-gap: 10px;
+  margin-bottom: 2rem;
 
   @media (max-width: 1000px) {
     grid-template-columns: repeat(2, 1fr);
@@ -52,17 +53,17 @@ const archiveTemplate = ({
   <Layout>
     {/* <PageHero img={file.childImageSharp.fluid} /> */}
     {console.log("arch", catName)}{" "}
-    <BreadCrumb
-      parent={{
-        slug: `/blog/${catSlug}`,
-        title: catName,
-      }}
-    />
     <div className="container">
       <div className="row" style={{ marginBottom: "40px" }}>
         {/* <ArchiveSidebar catId={catId} categories={categories} /> */}
         <PageContent>
           <ArchiveTitle dangerouslySetInnerHTML={{ __html: catName }} />
+          <BreadCrumb
+            parent={{
+              slug: `/blog/${catSlug}`,
+              title: catName,
+            }}
+          />
           <ArticleGrid>
             {allWordpressPost.edges.map(post => {
               return <BlogCard key={post.node.id} post={post} />

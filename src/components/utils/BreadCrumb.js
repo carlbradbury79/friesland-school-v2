@@ -8,15 +8,19 @@ const BreadCrumbWrapper = styled.div`
   margin: 0 0 0 0;
   padding: 0;
 
-  padding: 5px 10px;
+  padding: 5px 0;
 
   .divider {
     margin: 0 5px 0 5px;
   }
 
   a {
-    color: #000;
+    color: var(--primary);
     text-decoration: none;
+
+    :hover {
+      text-decoration: underline;
+    }
   }
 
   span a:hover {

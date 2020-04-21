@@ -124,7 +124,9 @@ const NavDropdown = () => {
   `
   const menu = useStaticQuery(graphql`
     query newMenuQuery {
-      allWordpressWpApiMenusMenusItems(filter: { wordpress_id: { eq: 27 } }) {
+      allWordpressWpApiMenusMenusItems(
+        filter: { name: { eq: "friesland-v2" } }
+      ) {
         totalCount
         edges {
           node {

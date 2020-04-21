@@ -8,6 +8,7 @@ import Layout from "../components/layout"
 import BreadCrumb from "../components/utils/BreadCrumb"
 // import PostSidebar from "../components/post/PostSidebar"
 import FeaturedImage from "../components/utils/FeaturedImage"
+import SocialShare from "../components/utils/SocialShare"
 
 const PostContent = styled.article`
   /* margin: 20px 0 0 0; */
@@ -79,7 +80,7 @@ const postTemplate = ({ data: { post } }) => (
       <h1 dangerouslySetInnerHTML={{ __html: post.title }} />
       <p dangerouslySetInnerHTML={{ __html: post.date }}></p>
       <FeaturedImage image={post.featured_media} />
-
+      <SocialShare title={post.title} link={post.link} />
       <PostContentText dangerouslySetInnerHTML={{ __html: post.content }} />
     </PostContent>
   </Layout>

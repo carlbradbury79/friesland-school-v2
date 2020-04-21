@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 
 export const WholeHeader = styled.header`
   position: sticky;
-  top: 0;
+  top: 0px;
   z-index: 150;
   background: #fff;
 `
@@ -73,6 +73,9 @@ export const LogoContainer = styled(Link)`
   align-items: center;
   padding: 0;
   text-decoration: none;
+  :hover {
+    text-decoration: none;
+  }
 
   h1 {
     margin: 0;

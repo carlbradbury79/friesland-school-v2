@@ -47,6 +47,10 @@ const TweetRow = styled.div`
   align-items: flex-start;
   height: 100%;
   background: #fff;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
   /* border: 1px solid var(--primary); */
 `
 
@@ -61,8 +65,14 @@ const TweetBox = styled.div`
   flex-direction: column;
   /* text-align: center; */
   margin: 2rem 0px;
+  line-height: 1.8;
   background: #fff;
   font-family: "Open Sans", sans-serif;
+
+  @media (max-width: 600px) {
+    margin: 1rem 0;
+    text-align: center;
+  }
   p {
     color: var(--primary);
   }
@@ -89,7 +99,7 @@ function TwitterFeed() {
             <FontAwesomeIcon icon={faTwitter} />
           </a>
         </h2>
-        <a href="https://twitter.com/frieslandschool">@frieslandschool</a>
+        <a href="https://twitter.com/frieslandschool">@FrieslandSchool</a>
       </TwitterIcon>
       <TweetRow>
         {loading && <p>Loading Tweets...</p>}

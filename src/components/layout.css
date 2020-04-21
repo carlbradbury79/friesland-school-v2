@@ -636,6 +636,11 @@ pre tt:after {
   --dark-shade-alpha: #16141c;
 }
 
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
 * {
   box-sizing: border-box;
   /* margin: 0;
@@ -647,16 +652,27 @@ body {
   font-family: "Lato";
   margin: 0;
   padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   /* background: #eee; */
 }
 
 a {
-  color: var(--dark-shade);
+  color: var(--primary);
   text-decoration: none;
   font-family: "Open Sans", sans-serif;
 }
 
-h1 {
+a:hover {
+  text-decoration: underline;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: "Cormorant Garamond", serif;
   color: #000;
 }
@@ -665,4 +681,8 @@ p {
   font-size: 16px;
   color: #3c3c3c;
   font-family: "Open Sans", arial, sans-serif;
+  line-height: 1.6rem;
+}
+
+.policy {
 }

@@ -58,11 +58,14 @@ const Title = styled.h2`
   margin: 0;
   margin-bottom: 10px;
   color: #000;
-  font-size: 1rem;
+  font-size: 1.2rem;
 `
 
 const CardContent = styled.div`
   position: relative;
+  a {
+    text-decoration: none;
+  }
 `
 
 const BlogCard = ({ post }) => {

@@ -17,10 +17,11 @@ const NewsCard = styled.div`
   h3 {
     margin: 0;
     padding: 10px;
-    font-size: 1rem;
-    font-weight: normal;
+    font-size: 1.2rem;
+    font-weight: bold;
   }
 `
+
 const FeaturedNewsCard = ({ post }) => {
   const altFeaturedArticleImage = useStaticQuery(graphql`
     query {

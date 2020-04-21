@@ -27,29 +27,52 @@ export const FooterContainer = styled.footer`
 `
 
 export const FooterSocialIcons = styled.div`
+  h3 {
+    color: #fff;
+    /* font-family: "Open Sans", sans-serif; */
+    font-size: 1.2rem;
+    font-weight: normal;
+  }
   ul {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin: 0;
     padding: 0;
 
     @media (max-width: 480px) {
-      justify-content: center;
+      align-items: center;
     }
 
     li {
       list-style: none;
       margin-right: 1rem;
+      line-height: 1.8rem;
 
       a {
-        font-size: 2rem;
+        font-size: 1.2rem;
         color: #fff;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        span {
+          font-size: 1rem;
+          :hover {
+            text-decoration: underline;
+          }
+        }
       }
     }
   }
 `
 
 export const FooterLinkStyle = styled.div`
+  h3 {
+    color: #fff;
+    /* font-family: "Open Sans", sans-serif; */
+    font-size: 1.2rem;
+    font-weight: normal;
+  }
+
   ul {
     list-style: none;
     margin: 0;
