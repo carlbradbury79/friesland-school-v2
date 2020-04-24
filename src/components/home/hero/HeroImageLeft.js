@@ -3,6 +3,8 @@ import styled from "styled-components"
 import { graphql, useStaticQuery } from "gatsby"
 import BackgroundImage from "gatsby-background-image"
 import { Link } from "gatsby"
+import HeroLink from "../../utils/HeroLink"
+import { animated, useTrail } from "react-spring"
 
 export const HeroContent = styled.div`
   display: flex;
@@ -16,22 +18,6 @@ export const HeroContent = styled.div`
     background-color: var(--primary-alpha);
     color: #fff;
     padding: 10px;
-  }
-
-  a {
-    padding: 5px;
-    /* background-color: #fff; */
-    color: #fff;
-    background-color: var(--primary-alpha);
-    /* border: var(--primary) 2px solid; */
-    margin-bottom: 10px;
-
-    :hover {
-      /* background-color: var(--primary); */
-      color: #fff;
-
-      text-decoration: underline;
-    }
   }
 `
 
@@ -49,16 +35,28 @@ export const HeroLeft = () => {
     }
   `)
 
+  const links = [
+    { to: "/vision-ethos", text: "Headteacher's Welcome" },
+    { to: "/curriculum", text: "Curriculum" },
+    { to: "/send", text: "SEND" },
+    { to: "/ofsted", text: "OfSted and DFE" },
+  ]
+  const trail = useTrail(links.length, {
+    from: { opacity: 0 },
+    to: { opacity: 1 },
+  })
   const LeftImage = HeroImageLeft.file.childImageSharp.fluid
 
   return (
     <BackgroundImage fluid={LeftImage}>
       <HeroContent>
         <h1>New Visitors</h1>
-        <Link to="/vision-ethos">Headteacher's Welcome</Link>
-        <Link to="/curriculum">Curriculum</Link>
-        <Link>SEND</Link>
-        <Link to="/ofsted">OfSted and DFE</Link>
+        {links.map(link => (
+          <HeroLink key={link.to} to={link.to} text={link.text} />
+          // <animated.div style={animation} key={links[link]}>
+          //   <HeroLink to={links[link].to} text={links[link].text} />
+          // </animated.div>
+        ))}
       </HeroContent>
     </BackgroundImage>
   )

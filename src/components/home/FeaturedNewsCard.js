@@ -20,6 +20,10 @@ const NewsCard = styled.div`
     font-size: 1.2rem;
     font-weight: bold;
   }
+
+  a {
+    text-decoration: none;
+  }
 `
 
 const FeaturedNewsCard = ({ post }) => {
@@ -46,7 +50,7 @@ const FeaturedNewsCard = ({ post }) => {
     post.featured_media.localFile.childImageSharp === null
       ? altFeaturedArticleImage.image.childImageSharp.fluid
       : post.featured_media.localFile.childImageSharp.fluid
-  console.log("FeaturedArticleImage", post)
+  // console.log("FeaturedArticleImage", post)
   return (
     <NewsCard>
       <Link to={`/${post.slug}`}>

@@ -104,7 +104,7 @@ function TwitterFeed() {
       <TweetRow>
         {loading && <p>Loading Tweets...</p>}
         {error && console.log("e", error)}
-        {console.log("twit", data)}
+        {/* {console.log("twit", data)} */}
         {data &&
           data.tweets.map(t => {
             return (

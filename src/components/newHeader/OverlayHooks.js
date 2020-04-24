@@ -42,7 +42,7 @@ const Overlay = ({ style }) => {
             <Link to="/term-dates">Term Dates</Link>
           </li>
           <li>
-            <Link to="uniform">Uniform</Link>
+            <Link to="/uniform">Uniform</Link>
           </li>
           <li>
             <Link to="/letters">Letters</Link>

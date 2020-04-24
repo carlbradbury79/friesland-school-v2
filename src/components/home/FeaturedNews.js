@@ -96,7 +96,7 @@ const FeaturedNews = () => {
     }
   `)
   const FeaturedNewsArticles = FeaturedArticlesData.allWordpressPost.edges
-  console.log("fad", FeaturedNewsArticles)
+  // console.log("fad", FeaturedNewsArticles)
   return (
     <FeaturedNewsSection>
       <h1>Featured News</h1>

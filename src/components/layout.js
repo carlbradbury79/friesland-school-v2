@@ -13,6 +13,10 @@ import "./layout.css"
 import Footer from "./footer/Footer"
 import { useSpring } from "react-spring"
 import OverlayHooks from "./newHeader/OverlayHooks"
+// Stop font awesome size issues
+import "@fortawesome/fontawesome-svg-core/styles.css"
+import { config } from "@fortawesome/fontawesome-svg-core"
+config.autoAddCss = false
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`

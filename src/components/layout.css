@@ -686,3 +686,27 @@ p {
 
 .policy {
 }
+
+/* Governors Page */
+.governor-list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.governor-list div {
+  flex: 0 50%;
+  padding: 20px;
+}
+
+.governor-list div p {
+  font-size: 0.9rem;
+}
+
+/* Vacancies */
+#tes-jobs-search {
+  max-width: 100%;
+  border: none;
+  display: block;
+  margin: auto;
+}

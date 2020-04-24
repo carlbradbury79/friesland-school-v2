@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 // import { useStaticQuery, graphql } from "gatsby"
@@ -10,6 +10,7 @@ import FeaturedNews from "../components/home/FeaturedNews"
 import StyledHeroLeft from "../components/home/hero/HeroImageLeft"
 import StyledHeroRight from "../components/home/hero/HeroImageRight"
 import TwitterFeed from "../components/twitterFeed/TwitterFeed"
+import { useSpring, animated, config } from "react-spring"
 
 const HeroContainer = styled.div`
   display: flex;
@@ -24,16 +25,30 @@ const HeroContainer = styled.div`
   }
 `
 
-const Welcome = styled.h1`
+const Welcome = styled(animated.h1)`
   text-align: center;
 `
 
 const IndexPage = () => {
+  const fadeIn = useSpring({
+    from: { opacity: 0, transform: "translate3d(0,50px,0)" },
+    opacity: 1,
+    transform: "translate3d(0,0px,0)",
+    delay: 1000,
+    config: config.molasses,
+  })
+  // useEffect(() => {
+  //   var el = document.createElement("script")
+  //   el.src = "https://www.ticketsource.co.uk/ticketshop/GMJJH"
+  //   var s = document.getElementsByTagName("script")[0]
+  //   s.parentNode.insertBefore(el, s)
+  // }, [])
+
   return (
     <Layout>
       <SEO title="Home" />
 
-      <Welcome>Welcome to Friesland School</Welcome>
+      <Welcome style={fadeIn}>Welcome to Friesland School</Welcome>
       <HeroContainer>
         <div>
           <StyledHeroLeft></StyledHeroLeft>

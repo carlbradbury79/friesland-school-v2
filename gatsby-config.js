@@ -63,11 +63,15 @@ module.exports = {
           "**/taxonomies",
           "**/menus",
         ],
-        // baseUrl: "frieslandschoolv2.local",
-        baseUrl: "frieslandschool.com",
+        baseUrl: "frieslandschoolv2.local",
+        // baseUrl: "frieslandschool.com",
         protocol: "http",
         hostingWPCOM: false,
         useACF: true,
+        // searchAndReplaceContentUrls: {
+        //   sourceUrl: "http://frieslandschool.com",
+        //   replacementUrl: "",
+        // },
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
