@@ -45,13 +45,13 @@ const NavigationWrapper = styled.nav`
     position: relative; /* this is needed in order to position sub menus */
     justify-content: center;
 
-    span {
+    a {
       padding: 0 0 0 10px;
       transition: all 0.2s ease;
       text-decoration: none;
       color: var(--dark-shade);
       cursor: pointer;
-      user-select: none;
+      /* user-select: none; */
       font-size: 1rem;
     }
 
@@ -164,7 +164,8 @@ const NavDropdown = () => {
         {menu.allWordpressWpApiMenusMenusItems.edges[0].node.items.map(
           (item, i) => (
             <li key={i}>
-              <span>{item.title}</span>
+              <Link to={`/${item.object_slug}`}>{item.title}</Link>
+
               {item.wordpress_children ? (
                 <>
                   <span>

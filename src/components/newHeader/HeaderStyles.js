@@ -57,7 +57,7 @@ export const StyledHeaderBottom = styled.div`
   ul li a {
     font-family: "Lato";
     text-decoration: none;
-    font-size: 22px;
+    font-size: 1rem;
   }
 
   .twitterIcon {

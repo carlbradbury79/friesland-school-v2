@@ -1,10 +1,12 @@
-import React from "react"
+import React, { useState } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import FeaturedNewsCard from "./FeaturedNewsCard"
 import styled from "styled-components"
 import FeaturedNewsSlider from "./NewFeaturedNewsSlider"
+import { useSpring, animated, config } from "react-spring"
+import { Waypoint } from "react-waypoint"
 
-const FeaturedNewsSection = styled.section`
+const FeaturedNewsSection = styled(animated.section)`
   /* margin: 2rem 0; */
 
   h1 {
@@ -95,10 +97,26 @@ const FeaturedNews = () => {
       }
     }
   `)
+
+  const [isFeaturedNewsVisible, toggleFeaturedNewsVisible] = useState(false)
+  const visibleAnimation = useSpring({
+    opacity: isFeaturedNewsVisible ? 1 : 0,
+    transform: isFeaturedNewsVisible
+      ? "translate3d(0,0px,0)"
+      : "translate3d(0,150px,0)",
+    config: config.slow,
+  })
+
   const FeaturedNewsArticles = FeaturedArticlesData.allWordpressPost.edges
   // console.log("fad", FeaturedNewsArticles)
   return (
-    <FeaturedNewsSection>
+    <FeaturedNewsSection style={visibleAnimation}>
+      <Waypoint
+        bottomOffset="20%"
+        onEnter={() =>
+          isFeaturedNewsVisible ? null : toggleFeaturedNewsVisible(true)
+        }
+      />
       <h1>Featured News</h1>
       <FeaturedNewsContainer>
         {FeaturedNewsArticles.map(post => {

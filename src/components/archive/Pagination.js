@@ -24,10 +24,6 @@ const PaginationWrapper = styled.nav`
   }
 `
 
-const PageCount = styled.span`
-  margin: 10px 20px;
-`
-
 const Pagination = ({ catSlug, page, totalPages }) => (
   <>
     <PaginationWrapper>

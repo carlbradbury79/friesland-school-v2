@@ -1,16 +1,15 @@
-import React, { useEffect } from "react"
+import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 // import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
-
-// import CbyStyledBackgroundSection from "../components/BGImage/BGImageThree"
-// import HomeHeroContent from "../components/home/HomeHeroContent"
 import FeaturedNews from "../components/home/FeaturedNews"
 import StyledHeroLeft from "../components/home/hero/HeroImageLeft"
 import StyledHeroRight from "../components/home/hero/HeroImageRight"
 import TwitterFeed from "../components/twitterFeed/TwitterFeed"
 import { useSpring, animated, config } from "react-spring"
+import CurriculumChart from "../components/curriculum/CurriculumChart"
+import { yearSevenAndEight } from "../components/curriculum/year7and8"
 
 const HeroContainer = styled.div`
   display: flex;
@@ -37,12 +36,6 @@ const IndexPage = () => {
     delay: 1000,
     config: config.molasses,
   })
-  // useEffect(() => {
-  //   var el = document.createElement("script")
-  //   el.src = "https://www.ticketsource.co.uk/ticketshop/GMJJH"
-  //   var s = document.getElementsByTagName("script")[0]
-  //   s.parentNode.insertBefore(el, s)
-  // }, [])
 
   return (
     <Layout>
@@ -57,7 +50,7 @@ const IndexPage = () => {
           <StyledHeroRight></StyledHeroRight>
         </div>
       </HeroContainer>
-
+      {/* <CurriculumChart data={yearSevenAndEight} /> */}
       <FeaturedNews />
       <TwitterFeed />
     </Layout>

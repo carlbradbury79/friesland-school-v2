@@ -37,7 +37,7 @@ const PageContent = styled.div`
   img {
     margin: 0;
     max-width: 100%;
-    border-radius: 10px;
+    /* border-radius: 10px; */
   }
 `
 

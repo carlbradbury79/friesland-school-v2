@@ -9,13 +9,13 @@ import React, { useState } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import Header from "./newHeader/Header"
-import "./layout.css"
+// import "./layout.css"
 import Footer from "./footer/Footer"
 import { useSpring } from "react-spring"
 import OverlayHooks from "./newHeader/OverlayHooks"
-// Stop font awesome size issues
 import "@fortawesome/fontawesome-svg-core/styles.css"
 import { config } from "@fortawesome/fontawesome-svg-core"
+import { GlobalStyle } from "./styles/GlobalStyle"
 config.autoAddCss = false
 
 const Layout = ({ children }) => {
@@ -30,28 +30,18 @@ const Layout = ({ children }) => {
   `)
 
   const [menuOpen, setMenuOpen] = useState(false)
-  const [curriculumMenuOpen, setCurriculumMenuOpen] = useState(false)
 
   const displayMenuAnimation = useSpring({
-    // opacity: menuOpen ? 1 : 0,
     transform: menuOpen ? `translateY(0)` : `translateY(-200%)`,
   })
-
-  // const displayCurriculumMenuAnimation = useSpring({
-  //   // opacity: menuOpen ? 1 : 0,
-  //   transform: curriculumMenuOpen ? `translateY(0)` : `translateY(-200%)`,
-  // })
 
   const handleOverlayMenu = () => {
     setMenuOpen(!menuOpen)
   }
 
-  // const handleCurriculumMenu = () => {
-  //   setCurriculumMenuOpen(!curriculumMenuOpen)
-  // }
-
   return (
     <>
+      <GlobalStyle />
       <Header
         siteTitle={data.site.siteMetadata.title}
         handleOverlayMenu={handleOverlayMenu}

@@ -2,9 +2,8 @@ import React from "react"
 import styled from "styled-components"
 import { graphql, useStaticQuery } from "gatsby"
 import BackgroundImage from "gatsby-background-image"
-import { Link } from "gatsby"
+// import { Link } from "gatsby"
 import HeroLink from "../../utils/HeroLink"
-import { animated, useTrail } from "react-spring"
 
 export const HeroContent = styled.div`
   display: flex;
@@ -36,15 +35,12 @@ export const HeroLeft = () => {
   `)
 
   const links = [
-    { to: "/vision-ethos", text: "Headteacher's Welcome" },
-    { to: "/curriculum", text: "Curriculum" },
-    { to: "/send", text: "SEND" },
-    { to: "/ofsted", text: "OfSted and DFE" },
+    { to: "/vision-ethos", text: "Headteacher's Welcome", delay: 100 },
+    { to: "/curriculum", text: "Curriculum", delay: 300 },
+    { to: "/send", text: "SEND", delay: 500 },
+    { to: "/ofsted", text: "OfSted and DFE", delay: 700 },
   ]
-  const trail = useTrail(links.length, {
-    from: { opacity: 0 },
-    to: { opacity: 1 },
-  })
+
   const LeftImage = HeroImageLeft.file.childImageSharp.fluid
 
   return (
@@ -52,7 +48,12 @@ export const HeroLeft = () => {
       <HeroContent>
         <h1>New Visitors</h1>
         {links.map(link => (
-          <HeroLink key={link.to} to={link.to} text={link.text} />
+          <HeroLink
+            key={link.to}
+            to={link.to}
+            text={link.text}
+            delay={link.delay}
+          />
           // <animated.div style={animation} key={links[link]}>
           //   <HeroLink to={links[link].to} text={links[link].text} />
           // </animated.div>

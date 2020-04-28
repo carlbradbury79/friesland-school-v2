@@ -14,7 +14,7 @@ const StyledLink = styled(Link)`
   }
 `
 
-const HeroLink = ({ to, text }) => {
+const HeroLink = ({ to, text, delay }) => {
   return <StyledLink to={to}>{text}</StyledLink>
 }
 

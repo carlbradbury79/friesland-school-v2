@@ -86,7 +86,7 @@ const BlogCard = ({ post }) => {
       }
     }
   `)
-  console.log(post)
+  // console.log(post)
   const altBgImage =
     post.node.featured_media === null ||
     post.node.featured_media.localFile.childImageSharp === null
@@ -100,7 +100,7 @@ const BlogCard = ({ post }) => {
           <ul>
             {post.node.categories.map(category => {
               return (
-                <li id={category.id}>
+                <li key={category.id}>
                   <Link to={`/blog/${category.slug}`}>{category.name}</Link>
                 </li>
               )

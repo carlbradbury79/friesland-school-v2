@@ -1,10 +1,17 @@
-import React from "react"
+import React, { useState } from "react"
 import { useQuery } from "@apollo/react-hooks"
 import gql from "graphql-tag"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTwitter } from "@fortawesome/free-brands-svg-icons"
-import styled from "styled-components"
 import anchorme from "anchorme"
+import { Waypoint } from "react-waypoint"
+import { useSpring, config } from "react-spring"
+import {
+  StyledTwitterFeed,
+  TwitterIcon,
+  TweetRow,
+  TweetBox,
+} from "../styles/TwitterFeedStyle"
 
 const APOLLO_QUERY = gql`
   {
@@ -15,84 +22,25 @@ const APOLLO_QUERY = gql`
     }
   }
 `
-const StyledTwitterFeed = styled.div`
-  margin: 0 0 5rem 0;
-`
-
-const TwitterIcon = styled.div`
-  text-align: center;
-  margin-top: 3rem;
-  margin-bottom: 0rem;
-  padding: 1rem;
-
-  a {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 32px;
-    font-weight: 600;
-  }
-  h2 {
-    margin: 0;
-
-    a {
-      color: var(--primary);
-      font-size: 4rem;
-    }
-  }
-`
-
-const TweetRow = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
-  height: 100%;
-  background: #fff;
-
-  @media (max-width: 600px) {
-    flex-direction: column;
-  }
-  /* border: 1px solid var(--primary); */
-`
-
-const TweetBox = styled.div`
-  flex: 1;
-  height: 100%;
-  color: var(--primary);
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  /* text-align: center; */
-  margin: 2rem 0px;
-  line-height: 1.8;
-  background: #fff;
-  font-family: "Open Sans", sans-serif;
-
-  @media (max-width: 600px) {
-    margin: 1rem 0;
-    text-align: center;
-  }
-  p {
-    color: var(--primary);
-  }
-
-  span {
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: #000;
-  }
-
-  a {
-    color: purple;
-  }
-`
 
 function TwitterFeed() {
   const { loading, error, data } = useQuery(APOLLO_QUERY)
 
+  const [isTwitterVisible, toggleTwitterVisible] = useState(false)
+  const visibleTwitterAnimation = useSpring({
+    opacity: isTwitterVisible ? 1 : 0,
+    transform: isTwitterVisible
+      ? "translate3d(0,0px,0)"
+      : "translate3d(0,150px,0)",
+    config: config.molasses,
+  })
+
   return (
-    <StyledTwitterFeed>
+    <StyledTwitterFeed style={visibleTwitterAnimation}>
+      <Waypoint
+        bottomOffset="20%"
+        onEnter={() => (isTwitterVisible ? null : toggleTwitterVisible(true))}
+      />
       <TwitterIcon>
         <h2>
           <a href="https://twitter.com/frieslandschool">
