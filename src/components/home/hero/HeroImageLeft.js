@@ -35,9 +35,10 @@ export const HeroLeft = () => {
   `)
 
   const links = [
+    { to: "/about-friesland", text: "About Friesland", delay: 500 },
     { to: "/vision-ethos", text: "Headteacher's Welcome", delay: 100 },
     { to: "/curriculum", text: "Curriculum", delay: 300 },
-    { to: "/send", text: "SEND", delay: 500 },
+
     { to: "/ofsted", text: "OfSted and DFE", delay: 700 },
   ]
 

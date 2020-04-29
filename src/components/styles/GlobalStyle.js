@@ -176,4 +176,38 @@ p, ul, ol {
 .sixth-form-video {
 } */
 
+
+/* Uniform */
+.uniformItem {
+  border-bottom:1px solid #c0c0c0;
+}
+
+.uniformItem .items {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  
+  
+}
+@media(max-width: 500px) {
+  .uniformItem .items {
+    flex-direction: column;
+  }
+}
+
+.uniformItem .items ul {
+  list-style: none;
+  padding: 0;
+  flex: 1;
+}
+
+.uniformItem .items ul li .fa-check {
+  color: green;
+}
+
+.uniformItem .items ul li .fa-times {
+  color: red;
+}
+
 `

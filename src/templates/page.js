@@ -9,6 +9,7 @@ import BreadCrumb from "../components/utils/BreadCrumb"
 // import FeaturedImage from "../components/utils/FeaturedImage"
 import StyledPageHeaderImage from "../components/utils/PageHeaderImage"
 // import PageHero from "../components/PageHero"
+import { Helmet } from "react-helmet"
 
 const PageTitle = styled.div`
   height: 100px;
@@ -46,6 +47,13 @@ const pageTemplate = ({ data }) => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>{data.currentPage.title}</title>
+        <script
+          src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"
+          data-auto-replace-svg
+        ></script>
+      </Helmet>
       {data.currentPage.acf && data.currentPage.acf.image_for_page ? (
         <div style={{ height: "400px", marginBottom: "2rem" }}>
           <StyledPageHeaderImage

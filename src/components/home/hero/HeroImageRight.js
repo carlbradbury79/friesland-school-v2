@@ -55,7 +55,7 @@ const HeroRight = () => {
         <h1>Current Students</h1>
         <Link to="/term-dates">Term Dates</Link>
         <Link to="/blog/letters">Latest Letters</Link>
-        <Link to="/newsletter">Newsletter</Link>
+        {/* <Link to="/newsletter">Newsletter</Link> */}
       </HeroContent>
     </BackgroundImage>
   )

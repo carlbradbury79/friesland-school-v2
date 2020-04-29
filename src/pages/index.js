@@ -8,8 +8,8 @@ import StyledHeroLeft from "../components/home/hero/HeroImageLeft"
 import StyledHeroRight from "../components/home/hero/HeroImageRight"
 import TwitterFeed from "../components/twitterFeed/TwitterFeed"
 import { useSpring, animated, config } from "react-spring"
-import CurriculumChart from "../components/curriculum/CurriculumChart"
-import { yearSevenAndEight } from "../components/curriculum/year7and8"
+// import CurriculumChart from "../components/curriculum/CurriculumChart"
+// import { yearSevenAndEight } from "../components/curriculum/year7and8"
 
 const HeroContainer = styled.div`
   display: flex;
