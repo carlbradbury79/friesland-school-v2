@@ -10,6 +10,7 @@ import Pagination from "../components/archive/Pagination"
 import BlogCard from "../components/utils/NewBlogCard"
 
 import styled from "styled-components"
+import CategoriesMenu from "../components/archive/CategoriesMenu"
 
 const PageContent = styled.article`
   background-color: #f2f2f2;
@@ -40,7 +41,7 @@ const ArchiveTitle = styled.h1`
 `
 
 const archiveTemplate = ({
-  data: { file, allWordpressPost },
+  data: { file, allWordpressPost, allWordpressCategory },
   pageContext: {
     catId,
     catName,
@@ -49,36 +50,42 @@ const archiveTemplate = ({
     humanPageNumber,
     numberOfPages,
   },
-}) => (
-  <Layout>
-    {/* <PageHero img={file.childImageSharp.fluid} /> */}
-    {console.log("arch", catName)}{" "}
-    <div className="container">
-      <div className="row" style={{ marginBottom: "40px" }}>
-        {/* <ArchiveSidebar catId={catId} categories={categories} /> */}
-        <PageContent>
-          <ArchiveTitle dangerouslySetInnerHTML={{ __html: catName }} />
-          <BreadCrumb
-            parent={{
-              slug: `/blog/${catSlug}`,
-              title: catName,
-            }}
-          />
-          <ArticleGrid>
-            {allWordpressPost.edges.map(post => {
-              return <BlogCard key={post.node.id} post={post} />
-            })}
-          </ArticleGrid>
-          <Pagination
-            catSlug={catSlug}
-            page={humanPageNumber}
-            totalPages={numberOfPages}
-          />
-        </PageContent>
+}) => {
+  return (
+    <Layout>
+      {/* <PageHero img={file.childImageSharp.fluid} /> */}
+      {/* {console.log("PQ", allWordpressCategory)} */}
+      {console.log("arch", catName)}{" "}
+      <div className="container">
+        <div className="row" style={{ marginBottom: "40px" }}>
+          {/* <ArchiveSidebar catId={catId} categories={categories} /> */}
+          <PageContent>
+            <ArchiveTitle dangerouslySetInnerHTML={{ __html: catName }} />
+
+            <CategoriesMenu categories={allWordpressCategory} />
+
+            <BreadCrumb
+              parent={{
+                slug: `/blog/${catSlug}`,
+                title: catName,
+              }}
+            />
+            <ArticleGrid>
+              {allWordpressPost.edges.map(post => {
+                return <BlogCard key={post.node.id} post={post} />
+              })}
+            </ArticleGrid>
+            <Pagination
+              catSlug={catSlug}
+              page={humanPageNumber}
+              totalPages={numberOfPages}
+            />
+          </PageContent>
+        </div>
       </div>
-    </div>
-  </Layout>
-)
+    </Layout>
+  )
+}
 
 export default archiveTemplate
 
@@ -122,6 +129,18 @@ export const pageQuery = graphql`
       childImageSharp {
         fluid(quality: 100, maxWidth: 4000) {
           ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+
+    allWordpressCategory {
+      edges {
+        node {
+          id
+          name
+          slug
+          wordpress_id
+          count
         }
       }
     }
