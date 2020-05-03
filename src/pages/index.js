@@ -4,10 +4,12 @@ import SEO from "../components/seo"
 // import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
 import FeaturedNews from "../components/home/FeaturedNews"
+import FeaturedEvents from "../components/events/FeaturedEvents"
 import StyledHeroLeft from "../components/home/hero/HeroImageLeft"
 import StyledHeroRight from "../components/home/hero/HeroImageRight"
 import TwitterFeed from "../components/twitterFeed/TwitterFeed"
 import { useSpring, animated, config } from "react-spring"
+import Instagram from "../components/instagram/Instagram"
 // import CurriculumChart from "../components/curriculum/CurriculumChart"
 // import { yearSevenAndEight } from "../components/curriculum/year7and8"
 
@@ -26,6 +28,7 @@ const HeroContainer = styled.div`
 
 const Welcome = styled(animated.h1)`
   text-align: center;
+  user-select: true;
 `
 
 const IndexPage = () => {
@@ -51,7 +54,9 @@ const IndexPage = () => {
         </div>
       </HeroContainer>
       {/* <CurriculumChart data={yearSevenAndEight} /> */}
+      {/* <FeaturedEvents /> */}
       <FeaturedNews />
+      <Instagram />
       <TwitterFeed />
     </Layout>
   )

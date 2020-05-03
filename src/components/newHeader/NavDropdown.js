@@ -51,7 +51,7 @@ const NavigationWrapper = styled.nav`
       text-decoration: none;
       color: var(--dark-shade);
       cursor: pointer;
-      /* user-select: none; */
+
       font-size: 1rem;
     }
 

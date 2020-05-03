@@ -18,6 +18,10 @@ const CategoryChoice = styled.button`
   :hover {
     cursor: pointer;
   }
+
+  :active {
+    border: none;
+  }
 `
 
 const CategoriesMenu = ({ categories }) => {
