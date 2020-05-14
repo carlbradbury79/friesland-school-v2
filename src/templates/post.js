@@ -79,7 +79,7 @@ const postTemplate = ({ data: { post } }) => (
       /> */}
       <h1 dangerouslySetInnerHTML={{ __html: post.title }} />
       <p dangerouslySetInnerHTML={{ __html: post.date }}></p>
-      {/* <FeaturedImage image={post.featured_media} /> */}
+      <FeaturedImage image={post.featuredImage} />
       <SocialShare title={post.title} link={post.link} />
       <PostContentText dangerouslySetInnerHTML={{ __html: post.content }} />
     </PostContent>
@@ -113,7 +113,13 @@ export const query = graphql`
         }
       }
       featuredImage {
-        id
+        remoteFile {
+          childImageSharp {
+            fluid(cropFocus: NORTH, fit: CONTAIN, background: "#fff") {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     }
   }

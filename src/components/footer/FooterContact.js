@@ -1,48 +1,41 @@
 import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
-
+import { getSlug } from "../utils/get-slug"
 import { FooterLinkStyle } from "./footerStyles"
 
 const FooterContact = () => {
-  // const footerContactMenu = useStaticQuery(graphql`
-  //   query conactMenuQuery {
-  //     allWordpressWpApiMenusMenusItems(
-  //       filter: { name: { eq: "footerContactMenu" } }
-  //     ) {
-  //       totalCount
-  //       edges {
-  //         node {
-  //           items {
-  //             title
-  //             wordpress_id
-  //             object_slug
-  //             wordpress_children {
-  //               title
-  //               url
-  //               object_slug
-  //             }
-  //           }
-  //           name
-  //         }
-  //       }
-  //     }
-  //   }
-  // `)
-  // const footerContactMenuItems =
-  //   footerContactMenu.allWordpressWpApiMenusMenusItems.edges[0].node.items
+  const footerContactMenu = useStaticQuery(graphql`
+    {
+      wpMenu(id: { eq: "TWVudTo0Mw==" }) {
+        id
+        name
+        menuItems {
+          nodes {
+            id
+            label
+            url
+          }
+        }
+      }
+    }
+  `)
+  const footerContactMenuItems = footerContactMenu.wpMenu.menuItems.nodes
   // console.log("fcm", footerContactMenuItems)
   return (
     <FooterLinkStyle>
       <h3>Keep In Touch</h3>
-      {/* <ul>
+      <ul>
         {footerContactMenuItems.map(item => {
+          const url = getSlug(item.url)
           return (
-            <li key={item.wordpress_id}>
-              <Link to={`/${item.object_slug}`}>{item.title}</Link>
+            <li key={item.id}>
+              <Link to={`/${url}`}>
+                <span dangerouslySetInnerHTML={{ __html: item.label }} />
+              </Link>
             </li>
           )
         })}
-      </ul> */}
+      </ul>
     </FooterLinkStyle>
   )
 }

@@ -9,6 +9,8 @@ const PostImage = styled(Img)`
 `
 
 const FeaturedImage = ({ image }) => {
+  console.log(image)
+
   const altFeaturedImage = useStaticQuery(graphql`
     query {
       image: file(relativePath: { eq: "friesland-logo.jpg" }) {
@@ -28,9 +30,9 @@ const FeaturedImage = ({ image }) => {
     }
   `)
   const Image =
-    image === null || image.localFile.childImageSharp === null
+    image === null || image.remoteFile.childImageSharp === null
       ? altFeaturedImage.image.childImageSharp.fluid
-      : image.localFile.childImageSharp.fluid
+      : image.remoteFile.childImageSharp.fluid
   console.log("Featured Image Component", image)
 
   return <PostImage fluid={Image} />
