@@ -16,6 +16,8 @@ import OverlayHooks from "./newHeader/OverlayHooks"
 import "@fortawesome/fontawesome-svg-core/styles.css"
 import { config } from "@fortawesome/fontawesome-svg-core"
 import { GlobalStyle } from "./styles/GlobalStyle"
+import { Helmet } from "react-helmet"
+
 config.autoAddCss = false
 
 const Layout = ({ children }) => {
@@ -42,6 +44,13 @@ const Layout = ({ children }) => {
   return (
     <>
       <GlobalStyle />
+      <Helmet>
+        {/* <title>{data.currentPage.title}</title> */}
+        <script
+          src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"
+          data-auto-replace-svg
+        ></script>
+      </Helmet>
       <Header
         siteTitle={data.site.siteMetadata.title}
         handleOverlayMenu={handleOverlayMenu}

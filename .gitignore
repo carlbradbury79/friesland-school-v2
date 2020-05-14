@@ -69,3 +69,5 @@ yarn-error.log
 .yarn-integrity
 
 friesland-old/
+# Local Netlify folder
+.netlify

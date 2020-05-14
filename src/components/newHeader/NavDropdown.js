@@ -123,35 +123,30 @@ const NavigationWrapper = styled.nav`
 `
 
 const NavDropdown = () => {
-  const menu = useStaticQuery(graphql`
-    query newMenuQuery {
-      allWordpressWpApiMenusMenusItems(
-        filter: { name: { eq: "friesland-v2" } }
-      ) {
-        totalCount
-        edges {
-          node {
-            items {
-              title
-
-              object_slug
-              wordpress_children {
-                title
+  const { wpMenu } = useStaticQuery(graphql`
+    {
+      wpMenu(id: { eq: "TWVudToyNw==" }) {
+        name
+        id
+        menuId
+        slug
+        menuItems {
+          nodes {
+            url
+            label
+            childItems {
+              nodes {
+                label
                 url
-                object_slug
               }
             }
-            name
           }
         }
       }
     }
   `)
 
-  //   console.log(
-  //     "menuID",
-  //     menu.allWordpressWpApiMenusMenusItems.edges[0].node.items
-  //   )
+  console.log("menuID", wpMenu)
   return (
     // <div>
     //   {menu.allWordpressWpApiMenusMenusItems.edges[0].node.items.map(item => {
@@ -161,42 +156,26 @@ const NavDropdown = () => {
 
     <NavigationWrapper>
       <ul>
-        {menu.allWordpressWpApiMenusMenusItems.edges[0].node.items.map(
-          (item, i) => (
-            <li key={i}>
-              <Link to={`/${item.object_slug}`}>{item.title}</Link>
+        {wpMenu.menuItems.nodes.map((item, i) => (
+          <li key={i}>
+            <Link to={`/${item.url}`}>{item.label}</Link>
 
-              {item.wordpress_children ? (
-                <>
-                  <span>
-                    <FontAwesomeIcon icon={faAngleDown} />
-                  </span>
-                  <ul>
-                    {item.wordpress_children.map((child, iChild) => (
-                      <li key={iChild}>
-                        {child.title === "Twitter" ? (
-                          <Link
-                            to={`/${child.object_slug}`}
-                            activeClassName="nav-active"
-                          >
-                            <FontAwesomeIcon icon={faTwitter} /> Twitter
-                          </Link>
-                        ) : (
-                          <a
-                            href={`/${child.object_slug}`}
-                            // activeClassName="nav-active"
-                          >
-                            {child.title}
-                          </a>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                </>
-              ) : null}
-            </li>
-          )
-        )}
+            {item.childItems.nodes.length > 0 ? (
+              <>
+                <span>
+                  <FontAwesomeIcon icon={faAngleDown} />
+                </span>
+                <ul>
+                  {item.childItems.nodes.map((child, iChild) => (
+                    <li key={iChild}>
+                      <a href={`/${child.url}`}>{child.label}</a>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            ) : null}
+          </li>
+        ))}
       </ul>
     </NavigationWrapper>
   )

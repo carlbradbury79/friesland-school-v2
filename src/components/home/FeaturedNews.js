@@ -66,37 +66,34 @@ const FeaturedNewsLink = styled(Link)`
 `
 
 const FeaturedNews = () => {
-  const FeaturedArticlesData = useStaticQuery(graphql`
-    query FeaturedNews {
-      allWordpressPost(
-        limit: 4
-        filter: { categories: { elemMatch: { name: { eq: "News" } } } }
-      ) {
-        edges {
-          node {
-            id
-            featured_media {
-              localFile {
-                id
-                childImageSharp {
-                  fixed(width: 500, height: 400, cropFocus: NORTH, fit: COVER) {
-                    ...GatsbyImageSharpFixed
-                  }
-                  fluid(maxWidth: 2000, maxHeight: 1500, cropFocus: CENTER) {
-                    ...GatsbyImageSharpFluid
-                  }
-                }
-              }
-            }
-            date(formatString: "DD MMM YYYY")
-            path
-            slug
-            title
-          }
-        }
-      }
-    }
-  `)
+  // const FeaturedArticlesData = useStaticQuery(graphql`
+  //   query FeaturedNews {
+  //     posts(
+  //       limit: 4
+  //       filter: { categories: { elemMatch: { name: { eq: "News" } } } }
+  //     ) {
+  //       edges {
+  //         node {
+  //           id
+  //           featured_media {
+  //             localFile {
+  //               id
+  //               childImageSharp {
+  //                 fluid(maxWidth: 2000, maxHeight: 1500, cropFocus: CENTER) {
+  //                   ...GatsbyImageSharpFluid
+  //                 }
+  //               }
+  //             }
+  //           }
+  //           date(formatString: "DD MMM YYYY")
+  //           path
+  //           slug
+  //           title
+  //         }
+  //       }
+  //     }
+  //   }
+  // `)
 
   const [isFeaturedNewsVisible, toggleFeaturedNewsVisible] = useState(false)
   const visibleAnimation = useSpring({
@@ -107,7 +104,7 @@ const FeaturedNews = () => {
     config: config.slow,
   })
 
-  const FeaturedNewsArticles = FeaturedArticlesData.allWordpressPost.edges
+  // const FeaturedNewsArticles = FeaturedArticlesData.allWordpressPost.edges
   // console.log("fad", FeaturedNewsArticles)
   return (
     <FeaturedNewsSection style={visibleAnimation}>
@@ -118,12 +115,12 @@ const FeaturedNews = () => {
         }
       />
       <h1>Featured News</h1>
-      <FeaturedNewsContainer>
+      {/* <FeaturedNewsContainer>
         {FeaturedNewsArticles.map(post => {
           return <FeaturedNewsCard key={post.node.id} post={post.node} />
         })}
       </FeaturedNewsContainer>
-      <FeaturedNewsSlider post={FeaturedNewsArticles} />
+      <FeaturedNewsSlider post={FeaturedNewsArticles} /> */}
       <FeaturedNewsLink to="/blog/news">More Articles</FeaturedNewsLink>
     </FeaturedNewsSection>
   )

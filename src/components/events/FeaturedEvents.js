@@ -76,79 +76,77 @@ const FeaturedNewsLink = styled(Link)`
 `
 
 const FeaturedEvents = () => {
-  const { loading, error, data } = useQuery(APOLLO_QUERY)
-  console.log("FEATURED EVENTS", data)
-  const FeaturedEventData = useStaticQuery(graphql`
-    query EventQuery {
-      allWordpressPost(
-        filter: { categories: { elemMatch: { name: { eq: "Events" } } } }
-      ) {
-        edges {
-          node {
-            title
-            acf {
-              date_of_event
-            }
-            categories {
-              name
-            }
-            slug
-            id
-            excerpt
-            content
-            featured_media {
-              localFile {
-                childImageSharp {
-                  fluid(maxWidth: 2000, maxHeight: 1500, cropFocus: CENTER) {
-                    ...GatsbyImageSharpFluid
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  `)
+  // const { loading, error, data } = useQuery(APOLLO_QUERY)
+  // console.log("FEATURED EVENTS", data)
+  // const FeaturedEventData = useStaticQuery(graphql`
+  //   query EventQuery {
+  //     posts(filter: { categories: { elemMatch: { name: { eq: "Events" } } } }) {
+  //       edges {
+  //         node {
+  //           title
+  //           acf {
+  //             date_of_event
+  //           }
+  //           categories {
+  //             name
+  //           }
+  //           slug
+  //           id
+  //           excerpt
+  //           content
+  //           featured_media {
+  //             localFile {
+  //               childImageSharp {
+  //                 fluid(maxWidth: 2000, maxHeight: 1500, cropFocus: CENTER) {
+  //                   ...GatsbyImageSharpFluid
+  //                 }
+  //               }
+  //             }
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // `)
 
-  console.log("Events", FeaturedEventData.allWordpressPost.edges)
-  console.log(
-    "Events",
-    FeaturedEventData.allWordpressPost.edges[0].node.acf.date_of_event
-  )
-  const dateToFormat =
-    FeaturedEventData.allWordpressPost.edges[0].node.acf.date_of_event
+  // console.log("Events", FeaturedEventData.allWordpressPost.edges)
+  // console.log(
+  //   "Events",
+  //   FeaturedEventData.allWordpressPost.edges[0].node.acf.date_of_event
+  // )
+  // const dateToFormat =
+  //   FeaturedEventData.allWordpressPost.edges[0].node.acf.date_of_event
 
-  let eventDay = new Date(dateToFormat)
+  // let eventDay = new Date(dateToFormat)
 
-  const eventPosts = FeaturedEventData.allWordpressPost.edges.map(event => {
-    event.node.acf.date_of_event = new Date(event.node.acf.date_of_event)
-    return event
-  })
+  // const eventPosts = FeaturedEventData.allWordpressPost.edges.map(event => {
+  //   event.node.acf.date_of_event = new Date(event.node.acf.date_of_event)
+  //   return event
+  // })
 
-  const sortedEvents = eventPosts.sort(
-    (a, b) => a.node.acf.date_of_event - b.node.acf.date_of_event
-  )
-  console.log("eventPosts", eventPosts)
-  console.log("sortedEvents", sortedEvents)
+  // const sortedEvents = eventPosts.sort(
+  //   (a, b) => a.node.acf.date_of_event - b.node.acf.date_of_event
+  // )
+  // console.log("eventPosts", eventPosts)
+  // console.log("sortedEvents", sortedEvents)
 
-  const today = Date.now()
-  console.log("today", today)
+  // const today = Date.now()
+  // console.log("today", today)
 
-  const newEvents = sortedEvents.filter(
-    event => today < event.node.acf.date_of_event
-  )
+  // const newEvents = sortedEvents.filter(
+  //   event => today < event.node.acf.date_of_event
+  // )
 
-  console.log("newEvents", newEvents)
+  // console.log("newEvents", newEvents)
 
   return (
     <FeaturedEventSection>
       <h1>Upcoming Events</h1>
-      <div>
+      {/* <div>
         {newEvents.map((event, i) => {
           return i < 2 && <FeaturedEvent key={event.node.id} event={event} />
         })}
-      </div>
+      </div> */}
       <FeaturedNewsLink to="/blog/events">More events</FeaturedNewsLink>
     </FeaturedEventSection>
   )

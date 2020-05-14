@@ -89,60 +89,60 @@ const archiveTemplate = ({
 
 export default archiveTemplate
 
-export const pageQuery = graphql`
-  query($catId: String!, $skip: Int!, $limit: Int!) {
-    allWordpressPost(
-      filter: { categories: { elemMatch: { id: { eq: $catId } } } }
-      skip: $skip
-      limit: $limit
-    ) {
-      edges {
-        node {
-          author
-          categories {
-            id
-            name
-            path
-            slug
-          }
-          id
-          title
-          excerpt
-          slug
-          date(formatString: "DD MMM YYYY")
-          path
-          featured_media {
-            source_url
-            localFile {
-              url
-              childImageSharp {
-                fluid(maxWidth: 1000, cropFocus: ATTENTION) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    file(relativePath: { eq: "gatsby-astronaut.png" }) {
-      childImageSharp {
-        fluid(quality: 100, maxWidth: 4000) {
-          ...GatsbyImageSharpFluid_withWebp
-        }
-      }
-    }
+// export const pageQuery = graphql`
+//   query($catId: String!, $skip: Int!, $limit: Int!) {
+//     posts(
+//       filter: { categories: { elemMatch: { id: { eq: $catId } } } }
+//       skip: $skip
+//       limit: $limit
+//     ) {
+//       edges {
+//         node {
+//           author
+//           categories {
+//             id
+//             name
+//             path
+//             slug
+//           }
+//           id
+//           title
+//           excerpt
+//           slug
+//           date(formatString: "DD MMM YYYY")
+//           path
+//           featured_media {
+//             source_url
+//             localFile {
+//               url
+//               childImageSharp {
+//                 fluid(maxWidth: 1000, cropFocus: ATTENTION) {
+//                   ...GatsbyImageSharpFluid
+//                 }
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//     file(relativePath: { eq: "gatsby-astronaut.png" }) {
+//       childImageSharp {
+//         fluid(quality: 100, maxWidth: 4000) {
+//           ...GatsbyImageSharpFluid_withWebp
+//         }
+//       }
+//     }
 
-    allWordpressCategory {
-      edges {
-        node {
-          id
-          name
-          slug
-          wordpress_id
-          count
-        }
-      }
-    }
-  }
-`
+//     allWordpressCategory {
+//       edges {
+//         node {
+//           id
+//           name
+//           slug
+//           wordpress_id
+//           count
+//         }
+//       }
+//     }
+//   }
+// `

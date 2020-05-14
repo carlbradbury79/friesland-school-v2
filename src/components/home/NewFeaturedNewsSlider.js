@@ -36,9 +36,6 @@ const FeaturedNewsSlider = ({ post }) => {
       image: file(relativePath: { eq: "friesland-logo.jpg" }) {
         id
         childImageSharp {
-          fixed(width: 400, height: 300, cropFocus: NORTH, fit: COVER) {
-            ...GatsbyImageSharpFixed
-          }
           fluid(
             maxWidth: 2000
             maxHeight: 1500

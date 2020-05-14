@@ -9,7 +9,7 @@ import BreadCrumb from "../components/utils/BreadCrumb"
 // import FeaturedImage from "../components/utils/FeaturedImage"
 import StyledPageHeaderImage from "../components/utils/PageHeaderImage"
 // import PageHero from "../components/PageHero"
-import { Helmet } from "react-helmet"
+// import { Helmet } from "react-helmet"
 
 const PageTitle = styled.div`
   height: 100px;
@@ -47,14 +47,14 @@ const pageTemplate = ({ data }) => {
 
   return (
     <Layout>
-      <Helmet>
+      {/* <Helmet>
         <title>{data.currentPage.title}</title>
         <script
           src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"
           data-auto-replace-svg
         ></script>
-      </Helmet>
-      {data.currentPage.acf && data.currentPage.acf.image_for_page ? (
+      </Helmet> */}
+      {/* {data.currentPage.acf && data.currentPage.acf.image_for_page ? (
         <div style={{ height: "400px", marginBottom: "2rem" }}>
           <StyledPageHeaderImage
             image={
@@ -69,11 +69,11 @@ const pageTemplate = ({ data }) => {
         <PageTitle>
           <h1 dangerouslySetInnerHTML={{ __html: data.currentPage.title }} />
         </PageTitle>
-      )}
+      )} */}
 
-      <SectionSelector data={data} />
+      {/* <SectionSelector data={data} /> */}
       <PageContent>
-        <BreadCrumb parent={data.parent} />
+        {/* <BreadCrumb parent={data.parent} /> */}
         <div dangerouslySetInnerHTML={{ __html: data.currentPage.content }} />
       </PageContent>
     </Layout>
@@ -83,55 +83,63 @@ const pageTemplate = ({ data }) => {
 export default pageTemplate
 
 export const pageQuery = graphql`
-  query($id: String!, $parent: Int!, $wpId: Int!) {
-    currentPage: wordpressPage(id: { eq: $id }) {
+  query($id: String!) {
+    currentPage: wpPage(id: { eq: $id }) {
       id
       title
       content
-      wordpress_parent
-      parent_element {
-        title
-      }
-      acf {
-        image_for_page {
-          localFile {
-            childImageSharp {
-              fluid(quality: 100, maxWidth: 4000) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-          }
-        }
-      }
-    }
-    parentChildren: allWordpressPage(
-      filter: { wordpress_parent: { eq: $parent } }
-    ) {
-      edges {
-        node {
-          id
-          title
-          link
-        }
-      }
-    }
-    children: allWordpressPage(
-      filter: { wordpress_parent: { eq: $wpId } }
-      sort: { order: ASC, fields: title }
-    ) {
-      edges {
-        node {
-          id
-          title
-          link
-          slug
-        }
-      }
-    }
-    parent: wordpressPage(wordpress_id: { eq: $parent }) {
-      title
-      link
-      slug
     }
   }
 `
+
+// export const pageQuery = graphql`
+//   query($id: String!) {
+//     currentPage: wpPage(id: { eq: $id }) {
+//       id
+//       title
+//       content
+//       wordpress_parent
+//       parent_element {
+//         title
+//       }
+//       acf {
+//         image_for_page {
+//           localFile {
+//             childImageSharp {
+//               fluid(quality: 100, maxWidth: 4000) {
+//                 ...GatsbyImageSharpFluid_withWebp
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//     parentChildren: pages(filter: { wordpress_parent: { eq: $parent } }) {
+//       edges {
+//         node {
+//           id
+//           title
+//           link
+//         }
+//       }
+//     }
+//     children: pages(
+//       filter: { wordpress_parent: { eq: $wpId } }
+//       sort: { order: ASC, fields: title }
+//     ) {
+//       edges {
+//         node {
+//           id
+//           title
+//           link
+//           slug
+//         }
+//       }
+//     }
+//     parent: page(wordpress_id: { eq: $parent }) {
+//       title
+//       link
+//       slug
+//     }
+//   }
+// `

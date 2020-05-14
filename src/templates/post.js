@@ -70,16 +70,16 @@ const postTemplate = ({ data: { post } }) => (
           categories={post.categories}
         /> */}
     <PostContent>
-      {console.log("cat", post.categories[0].name)}
-      <BreadCrumb
+      {/* {console.log("cat", post.categories[0].name)} */}
+      {/* <BreadCrumb
         parent={{
           slug: `/blog/${post.categories[0].slug}`,
           title: post.categories[0].name,
         }}
-      />
+      /> */}
       <h1 dangerouslySetInnerHTML={{ __html: post.title }} />
       <p dangerouslySetInnerHTML={{ __html: post.date }}></p>
-      <FeaturedImage image={post.featured_media} />
+      {/* <FeaturedImage image={post.featured_media} /> */}
       <SocialShare title={post.title} link={post.link} />
       <PostContentText dangerouslySetInnerHTML={{ __html: post.content }} />
     </PostContent>
@@ -92,38 +92,65 @@ postTemplate.propTypes = {
 
 export default postTemplate
 
-export const pageQuery = graphql`
+export const query = graphql`
   query($id: String!) {
-    post: wordpressPost(id: { eq: $id }) {
+    post: wpPost(id: { eq: $id }) {
       content
-      date(formatString: "DD MMM YYYY")
+      date
       excerpt
-      path
-      slug
+      uri
       title
       status
+      slug
       link
       categories {
-        name
-        slug
-      }
-      author
-      featured_media {
-        id
-        wordpress_id
-        title
-        status
-        slug
-        post
-        path
-        localFile {
-          childImageSharp {
-            fluid(cropFocus: NORTH, fit: CONTAIN, background: "#fff") {
-              ...GatsbyImageSharpFluid
-            }
-          }
+        nodes {
+          count
+          id
+          link
+          name
+          slug
         }
+      }
+      featuredImage {
+        id
       }
     }
   }
 `
+
+// export const pageQuery = graphql`
+//   query($id: String!) {
+//     post: post(id: { eq: $id }) {
+//       content
+//       date(formatString: "DD MMM YYYY")
+//       excerpt
+//       path
+//       slug
+//       title
+//       status
+//       link
+//       categories {
+//         name
+//         slug
+//       }
+//       author
+//       featured_media {
+//         id
+//         wordpress_id
+//         title
+//         status
+//         slug
+//         post
+//         path
+//         localFile {
+//           childImageSharp {
+//             fluid(cropFocus: NORTH, fit: CONTAIN, background: "#fff") {
+//               ...GatsbyImageSharpFluid
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// `
