@@ -5,6 +5,7 @@ import { faTwitter } from "@fortawesome/free-brands-svg-icons"
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons"
 import styled from "styled-components"
 // import NavigationWrapper from "./DropdownStyles"
+import { getSlug } from "../utils/get-slug"
 
 const NavigationWrapper = styled.nav`
   margin: 5px 0 10px 0; /* just to give some spacing */
@@ -156,26 +157,32 @@ const NavDropdown = () => {
 
     <NavigationWrapper>
       <ul>
-        {wpMenu.menuItems.nodes.map((item, i) => (
-          <li key={i}>
-            <Link to={`/${item.url}`}>{item.label}</Link>
+        {wpMenu.menuItems.nodes.map((item, i) => {
+          const url = getSlug(item.url)
+          return (
+            <li key={i}>
+              <Link to={`/${url}`}>{item.label}</Link>
 
-            {item.childItems.nodes.length > 0 ? (
-              <>
-                <span>
-                  <FontAwesomeIcon icon={faAngleDown} />
-                </span>
-                <ul>
-                  {item.childItems.nodes.map((child, iChild) => (
-                    <li key={iChild}>
-                      <a href={`/${child.url}`}>{child.label}</a>
-                    </li>
-                  ))}
-                </ul>
-              </>
-            ) : null}
-          </li>
-        ))}
+              {item.childItems.nodes.length > 0 ? (
+                <>
+                  <span>
+                    <FontAwesomeIcon icon={faAngleDown} />
+                  </span>
+                  <ul>
+                    {item.childItems.nodes.map((child, iChild) => {
+                      const url = getSlug(child.url)
+                      return (
+                        <li key={iChild}>
+                          <Link to={`/${url}`}>{child.label}</Link>
+                        </li>
+                      )
+                    })}
+                  </ul>
+                </>
+              ) : null}
+            </li>
+          )
+        })}
       </ul>
     </NavigationWrapper>
   )
