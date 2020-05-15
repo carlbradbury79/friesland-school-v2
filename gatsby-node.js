@@ -116,33 +116,78 @@ exports.createPages = async ({ graphql, actions }) => {
   // }
 
   // const { pages, posts, categories } = result.data
+  const {
+    data: { allWpCategory },
+  } = await graphql(/* GraphQL */ `
+    {
+      allWpCategory {
+        nodes {
+          name
+          id
+          slug
+          count
+          posts {
+            nodes {
+              id
+              link
+              slug
+              uri
+              status
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  allWpCategory.nodes.forEach(cat => {
+    console.log(cat)
+    // if (cat.length > 0) {
+    paginate({
+      createPage,
+      items: cat.posts.nodes,
+      itemsPerPage: 6,
+      pathPrefix: `blog/${cat.slug}`,
+      component: slash(archiveTemplate),
+      context: {
+        catId: cat.id,
+        catName: cat.name,
+        catSlug: cat.slug,
+        catCount: cat.count,
+        // categories: allWordpressCategory.edges,
+      },
+    })
+    // }
+  })
+
+  // console.log(data)
 
   // console.log(result.data)
 
   // Create archive pages for each category
-  categories.edges.forEach(catEdge => {
-    // First filter out the posts that belongs to the current category
-    const filteredPosts = posts.edges.filter(({ node: { categories } }) =>
-      categories.some(el => el.id === catEdge.node.id)
-    )
-    // Some categories may be empty and we don't want to show them
-    if (filteredPosts.length > 0) {
-      paginate({
-        createPage,
-        items: filteredPosts,
-        itemsPerPage: 6,
-        pathPrefix: `blog/${catEdge.node.slug}`,
-        component: slash(archiveTemplate),
-        context: {
-          catId: catEdge.node.id,
-          catName: catEdge.node.name,
-          catSlug: catEdge.node.slug,
-          catCount: catEdge.node.count,
-          categories: allWordpressCategory.edges,
-        },
-      })
-    }
-  })
+  // categories.edges.forEach(catEdge => {
+  //   // First filter out the posts that belongs to the current category
+  //   const filteredPosts = posts.edges.filter(({ node: { categories } }) =>
+  //     categories.some(el => el.id === catEdge.node.id)
+  //   )
+  //   // Some categories may be empty and we don't want to show them
+  //   if (filteredPosts.length > 0) {
+  //     paginate({
+  //       createPage,
+  //       items: filteredPosts,
+  //       itemsPerPage: 6,
+  //       pathPrefix: `blog/${catEdge.node.slug}`,
+  //       component: slash(archiveTemplate),
+  //       context: {
+  //         catId: catEdge.node.id,
+  //         catName: catEdge.node.name,
+  //         catSlug: catEdge.node.slug,
+  //         catCount: catEdge.node.count,
+  //         categories: allWordpressCategory.edges,
+  //       },
+  //     })
+  //   }
+  // })
 
   // pages.edges.forEach(edge => {
   //   if (edge.node.status === "publish") {

@@ -41,12 +41,12 @@ const ArchiveTitle = styled.h1`
 `
 
 const archiveTemplate = ({
-  data: { file, allWordpressPost, allWordpressCategory },
+  data: { file, allWpPost, allWpCategory },
   pageContext: {
     catId,
     catName,
     catSlug,
-    categories,
+    // categories,
     humanPageNumber,
     numberOfPages,
   },
@@ -62,7 +62,7 @@ const archiveTemplate = ({
           <PageContent>
             <ArchiveTitle dangerouslySetInnerHTML={{ __html: catName }} />
 
-            <CategoriesMenu categories={allWordpressCategory} />
+            {/* <CategoriesMenu categories={allWordpressCategory} /> */}
 
             <BreadCrumb
               parent={{
@@ -71,8 +71,8 @@ const archiveTemplate = ({
               }}
             />
             <ArticleGrid>
-              {allWordpressPost.edges.map(post => {
-                return <BlogCard key={post.node.id} post={post} />
+              {allWpPost.nodes.map(post => {
+                return <BlogCard key={post.id} post={post} />
               })}
             </ArticleGrid>
             <Pagination
@@ -89,9 +89,57 @@ const archiveTemplate = ({
 
 export default archiveTemplate
 
+// TODO Fix Archive Query
+
+export const pageQuery = graphql`
+  query($skip: Int!, $limit: Int!) {
+    allWpPost(skip: $skip, limit: $limit) {
+      nodes {
+        categories {
+          nodes {
+            id
+            name
+            slug
+            uri
+          }
+        }
+        id
+        title
+        excerpt
+        slug
+        date
+        featuredImage {
+          remoteFile {
+            childImageSharp {
+              fluid(maxWidth: 1000, cropFocus: ATTENTION) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
+      }
+    }
+    allWpCategory {
+      nodes {
+        id
+        name
+        slug
+        count
+      }
+    }
+    file(relativePath: { eq: "gatsby-astronaut.png" }) {
+      childImageSharp {
+        fluid(quality: 100, maxWidth: 4000) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+  }
+`
+
 // export const pageQuery = graphql`
 //   query($catId: String!, $skip: Int!, $limit: Int!) {
-//     posts(
+//     allWpPosts(
 //       filter: { categories: { elemMatch: { id: { eq: $catId } } } }
 //       skip: $skip
 //       limit: $limit

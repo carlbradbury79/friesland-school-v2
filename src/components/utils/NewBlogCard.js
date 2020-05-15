@@ -86,18 +86,19 @@ const BlogCard = ({ post }) => {
       }
     }
   `)
-  // console.log(post)
+  console.log(post)
   const altBgImage =
-    post.node.featured_media === null ||
-    post.node.featured_media.localFile.childImageSharp === null
+    post.featuredImage === null ||
+    post.featuredImage.remoteFile.childImageSharp === null
       ? altImage.image.childImageSharp.fluid
-      : post.node.featured_media.localFile.childImageSharp.fluid
+      : post.featuredImage.remoteFile.childImageSharp.fluid
 
   return (
     <StyledArticle>
       <StyledBackgroundImage fluid={altBgImage}>
         <Categories>
-          <ul>
+          {/* FIX CATEGORIES */}
+          {/* <ul>
             {post.node.categories.map(category => {
               return (
                 <li key={category.id}>
@@ -105,14 +106,14 @@ const BlogCard = ({ post }) => {
                 </li>
               )
             })}
-          </ul>
+          </ul> */}
         </Categories>
       </StyledBackgroundImage>
       <CardContent>
-        <p dangerouslySetInnerHTML={{ __html: post.node.date }}></p>
+        <p dangerouslySetInnerHTML={{ __html: post.date }}></p>
         <span className="author"></span>
-        <Link to={`/${post.node.slug}`}>
-          <Title dangerouslySetInnerHTML={{ __html: post.node.title }}></Title>
+        <Link to={`/${post.slug}`}>
+          <Title dangerouslySetInnerHTML={{ __html: post.title }}></Title>
         </Link>
       </CardContent>
     </StyledArticle>
