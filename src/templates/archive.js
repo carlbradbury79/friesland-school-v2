@@ -51,18 +51,20 @@ const archiveTemplate = ({
     numberOfPages,
   },
 }) => {
+  console.log(allWpPost)
+
   return (
     <Layout>
       {/* <PageHero img={file.childImageSharp.fluid} /> */}
       {/* {console.log("PQ", allWordpressCategory)} */}
-      {console.log("arch", catName)}{" "}
+      {console.log("arch", catName)} {console.log(allWpCategory)}
       <div className="container">
         <div className="row" style={{ marginBottom: "40px" }}>
           {/* <ArchiveSidebar catId={catId} categories={categories} /> */}
           <PageContent>
             <ArchiveTitle dangerouslySetInnerHTML={{ __html: catName }} />
 
-            {/* <CategoriesMenu categories={allWordpressCategory} /> */}
+            <CategoriesMenu categories={allWpCategory.nodes} />
 
             <BreadCrumb
               parent={{
@@ -70,11 +72,16 @@ const archiveTemplate = ({
                 title: catName,
               }}
             />
+            {/* Loop through posts to display on the archive pages */}
+            {/* The 6 are generated from the graphql query */}
             <ArticleGrid>
               {allWpPost.nodes.map(post => {
+                console.log("archive posts", post)
                 return <BlogCard key={post.id} post={post} />
               })}
             </ArticleGrid>
+
+            {/* Pagination */}
             <Pagination
               catSlug={catSlug}
               page={humanPageNumber}
@@ -92,8 +99,12 @@ export default archiveTemplate
 // TODO Fix Archive Query
 
 export const pageQuery = graphql`
-  query($skip: Int!, $limit: Int!) {
-    allWpPost(skip: $skip, limit: $limit) {
+  query($catId: String!, $skip: Int!, $limit: Int!) {
+    allWpPost(
+      filter: { categories: { nodes: { elemMatch: { id: { eq: $catId } } } } }
+      skip: $skip
+      limit: $limit
+    ) {
       nodes {
         categories {
           nodes {
@@ -121,10 +132,32 @@ export const pageQuery = graphql`
     }
     allWpCategory {
       nodes {
-        id
         name
-        slug
         count
+        id
+        slug
+        posts {
+          nodes {
+            title
+            slug
+            id
+            status
+            link
+            uri
+            excerpt
+            date
+            content
+            featuredImage {
+              remoteFile {
+                childImageSharp {
+                  fluid(maxWidth: 1000, cropFocus: ATTENTION) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
     file(relativePath: { eq: "gatsby-astronaut.png" }) {

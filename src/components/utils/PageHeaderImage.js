@@ -24,8 +24,8 @@ const HeroContent = styled.div`
 `
 
 const PageHeaderImage = ({ children, image }) => {
-  console.log("PHI", image)
-  console.log("children", children)
+  // console.log("PHI", image)
+  // console.log("children", children)
   return (
     <BackgroundImage fluid={image}>
       <HeroContent>

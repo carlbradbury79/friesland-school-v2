@@ -9,7 +9,7 @@ import BreadCrumb from "../components/utils/BreadCrumb"
 // import FeaturedImage from "../components/utils/FeaturedImage"
 import StyledPageHeaderImage from "../components/utils/PageHeaderImage"
 // import PageHero from "../components/PageHero"
-// import { Helmet } from "react-helmet"
+// import { Helmet } from "renact-helmet"
 
 const PageTitle = styled.div`
   height: 100px;
@@ -43,7 +43,7 @@ const PageContent = styled.div`
 `
 
 const pageTemplate = ({ data }) => {
-  console.log("page", data)
+  // console.log("page", data)
 
   return (
     <Layout>
@@ -54,12 +54,12 @@ const pageTemplate = ({ data }) => {
           data-auto-replace-svg
         ></script>
       </Helmet> */}
-      {/* {data.currentPage.acf && data.currentPage.acf.image_for_page ? (
+      {data.currentPage.featuredImage &&
+      data.currentPage.featuredImage.remoteFile ? (
         <div style={{ height: "400px", marginBottom: "2rem" }}>
           <StyledPageHeaderImage
             image={
-              data.currentPage.acf.image_for_page.localFile.childImageSharp
-                .fluid
+              data.currentPage.featuredImage.remoteFile.childImageSharp.fluid
             }
           >
             {data.currentPage.title}
@@ -69,7 +69,7 @@ const pageTemplate = ({ data }) => {
         <PageTitle>
           <h1 dangerouslySetInnerHTML={{ __html: data.currentPage.title }} />
         </PageTitle>
-      )} */}
+      )}
 
       {/* <SectionSelector data={data} /> */}
       <PageContent>
@@ -82,12 +82,22 @@ const pageTemplate = ({ data }) => {
 
 export default pageTemplate
 
+// TODO Get child pages
 export const pageQuery = graphql`
   query($id: String!) {
     currentPage: wpPage(id: { eq: $id }) {
       id
       title
       content
+      featuredImage {
+        remoteFile {
+          childImageSharp {
+            fluid(quality: 100, maxWidth: 4000) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
+        }
+      }
     }
   }
 `

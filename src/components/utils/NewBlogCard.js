@@ -86,7 +86,7 @@ const BlogCard = ({ post }) => {
       }
     }
   `)
-  console.log(post)
+  // console.log(post)
   const altBgImage =
     post.featuredImage === null ||
     post.featuredImage.remoteFile.childImageSharp === null
@@ -97,16 +97,15 @@ const BlogCard = ({ post }) => {
     <StyledArticle>
       <StyledBackgroundImage fluid={altBgImage}>
         <Categories>
-          {/* FIX CATEGORIES */}
-          {/* <ul>
-            {post.node.categories.map(category => {
+          <ul>
+            {post.categories.nodes.map(category => {
               return (
                 <li key={category.id}>
                   <Link to={`/blog/${category.slug}`}>{category.name}</Link>
                 </li>
               )
             })}
-          </ul> */}
+          </ul>
         </Categories>
       </StyledBackgroundImage>
       <CardContent>

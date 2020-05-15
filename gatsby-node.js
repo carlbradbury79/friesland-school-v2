@@ -141,7 +141,7 @@ exports.createPages = async ({ graphql, actions }) => {
   `)
 
   allWpCategory.nodes.forEach(cat => {
-    console.log(cat)
+    // console.log(cat)
     // if (cat.length > 0) {
     paginate({
       createPage,

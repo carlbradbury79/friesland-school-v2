@@ -66,34 +66,31 @@ const FeaturedNewsLink = styled(Link)`
 `
 
 const FeaturedNews = () => {
-  // const FeaturedArticlesData = useStaticQuery(graphql`
-  //   query FeaturedNews {
-  //     posts(
-  //       limit: 4
-  //       filter: { categories: { elemMatch: { name: { eq: "News" } } } }
-  //     ) {
-  //       edges {
-  //         node {
-  //           id
-  //           featured_media {
-  //             localFile {
-  //               id
-  //               childImageSharp {
-  //                 fluid(maxWidth: 2000, maxHeight: 1500, cropFocus: CENTER) {
-  //                   ...GatsbyImageSharpFluid
-  //                 }
-  //               }
-  //             }
-  //           }
-  //           date(formatString: "DD MMM YYYY")
-  //           path
-  //           slug
-  //           title
-  //         }
-  //       }
-  //     }
-  //   }
-  // `)
+  const FeaturedArticlesData = useStaticQuery(graphql`
+    query FeaturedNews {
+      allWpPost {
+        nodes {
+          id
+          featuredImage {
+            remoteFile {
+              id
+              childImageSharp {
+                fluid(maxWidth: 2000, maxHeight: 1500, cropFocus: CENTER) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+          date
+          uri
+          slug
+          title
+        }
+      }
+    }
+  `)
+
+  // console.log("FAD", FeaturedArticlesData)
 
   const [isFeaturedNewsVisible, toggleFeaturedNewsVisible] = useState(false)
   const visibleAnimation = useSpring({
@@ -104,7 +101,7 @@ const FeaturedNews = () => {
     config: config.slow,
   })
 
-  // const FeaturedNewsArticles = FeaturedArticlesData.allWordpressPost.edges
+  const FeaturedNewsArticles = FeaturedArticlesData.allWpPost.nodes
   // console.log("fad", FeaturedNewsArticles)
   return (
     <FeaturedNewsSection style={visibleAnimation}>
@@ -115,12 +112,13 @@ const FeaturedNews = () => {
         }
       />
       <h1>Featured News</h1>
-      {/* <FeaturedNewsContainer>
-        {FeaturedNewsArticles.map(post => {
-          return <FeaturedNewsCard key={post.node.id} post={post.node} />
+      <FeaturedNewsContainer>
+        {FeaturedNewsArticles.map((post, i) => {
+          // TODO Sort Query to get 4 posts instead of pulling all of them
+          return i <= 3 && <FeaturedNewsCard key={post.id} post={post} />
         })}
       </FeaturedNewsContainer>
-      <FeaturedNewsSlider post={FeaturedNewsArticles} /> */}
+      {/* <FeaturedNewsSlider post={FeaturedNewsArticles} /> */}
       <FeaturedNewsLink to="/blog/news">More Articles</FeaturedNewsLink>
     </FeaturedNewsSection>
   )

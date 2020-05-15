@@ -23,6 +23,8 @@ const Subjects = styled.div`
   }
 `
 
+// TODO sort child pages
+
 const SectionSelector = ({ data }) => {
   console.log("selection", data.children)
 

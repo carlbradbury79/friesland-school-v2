@@ -46,12 +46,14 @@ const FeaturedNewsCard = ({ post }) => {
       }
     }
   `)
+
+  // Set the Friesland Logo if there is no featured image
   const FeaturedArticleImage =
-    post.featured_media === null ||
-    post.featured_media.localFile.childImageSharp === null
+    post.featuredImage === null ||
+    post.featuredImage.remoteFile.childImageSharp === null
       ? altFeaturedArticleImage.image.childImageSharp.fluid
-      : post.featured_media.localFile.childImageSharp.fluid
-  // console.log("FeaturedArticleImage", post)
+      : post.featuredImage.remoteFile.childImageSharp.fluid
+
   return (
     <NewsCard>
       <Link to={`/${post.slug}`}>
@@ -59,7 +61,7 @@ const FeaturedNewsCard = ({ post }) => {
       </Link>
       <p>{post.date}</p>
       <Link to={`/${post.slug}`}>
-        <h3>{post.title}</h3>
+        <h3 dangerouslySetInnerHTML={{ __html: post.title }} />
       </Link>
     </NewsCard>
   )

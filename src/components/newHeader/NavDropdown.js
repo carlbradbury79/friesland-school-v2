@@ -147,7 +147,7 @@ const NavDropdown = () => {
     }
   `)
 
-  console.log("menuID", wpMenu)
+  // console.log("menuID", wpMenu)
   return (
     // <div>
     //   {menu.allWordpressWpApiMenusMenusItems.edges[0].node.items.map(item => {

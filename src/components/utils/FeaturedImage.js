@@ -9,7 +9,7 @@ const PostImage = styled(Img)`
 `
 
 const FeaturedImage = ({ image }) => {
-  console.log(image)
+  // console.log(image)
 
   const altFeaturedImage = useStaticQuery(graphql`
     query {
@@ -33,7 +33,7 @@ const FeaturedImage = ({ image }) => {
     image === null || image.remoteFile.childImageSharp === null
       ? altFeaturedImage.image.childImageSharp.fluid
       : image.remoteFile.childImageSharp.fluid
-  console.log("Featured Image Component", image)
+  // console.log("Featured Image Component", image)
 
   return <PostImage fluid={Image} />
 }

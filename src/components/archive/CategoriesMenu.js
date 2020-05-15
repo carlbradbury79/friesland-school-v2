@@ -25,7 +25,7 @@ const CategoryChoice = styled.button`
 `
 
 const CategoriesMenu = ({ categories }) => {
-  console.log("cat", categories)
+  // console.log("cat", categories)
   const [isCategoryMenuVisible, setCategoryMenuVisible] = useState(false)
   const categoryMenuAnimation = useSpring({
     transform: isCategoryMenuVisible ? `translateX(0)` : `translateX(-150%)`,

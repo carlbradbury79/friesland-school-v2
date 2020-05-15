@@ -55,21 +55,21 @@ const FeaturedNewsSlider = ({ post }) => {
       <animated.div style={{ ...style, width: "100%" }}>
         <Img
           fluid={
-            post[0].node.featured_media === null ||
-            post[0].node.featured_media.localFile.childImageSharp === null
+            post[0].featuredImage === null ||
+            post[0].featuredImage.remoteFile.childImageSharp === null
               ? newAltFeaturedArticleImage.image.childImageSharp.fluid
-              : post[0].node.featured_media.localFile.childImageSharp.fluid
+              : post[0].featuredImage.remoteFile.childImageSharp.fluid
           }
         />
-        <p>{post[0].node.date}</p>
-        <h1>{post[0].node.title}</h1>
+        <p>{post[0].date}</p>
+        <h1>{post[0].title}</h1>
         {/* <Prev onClick={handlePrevious}>
           <FontAwesomeIcon icon={faArrowLeft} />
         </Prev>
         <Next onClick={handleNext}>
           <FontAwesomeIcon icon={faArrowRight} />
         </Next> */}
-        <Link to={`/${post[0].node.slug}`}>Read More...</Link>
+        <Link to={`/${post[0].slug}`}>Read More...</Link>
       </animated.div>
     ),
 
@@ -77,63 +77,63 @@ const FeaturedNewsSlider = ({ post }) => {
       <animated.div style={{ ...style }}>
         <Img
           fluid={
-            post[1].node.featured_media === null ||
-            post[1].node.featured_media.localFile.childImageSharp === null
+            post[1].featuredImage === null ||
+            post[1].featuredImage.remoteFile.childImageSharp === null
               ? newAltFeaturedArticleImage.image.childImageSharp.fluid
-              : post[1].node.featured_media.localFile.childImageSharp.fluid
+              : post[1].featuredImage.remoteFile.childImageSharp.fluid
           }
         />
-        <p>{post[1].node.date}</p>
-        <h1>{post[1].node.title}</h1>
+        <p>{post[1].date}</p>
+        <h1>{post[1].title}</h1>
         {/* <Prev onClick={handlePrevious}>
           <FontAwesomeIcon icon={faArrowLeft} />
         </Prev>
         <Next onClick={handleNext}>
           <FontAwesomeIcon icon={faArrowRight} />
         </Next> */}
-        <Link to={`/${post[1].node.slug}`}>Read More...</Link>
+        <Link to={`/${post[1].slug}`}>Read More...</Link>
       </animated.div>
     ),
     ({ style, post }) => (
       <animated.div style={{ ...style }}>
         <Img
           fluid={
-            post[2].node.featured_media === null ||
-            post[2].node.featured_media.localFile.childImageSharp === null
+            post[2].featuredImage === null ||
+            post[2].featuredImage.remoteFile.childImageSharp === null
               ? newAltFeaturedArticleImage.image.childImageSharp.fluid
-              : post[2].node.featured_media.localFile.childImageSharp.fluid
+              : post[2].featuredImage.remoteFile.childImageSharp.fluid
           }
         />
-        <p>{post[2].node.date}</p>
-        <h1>{post[2].node.title}</h1>
+        <p>{post[2].date}</p>
+        <h1>{post[2].title}</h1>
         {/* <Prev onClick={handlePrevious}>
           <FontAwesomeIcon icon={faArrowLeft} />
         </Prev>
         <Next onClick={handleNext}>
           <FontAwesomeIcon icon={faArrowRight} />
         </Next> */}
-        <Link to={`/${post[2].node.slug}`}>Read More...</Link>
+        <Link to={`/${post[2].slug}`}>Read More...</Link>
       </animated.div>
     ),
     ({ style, post }) => (
       <animated.div style={{ ...style }}>
         <Img
           fluid={
-            post[3].node.featured_media === null ||
-            post[3].node.featured_media.localFile.childImageSharp === null
+            post[3].featuredImage === null ||
+            post[3].featuredImage.remoteFile.childImageSharp === null
               ? newAltFeaturedArticleImage.image.childImageSharp.fluid
-              : post[3].node.featured_media.localFile.childImageSharp.fluid
+              : post[3].featuredImage.remoteFile.childImageSharp.fluid
           }
         />
-        <p>{post[3].node.date}</p>
-        <h1>{post[3].node.title}</h1>
+        <p>{post[3].date}</p>
+        <h1>{post[3].title}</h1>
         {/* <Prev onClick={handlePrevious}>
           <FontAwesomeIcon icon={faArrowLeft} />
         </Prev>
         <Next onClick={handleNext}>
           <FontAwesomeIcon icon={faArrowRight} />
         </Next> */}
-        <Link to={`/${post[3].node.slug}`}>Read More...</Link>
+        <Link to={`/${post[3].slug}`}>Read More...</Link>
       </animated.div>
     ),
   ]
