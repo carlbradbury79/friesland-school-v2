@@ -44,6 +44,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // console.log("gatsbyNode", contentNodes)
 
   const contentTypeTemplateDirectory = `./src/templates/`
+
   const contentTypeTemplates = templates.filter(path =>
     path.includes(contentTypeTemplateDirectory)
   )
@@ -53,15 +54,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   await Promise.all(
     contentNodes.map(async (node, i) => {
       const { nodeType, uri, id, slug } = node
-      const templatePath = `${contentTypeTemplateDirectory}${nodeType}.js`
+      console.log("nodeType", nodeType)
+      const templatePath = `${contentTypeTemplateDirectory}${nodeType.toLowerCase()}.js`
 
-      console.log("templatepath", templatePath)
+      console.log("templatePath", templatePath)
       console.log("slug", slug)
       console.log("uri", uri)
 
       const contentTypeTemplate = contentTypeTemplates.find(
         path => path === templatePath
       )
+
+      console.log("CTT?", contentTypeTemplate, typeof contentTypeTemplate)
 
       if (!contentTypeTemplate) {
         reporter.log(``)
