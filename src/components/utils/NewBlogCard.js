@@ -112,7 +112,7 @@ const BlogCard = ({ post }) => {
       <CardContent>
         <p>
           <Moment fromNow>
-            <span dangerouslySetInnerHTML={{ __html: post.date }}></span>
+            {post.date}</span>
           </Moment>
         </p>
         <span className="author"></span>
