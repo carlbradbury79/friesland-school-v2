@@ -5,6 +5,7 @@ const { paginate } = require("gatsby-awesome-pagination")
 const glob = require(`glob`)
 const chunk = require(`lodash/chunk`)
 
+// Get archive, post and page templates
 const getTemplates = () => {
   const sitePath = path.resolve(`./`)
   return glob.sync(`./src/templates/*.js`, { cwd: sitePath })
@@ -66,7 +67,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         )
       }
 
-      console.log(contentTypeTemplate)
+      // console.log(contentTypeTemplate)
 
       await createPage({
         path: slug,

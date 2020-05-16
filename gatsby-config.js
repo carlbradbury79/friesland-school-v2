@@ -62,7 +62,7 @@ module.exports = {
           `http://codeaday.co.uk/friesland/graphql`,
         verbose: true,
         schema: {
-          queryDepth: 5,
+          queryDepth: 2,
           typePrefix: `Wp`,
           timeout: 30000,
         },
