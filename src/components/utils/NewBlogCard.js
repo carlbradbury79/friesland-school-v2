@@ -111,9 +111,7 @@ const BlogCard = ({ post }) => {
       </StyledBackgroundImage>
       <CardContent>
         <p>
-          <Moment fromNow>
-            {post.date}</span>
-          </Moment>
+          <Moment fromNow>{post.date}</Moment>
         </p>
         <span className="author"></span>
         <Link to={`/${post.slug}`}>
