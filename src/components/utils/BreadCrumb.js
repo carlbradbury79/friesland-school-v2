@@ -29,7 +29,7 @@ const BreadCrumbWrapper = styled.div`
 `
 
 const BreadCrumb = ({ parent }) => {
-  // console.log("parent", parent)
+  console.log("parent", parent)
   return (
     <div>
       <div>

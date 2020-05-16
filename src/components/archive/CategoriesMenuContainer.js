@@ -34,13 +34,13 @@ const CategoryMenu = styled(animated.div)`
 `
 
 const CategoriesMenuContainer = ({ style, categories }) => {
-  // console.log("categories", categories)
+  console.log("categories", categories)
   return (
     <CategoryMenu style={style}>
       <ul>
         {categories.map(category => {
           return (
-            category.count !== null && (
+            category.posts.nodes.length > 0 && (
               <li key={category.id}>
                 <Link to={`/blog/${category.slug}`}>{category.name}</Link>
               </li>

@@ -4,6 +4,7 @@ import { Link, graphql, useStaticQuery } from "gatsby"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 import BackgroundImage from "gatsby-background-image"
+import Moment from "react-moment"
 
 const StyledArticle = styled.article`
   padding: 1rem;
@@ -109,7 +110,11 @@ const BlogCard = ({ post }) => {
         </Categories>
       </StyledBackgroundImage>
       <CardContent>
-        <p dangerouslySetInnerHTML={{ __html: post.date }}></p>
+        <p>
+          <Moment fromNow>
+            <span dangerouslySetInnerHTML={{ __html: post.date }}></span>
+          </Moment>
+        </p>
         <span className="author"></span>
         <Link to={`/${post.slug}`}>
           <Title dangerouslySetInnerHTML={{ __html: post.title }}></Title>

@@ -1,7 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faTwitter } from "@fortawesome/free-brands-svg-icons"
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons"
 import styled from "styled-components"
 // import NavigationWrapper from "./DropdownStyles"

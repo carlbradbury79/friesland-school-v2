@@ -2,6 +2,7 @@ import React from "react"
 import Img from "gatsby-image"
 import { Link, graphql, useStaticQuery } from "gatsby"
 import styled from "styled-components"
+import Moment from "react-moment"
 
 const NewsCard = styled.div`
   -webkit-box-shadow: 0px 1px 35px 0px rgba(0, 0, 0, 0.3);
@@ -59,7 +60,9 @@ const FeaturedNewsCard = ({ post }) => {
       <Link to={`/${post.slug}`}>
         <Img fluid={FeaturedArticleImage} title={post.title} alt={post.title} />
       </Link>
-      <p>{post.date}</p>
+      <p>
+        <Moment fromNow>{post.date}</Moment>
+      </p>
       <Link to={`/${post.slug}`}>
         <h3 dangerouslySetInnerHTML={{ __html: post.title }} />
       </Link>

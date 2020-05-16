@@ -3,6 +3,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import PropTypes from "prop-types"
 import styled from "styled-components"
+import Moment from "react-moment"
 
 import Layout from "../components/layout"
 import BreadCrumb from "../components/utils/BreadCrumb"
@@ -71,14 +72,20 @@ const postTemplate = ({ data: { post } }) => (
         /> */}
     <PostContent>
       {/* {console.log("cat", post.categories[0].name)} */}
-      {/* <BreadCrumb
+      <BreadCrumb
         parent={{
-          slug: `/blog/${post.categories[0].slug}`,
-          title: post.categories[0].name,
+          slug: `/blog/${post.categories.nodes[0].slug}`,
+          title: post.categories.nodes[0].name,
         }}
-      /> */}
+      />
       <h1 dangerouslySetInnerHTML={{ __html: post.title }} />
-      <p dangerouslySetInnerHTML={{ __html: post.date }}></p>
+      <p>
+        Published:
+        <Moment format="DD-MM-YYYY">
+          <span dangerouslySetInnerHTML={{ __html: post.date }} />
+        </Moment>
+      </p>
+
       <FeaturedImage image={post.featuredImage} />
       <SocialShare title={post.title} link={post.link} />
       <PostContentText dangerouslySetInnerHTML={{ __html: post.content }} />

@@ -71,9 +71,10 @@ const pageTemplate = ({ data }) => {
         </PageTitle>
       )}
 
-      {/* <SectionSelector data={data} /> */}
+      <SectionSelector currentPage={data.currentPage} />
       <PageContent>
-        {/* <BreadCrumb parent={data.parent} /> */}
+        {/* TOTO FIX PAGE BREADCRUMB QUERY */}
+        <BreadCrumb parent={data.currentPage.parent} />
         <div dangerouslySetInnerHTML={{ __html: data.currentPage.content }} />
       </PageContent>
     </Layout>
@@ -96,6 +97,19 @@ export const pageQuery = graphql`
               ...GatsbyImageSharpFluid_withWebp
             }
           }
+        }
+      }
+      childPages {
+        nodes {
+          title
+          slug
+        }
+      }
+      parent {
+        ... on WpPage {
+          id
+          slug
+          title
         }
       }
     }

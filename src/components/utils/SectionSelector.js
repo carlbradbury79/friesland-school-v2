@@ -23,23 +23,21 @@ const Subjects = styled.div`
   }
 `
 
-// TODO sort child pages
-
-const SectionSelector = ({ data }) => {
-  console.log("selection", data.children)
+const SectionSelector = ({ currentPage }) => {
+  console.log("selection", currentPage)
 
   if (
-    data.currentPage.title === "Curriculum" ||
-    data.currentPage.title === "Sixth Form" ||
-    data.currentPage.title === "Parent Information"
+    currentPage.title === "Curriculum" ||
+    currentPage.title === "Sixth Form" ||
+    currentPage.title === "Parent Information"
   ) {
     return (
       <Subjects>
         <ul>
-          {data.children.edges.map(subject => {
+          {currentPage.childPages.nodes.map(subject => {
             return (
-              <li key={subject.node.id}>
-                <Link to={`/${subject.node.slug}`}>{subject.node.title}</Link>
+              <li key={subject.id}>
+                <Link to={`/${subject.slug}`}>{subject.title}</Link>
               </li>
             )
           })}
