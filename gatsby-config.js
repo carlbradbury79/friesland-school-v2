@@ -57,9 +57,9 @@ module.exports = {
       resolve: `gatsby-source-wordpress-experimental`,
       options: {
         url:
-          process.env.WPGRAPHQL_URL || `http://frieslandschoolv2.local/graphql`,
-        // process.env.WPGRAPHQL_URL ||
-        // `http://codeaday.co.uk/friesland/graphql`,
+          // process.env.WPGRAPHQL_URL || `http://frieslandschoolv2.local/graphql`,
+          process.env.WPGRAPHQL_URL ||
+          `http://codeaday.co.uk/friesland/graphql`,
         verbose: true,
         schema: {
           queryDepth: 2,
