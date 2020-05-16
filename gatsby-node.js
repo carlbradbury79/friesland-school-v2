@@ -10,7 +10,7 @@ const getTemplates = () => {
   return glob.sync(`./src/templates/*.js`, { cwd: sitePath })
 }
 
-exports.createPages = async ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
   const templates = getTemplates()
 
@@ -53,6 +53,20 @@ exports.createPages = async ({ graphql, actions }) => {
       const contentTypeTemplate = contentTypeTemplates.find(
         path => path === templatePath
       )
+
+      if (!contentTypeTemplate) {
+        reporter.log(``)
+        reporter.log(``)
+        reporter.panic(
+          `[using-gatsby-source-wordpress] No template found at ${templatePath}\nfor single ${nodeType} ${
+            node.id
+          } with path ${
+            node.uri
+          }\n\nAvailable templates:\n${contentTypeTemplates.join(`\n`)}`
+        )
+      }
+
+      console.log(contentTypeTemplate)
 
       await createPage({
         path: slug,
