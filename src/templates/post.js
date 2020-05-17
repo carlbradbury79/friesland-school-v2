@@ -87,7 +87,7 @@ const postTemplate = ({ data: { post } }) => (
       </p>
 
       <FeaturedImage image={post.featuredImage} />
-      <SocialShare title={post.title} link={post.link} />
+      <SocialShare title={post.title} link={post.slug} />
       <PostContentText dangerouslySetInnerHTML={{ __html: post.content }} />
     </PostContent>
   </Layout>
