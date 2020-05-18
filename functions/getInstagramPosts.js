@@ -9,13 +9,13 @@ const cache = {
 async function getPosts() {
   const timeSinceLastFetch = Date.now() - cache.lastFetch
   if (timeSinceLastFetch <= 1800000) {
-    console.log("cached")
+    // console.log("cached")
     return cache.posts
   }
   const data = await fetch(url).then(res => res.json())
   const posts = slimUpPosts(data)
   // const posts = data
-  console.log(posts)
+  // console.log(posts)
   cache.lastFetch = Date.now()
   cache.posts = posts
   return posts
@@ -30,7 +30,7 @@ function slimUpPosts(response) {
   }))
 }
 
-exports.handler = async function (event, context, callback) {
+exports.handler = async function(event, context, callback) {
   const posts = await getPosts()
   callback(null, {
     statusCode: 200,

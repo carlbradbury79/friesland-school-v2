@@ -95,16 +95,27 @@ p, ul, ol {
 .governor-list {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
+  flex-direction: column;
+  
 }
 
 .governor-list div {
   flex: 0 33%;
   padding: 20px;
+  text-align: center;
+
+  img {
+    margin: auto;
+  }
+
+  h2, h4 {
+    text-align:center;
+  }
 }
 
 .governor-list div p {
   font-size: 0.9rem;
+  text-align:left;
 }
 
 /* Vacancies */
