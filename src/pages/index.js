@@ -7,6 +7,7 @@ import FeaturedNews from "../components/home/FeaturedNews"
 import StyledHeroLeft from "../components/home/hero/HeroImageLeft"
 import StyledHeroRight from "../components/home/hero/HeroImageRight"
 import TwitterFeed from "../components/twitterFeed/TwitterFeed"
+import InstagramSection from "../components/instagram/InstagramSection"
 import { useSpring, animated, config } from "react-spring"
 // import CurriculumChart from "../components/curriculum/CurriculumChart"
 // import { yearSevenAndEight } from "../components/curriculum/year7and8"
@@ -55,6 +56,7 @@ const IndexPage = () => {
 
       <FeaturedNews />
       <TwitterFeed />
+      <InstagramSection />
     </Layout>
   )
 }

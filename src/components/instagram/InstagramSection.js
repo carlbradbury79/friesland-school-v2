@@ -6,9 +6,15 @@ import { useTransition } from "react-spring"
 import InstaOverlay from "./InstaOverlay"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faInstagram } from "@fortawesome/free-brands-svg-icons"
+import { Waypoint } from "react-waypoint"
+import { useSpring, config, animated } from "react-spring"
 
 // Location of Serverless function "getInstagramPosts"
 const url = ".netlify/functions/getInstagramPosts"
+
+const StyledInstaSection = styled(animated.div)`
+  margin: 0 0 5rem 0;
+`
 
 // Instagram Container
 const GramContainer = styled.div`
@@ -16,11 +22,34 @@ const GramContainer = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   z-index: 50;
+  margin-bottom: 2rem;
+  padding: 10px;
 
   @media (max-width: 400px) {
     width: 100%;
   }
 `
+const InstaIcon = styled.div`
+  text-align: center;
+  margin-top: 3rem;
+  margin-bottom: 0rem;
+  padding: 1rem;
+
+  a {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 32px;
+    font-weight: 600;
+  }
+  h2 {
+    margin: 0;
+
+    a {
+      color: var(--primary);
+      font-size: 4rem;
+    }
+  }
+`
+
 // Get Instagram Posts
 function useInstagram() {
   const [posts, setPosts] = useState([])
@@ -64,14 +93,31 @@ const InstagramContainer = () => {
     setModalVisible(true)
   }
 
+  const [isInstaVisible, toggleInstaVisible] = useState(false)
+  const visibleInstaAnimation = useSpring({
+    opacity: isInstaVisible ? 1 : 0,
+    transform: isInstaVisible
+      ? "translate3d(0,0px,0)"
+      : "translate3d(0,150px,0)",
+    config: config.molasses,
+  })
+
   console.log(gramz)
 
   return (
-    <>
-      <h1 style={{ textAlign: "center", marginTop: "20px" }}>
-        <FontAwesomeIcon icon={faInstagram} /> Friesland School
-      </h1>
-
+    <StyledInstaSection style={visibleInstaAnimation}>
+      <Waypoint
+        bottomOffset="20%"
+        onEnter={() => (isInstaVisible ? null : toggleInstaVisible(true))}
+      />
+      <InstaIcon>
+        <h2>
+          <a href="https://twitter.com/frieslandschool">
+            <FontAwesomeIcon icon={faInstagram} />
+          </a>
+        </h2>
+        <a href="https://google.com">FrieslandSchool</a>
+      </InstaIcon>
       <GramContainer>
         {gramz.map(gram => (
           <Gram
@@ -100,7 +146,7 @@ const InstagramContainer = () => {
 
       {/* Modal visibility controls the overlay */}
       {modalVisible && <InstaOverlay />}
-    </>
+    </StyledInstaSection>
   )
 }
 

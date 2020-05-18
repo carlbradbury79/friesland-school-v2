@@ -7,15 +7,14 @@ import { faInstagram } from "@fortawesome/free-brands-svg-icons"
 import anchorme from "anchorme"
 
 const InstaModal = styled(animated.div)`
-  /* height: 100%; */
+  /* height: 500px; */
   color: gray;
   background: #fff;
   padding: 2rem;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+
   position: fixed;
-  z-index: 90;
-  top: calc(10%);
+  z-index: 900;
+  top: 100px;
   left: calc(50% - 350px);
   display: flex;
   flex-direction: column;
@@ -25,24 +24,32 @@ const InstaModal = styled(animated.div)`
   @media (max-width: 800px) {
     left: 10px;
     right: 10px;
-    top: 10px;
+    top: 100px;
     bottom: 10px;
     padding: 1rem;
     margin: 0 auto;
   }
+`
 
-  .grid {
-    display: grid;
-    grid-template-columns: 300px 300px;
-    column-gap: 10px;
+const ModalGrid = styled.div`
+  display: grid;
+  grid-template-columns: 300px 300px;
+  column-gap: 10px;
 
-    .insta-text p a {
-      text-decoration: none;
-    }
+  div p a {
+    text-decoration: none;
+  }
 
-    @media (max-width: 600px) {
-      grid-template-columns: 300px;
-    }
+  div h5 {
+    margin-top: 0;
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: 300px;
+  }
+
+  img {
+    width: 100%;
   }
 `
 
@@ -56,7 +63,14 @@ const InstaButtons = styled.div`
   @media (max-width: 420px) {
     flex-direction: column;
   }
+
+  button {
+    margin: 0;
+  }
   .modal-close-button {
+    font-family: "Open Sans", sans-serif;
+    font-size: 1rem;
+    margin: 0;
     background: #fff;
     color: var(--primary);
     border: 2px solid var(--primary);
@@ -76,7 +90,7 @@ const InstaButtons = styled.div`
   .modal-close-button:focus {
     background: var(--primary);
     color: #fff;
-    border: 2px solid #fff;
+    /* border: 2px solid #fff; */
     text-decoration: none;
   }
 `
@@ -92,10 +106,10 @@ const Modal = ({ style, closeModal, gram }) => {
         }}
       >
         <InstaModal style={style} className="modal">
-          <div className="grid">
-            <img src={gram[0].thumbnail} />
-            <div className="insta-text">
-              <h5 className="modal-title">
+          <ModalGrid>
+            <img src={gram[0].thumbnail} alt="" />
+            <div>
+              <h5>
                 <FontAwesomeIcon icon={faInstagram} /> Friesland School
               </h5>
               <p
@@ -132,7 +146,7 @@ const Modal = ({ style, closeModal, gram }) => {
                 }}
               />
             </div>
-          </div>
+          </ModalGrid>
           <InstaButtons>
             <a className="modal-close-button" href={gram[0].url}>
               <FontAwesomeIcon icon={faInstagram} /> Read on Instagram

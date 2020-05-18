@@ -41,9 +41,9 @@ const FeaturedNewsContainer = styled.div`
   }
 
   @media (max-width: 480px) {
-    grid-template-columns: repeat(1, 1fr);
+    /* grid-template-columns: repeat(1, 1fr); */
     padding: 0 10px;
-    display: none;
+    /* display: none; */
   }
 `
 
