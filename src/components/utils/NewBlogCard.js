@@ -110,9 +110,17 @@ const BlogCard = ({ post }) => {
         </Categories>
       </StyledBackgroundImage>
       <CardContent>
-        <p>
-          <Moment fromNow>{post.date}</Moment>
-        </p>
+        {console.log(post.categories.nodes[0].name)}
+        {post.categories.nodes[0].name === "Events" ? (
+          <p>
+            <Moment fromNow>{post.eventDate.dateofevent}</Moment>
+          </p>
+        ) : (
+          <p>
+            <Moment fromNow>{post.date}</Moment>
+          </p>
+        )}
+
         <span className="author"></span>
         <Link to={`/${post.slug}`}>
           <Title dangerouslySetInnerHTML={{ __html: post.title }}></Title>

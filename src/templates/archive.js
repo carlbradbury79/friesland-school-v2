@@ -119,6 +119,9 @@ export const pageQuery = graphql`
         excerpt
         slug
         date
+        eventDate {
+          dateofevent
+        }
         featuredImage {
           remoteFile {
             childImageSharp {

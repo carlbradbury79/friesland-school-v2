@@ -10,6 +10,7 @@ import TwitterFeed from "../components/twitterFeed/TwitterFeed"
 import { useSpring, animated, config, useTransition } from "react-spring"
 // import CurriculumChart from "../components/curriculum/CurriculumChart"
 // import { yearSevenAndEight } from "../components/curriculum/year7and8"
+import FeaturedEvents from "../components/events/FeaturedEvents"
 import { useInstagram } from "../components/instagram/UseInstagram"
 import InstaOverlay from "../components/instagram/InstaOverlay"
 import Gram from "../components/instagram/Instagram"
@@ -105,7 +106,7 @@ const IndexPage = () => {
         </div>
       </HeroContainer>
       {/* <CurriculumChart data={yearSevenAndEight} /> */}
-
+      <FeaturedEvents />
       <FeaturedNews />
       <TwitterFeed />
 

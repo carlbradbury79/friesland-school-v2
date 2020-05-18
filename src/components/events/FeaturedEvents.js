@@ -3,39 +3,20 @@ import styled from "styled-components"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import FeaturedEvent from "./FeaturedEvent"
 
-import { useQuery } from "@apollo/react-hooks"
-import gql from "graphql-tag"
-
-const APOLLO_QUERY = gql`
-  {
-    categories {
-      edges {
-        node {
-          id
-        }
-      }
-    }
-  }
-`
-
 const FeaturedEventSection = styled.section`
-  h1 {
-    margin-top: 4rem;
-    margin-bottom: 4rem;
-    font-family: "Cormarant Garamond", serif;
-    font-size: 2rem;
-    font-weight: normal;
-    font-weight: Semi-bold;
-    text-align: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem;
+  margin-bottom: 3rem;
+
+  @media (max-width: 600px) {
+    grid-template-columns: repeat(1, 1fr);
   }
 
   div {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-column-gap: 36px;
-    grid-row-gap: 36px;
     padding: 0 40px;
-    margin-bottom: 5rem;
+    /* margin-bottom: 5rem; */
 
     a {
       color: #004c97;
@@ -43,18 +24,17 @@ const FeaturedEventSection = styled.section`
         text-decoration: underline;
       }
     }
-
-    @media (max-width: 860px) {
-      grid-template-columns: repeat(2, 1fr);
-      padding: 0 20px;
-    }
-
-    @media (max-width: 480px) {
-      grid-template-columns: repeat(1, 1fr);
-      padding: 0 10px;
-      display: none;
-    }
   }
+`
+
+const EventTitle = styled.h1`
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  font-family: "Cormarant Garamond", serif;
+  font-size: 2rem;
+  font-weight: normal;
+  font-weight: Semi-bold;
+  text-align: center;
 `
 
 const FeaturedNewsLink = styled(Link)`
@@ -76,40 +56,50 @@ const FeaturedNewsLink = styled(Link)`
 `
 
 const FeaturedEvents = () => {
-  // const { loading, error, data } = useQuery(APOLLO_QUERY)
-  // console.log("FEATURED EVENTS", data)
-  // const FeaturedEventData = useStaticQuery(graphql`
-  //   query EventQuery {
-  //     posts(filter: { categories: { elemMatch: { name: { eq: "Events" } } } }) {
-  //       edges {
-  //         node {
-  //           title
-  //           acf {
-  //             date_of_event
-  //           }
-  //           categories {
-  //             name
-  //           }
-  //           slug
-  //           id
-  //           excerpt
-  //           content
-  //           featured_media {
-  //             localFile {
-  //               childImageSharp {
-  //                 fluid(maxWidth: 2000, maxHeight: 1500, cropFocus: CENTER) {
-  //                   ...GatsbyImageSharpFluid
-  //                 }
-  //               }
-  //             }
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  // `)
+  const FeaturedEventData = useStaticQuery(graphql`
+    query EventQuery {
+      allWpPost(
+        filter: {
+          categories: { nodes: { elemMatch: { name: { eq: "Events" } } } }
+        }
+      ) {
+        nodes {
+          title
+          eventDate {
+            dateofevent
+          }
+          id
+          title
+          link
+          slug
+          status
+          content
+          featuredImage {
+            remoteFile {
+              childImageSharp {
+                fluid(
+                  cropFocus: NORTH
+                  fit: CONTAIN
+                  background: "#fff"
+                  maxWidth: 1000
+                  maxHeight: 750
+                ) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+          categories {
+            nodes {
+              name
+            }
+          }
+        }
+      }
+    }
+  `)
 
-  // console.log("Events", FeaturedEventData.allWordpressPost.edges)
+  // console.log("Events", FeaturedEventData)
   // console.log(
   //   "Events",
   //   FeaturedEventData.allWordpressPost.edges[0].node.acf.date_of_event
@@ -119,36 +109,37 @@ const FeaturedEvents = () => {
 
   // let eventDay = new Date(dateToFormat)
 
-  // const eventPosts = FeaturedEventData.allWordpressPost.edges.map(event => {
-  //   event.node.acf.date_of_event = new Date(event.node.acf.date_of_event)
-  //   return event
-  // })
+  const eventPosts = FeaturedEventData.allWpPost.nodes.map(event => {
+    event.eventDate.dateofevent = new Date(event.eventDate.dateofevent)
+    return event
+  })
 
-  // const sortedEvents = eventPosts.sort(
-  //   (a, b) => a.node.acf.date_of_event - b.node.acf.date_of_event
-  // )
+  const sortedEvents = eventPosts.sort(
+    (a, b) => a.eventDate.dateofevent - b.eventDate.dateofevent
+  )
   // console.log("eventPosts", eventPosts)
   // console.log("sortedEvents", sortedEvents)
 
-  // const today = Date.now()
+  const today = Date.now()
   // console.log("today", today)
 
-  // const newEvents = sortedEvents.filter(
-  //   event => today < event.node.acf.date_of_event
-  // )
+  const newEvents = sortedEvents.filter(
+    event => today < event.eventDate.dateofevent
+  )
 
   // console.log("newEvents", newEvents)
 
   return (
-    <FeaturedEventSection>
-      <h1>Upcoming Events</h1>
-      {/* <div>
+    <>
+      <EventTitle>Upcoming Events</EventTitle>
+      <FeaturedEventSection>
         {newEvents.map((event, i) => {
-          return i < 2 && <FeaturedEvent key={event.node.id} event={event} />
+          // console.log(event)
+          return i < 2 && <FeaturedEvent key={event.id} event={event} />
         })}
-      </div> */}
+      </FeaturedEventSection>
       <FeaturedNewsLink to="/blog/events">More events</FeaturedNewsLink>
-    </FeaturedEventSection>
+    </>
   )
 }
 

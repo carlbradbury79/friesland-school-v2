@@ -68,7 +68,11 @@ const FeaturedNewsLink = styled(Link)`
 const FeaturedNews = () => {
   const FeaturedArticlesData = useStaticQuery(graphql`
     query FeaturedNews {
-      allWpPost {
+      allWpPost(
+        filter: {
+          categories: { nodes: { elemMatch: { name: { eq: "News" } } } }
+        }
+      ) {
         nodes {
           id
           featuredImage {
@@ -85,6 +89,11 @@ const FeaturedNews = () => {
           uri
           slug
           title
+          categories {
+            nodes {
+              name
+            }
+          }
         }
       }
     }

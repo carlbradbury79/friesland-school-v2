@@ -1,9 +1,25 @@
 import React from "react"
 import Img from "gatsby-image"
 import { useStaticQuery, graphql } from "gatsby"
+import Moment from "react-moment"
+import { Link } from "gatsby"
+import styled from "styled-components"
+
+const Event = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+
+  img {
+    max-height: 300px;
+  }
+`
 
 const FeaturedEvent = ({ event }) => {
-  const { title, excerpt, content, featured_media, acf } = event.node
+  // console.log("event", event)
+  const { title, excerpt, content, featuredImage, eventDate, slug } = event
 
   const altFeaturedEventImage = useStaticQuery(graphql`
     query {
@@ -11,8 +27,8 @@ const FeaturedEvent = ({ event }) => {
         id
         childImageSharp {
           fluid(
-            maxWidth: 2000
-            maxHeight: 1500
+            maxWidth: 1000
+            maxHeight: 750
             cropFocus: NORTH
             fit: CONTAIN
             background: "#fff"
@@ -25,24 +41,28 @@ const FeaturedEvent = ({ event }) => {
   `)
 
   const FeaturedEventImage =
-    featured_media === null || featured_media.localFile.childImageSharp === null
+    featuredImage === null || featuredImage.remoteFile.childImageSharp === null
       ? altFeaturedEventImage.image.childImageSharp.fluid
-      : featured_media.localFile.childImageSharp.fluid
+      : featuredImage.remoteFile.childImageSharp.fluid
 
   //   const image =
   //     featured_media && featured_media.localFile
   //       ? featured_media.localFile.childImageSharp
   //       : SpareImage.image.childImageSharp;
 
-  console.log(FeaturedEventImage)
-  console.log(acf.date_of_event)
+  // console.log(FeaturedEventImage)
+  // console.log(acf.date_of_event)
   return (
-    <div>
+    <Event>
       <Img fluid={FeaturedEventImage} />
-      <h2>{title}</h2>
-      <p>{content}</p>
-      <p>{acf.date_of_event.toString()}</p>
-    </div>
+      <h2 dangerouslySetInnerHTML={{ __html: title }} />
+      {/* <p dangerouslySetInnerHTML={{ __html: content }} /> */}
+      <p>
+        <Moment fromNow>{eventDate.dateofevent}</Moment>
+      </p>
+      <Link to={`/${slug}`}>Read More</Link>
+      {/* <p>{acf.date_of_event.toString()}</p> */}
+    </Event>
   )
 }
 
