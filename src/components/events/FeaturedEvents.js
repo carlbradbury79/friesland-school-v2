@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import FeaturedEvent from "./FeaturedEvent"
@@ -6,24 +6,12 @@ import FeaturedEvent from "./FeaturedEvent"
 const FeaturedEventSection = styled.section`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-column-gap: 1rem;
+  /* grid-column-gap: 1rem; */
   grid-row-gap: 1rem;
   margin-bottom: 3rem;
 
   @media (max-width: 600px) {
     grid-template-columns: repeat(1, 1fr);
-  }
-
-  div {
-    padding: 0 40px;
-    /* margin-bottom: 5rem; */
-
-    a {
-      color: #004c97;
-      :hover {
-        text-decoration: underline;
-      }
-    }
   }
 `
 
@@ -99,41 +87,38 @@ const FeaturedEvents = () => {
     }
   `)
 
-  // console.log("Events", FeaturedEventData)
-  // console.log(
-  //   "Events",
-  //   FeaturedEventData.allWordpressPost.edges[0].node.acf.date_of_event
-  // )
-  // const dateToFormat =
-  //   FeaturedEventData.allWordpressPost.edges[0].node.acf.date_of_event
+  // function useCurrentEvents() {
+  const [events, setEvents] = useState([])
 
-  // let eventDay = new Date(dateToFormat)
+  useEffect(() => {
+    const eventPosts = FeaturedEventData.allWpPost.nodes.map(event => {
+      event.eventDate.dateofevent = new Date(event.eventDate.dateofevent)
+      return event
+    })
 
-  const eventPosts = FeaturedEventData.allWpPost.nodes.map(event => {
-    event.eventDate.dateofevent = new Date(event.eventDate.dateofevent)
-    return event
-  })
+    const sortedEvents = eventPosts.sort(
+      (a, b) => a.eventDate.dateofevent - b.eventDate.dateofevent
+    )
 
-  const sortedEvents = eventPosts.sort(
-    (a, b) => a.eventDate.dateofevent - b.eventDate.dateofevent
-  )
-  // console.log("eventPosts", eventPosts)
-  // console.log("sortedEvents", sortedEvents)
+    const today = Date.now()
 
-  const today = Date.now()
-  // console.log("today", today)
+    const newEvents = sortedEvents.filter(
+      event => today < event.eventDate.dateofevent
+    )
 
-  const newEvents = sortedEvents.filter(
-    event => today < event.eventDate.dateofevent
-  )
+    setEvents(newEvents)
+  }, [])
+  console.log(events)
+  // return events
+  // }
 
-  // console.log("newEvents", newEvents)
+  // const currentEvents = useCurrentEvents()
 
   return (
     <>
       <EventTitle>Upcoming Events</EventTitle>
       <FeaturedEventSection>
-        {newEvents.map((event, i) => {
+        {events.map((event, i) => {
           // console.log(event)
           return i < 2 && <FeaturedEvent key={event.id} event={event} />
         })}

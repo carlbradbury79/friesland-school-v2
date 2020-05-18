@@ -51,7 +51,7 @@ body {
 }
 
 a {
-  color: var(--primary);
+  /* color: var(--primary); */
   text-decoration: none;
   font-family: "Open Sans", sans-serif;
 }

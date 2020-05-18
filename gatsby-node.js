@@ -54,12 +54,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   await Promise.all(
     contentNodes.map(async (node, i) => {
       const { nodeType, uri, id, slug } = node
-      console.log("nodeType", nodeType)
+      // console.log("nodeType", nodeType)
       const templatePath = `${contentTypeTemplateDirectory}${nodeType.toLowerCase()}.js`
 
-      console.log("templatePath", templatePath)
-      console.log("slug", slug)
-      console.log("uri", uri)
+      // console.log("templatePath", templatePath)
+      // console.log("slug", slug)
+      // console.log("uri", uri)
 
       const contentTypeTemplate = contentTypeTemplates.find(
         path => path === templatePath
@@ -79,7 +79,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         )
       }
 
-      console.log(contentTypeTemplate)
+      // console.log(contentTypeTemplate)
 
       await createPage({
         component: resolve(contentTypeTemplate),

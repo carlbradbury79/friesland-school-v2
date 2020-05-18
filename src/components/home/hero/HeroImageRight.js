@@ -36,7 +36,7 @@ export const HeroContent = styled.div`
 const HeroRight = () => {
   const HeroImageRight = useStaticQuery(graphql`
     query {
-      file(relativePath: { eq: "home/boy-in-gray.jpg" }) {
+      file(relativePath: { eq: "home/champions.jpg" }) {
         id
         childImageSharp {
           fluid(maxWidth: 1980, toFormat: PNG) {
