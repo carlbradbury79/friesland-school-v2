@@ -55,12 +55,9 @@ const archiveTemplate = ({
 
   return (
     <Layout>
-      {/* <PageHero img={file.childImageSharp.fluid} /> */}
-      {/* {console.log("PQ", allWordpressCategory)} */}
       {console.log("arch", catName)} {console.log(allWpCategory)}
       <div className="container">
         <div className="row" style={{ marginBottom: "40px" }}>
-          {/* <ArchiveSidebar catId={catId} categories={categories} /> */}
           <PageContent>
             <ArchiveTitle dangerouslySetInnerHTML={{ __html: catName }} />
 

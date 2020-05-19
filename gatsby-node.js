@@ -167,8 +167,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     }
   `)
 
-  allWpCategory.nodes.forEach(cat => {
-    // console.log(cat)
+  await allWpCategory.nodes.forEach(cat => {
+    console.log(cat)
     // if (cat.length > 0) {
     paginate({
       createPage,
