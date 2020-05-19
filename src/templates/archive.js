@@ -74,11 +74,7 @@ const archiveTemplate = ({
 
             <ArticleGrid>
               {allWpPost.nodes.map(post => (
-                <h1
-                  key={post.id}
-                  dangerouslySetInnerHTML={{ __html: post.title }}
-                />
-                // <BlogCard key={post.id} post={post} />
+                <BlogCard key={post.id} post={post} />
               ))}
             </ArticleGrid>
 
