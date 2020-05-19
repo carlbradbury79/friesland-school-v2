@@ -1,10 +1,11 @@
 import React from "react"
 import { Link, graphql, useStaticQuery } from "gatsby"
 // import Img from "gatsby-image"
-import PropTypes from "prop-types"
+// import PropTypes from "prop-types"
 import styled from "styled-components"
 import BackgroundImage from "gatsby-background-image"
 import Moment from "react-moment"
+import AltCardImage from "../utils/BlogCardImage"
 
 const StyledArticle = styled.article`
   padding: 1rem;
@@ -70,28 +71,10 @@ const CardContent = styled.div`
 `
 
 const BlogCard = ({ post }) => {
-  const altImage = useStaticQuery(graphql`
-    query {
-      image: file(relativePath: { eq: "friesland-logo.jpg" }) {
-        id
-        childImageSharp {
-          fluid(
-            maxHeight: 500
-            cropFocus: NORTH
-            fit: CONTAIN
-            background: "#fff"
-          ) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  `)
-  // console.log(post)
   const altBgImage =
     post.featuredImage === null ||
     post.featuredImage.remoteFile.childImageSharp === null
-      ? altImage.image.childImageSharp.fluid
+      ? AltCardImage()
       : post.featuredImage.remoteFile.childImageSharp.fluid
 
   return (
@@ -130,8 +113,8 @@ const BlogCard = ({ post }) => {
   )
 }
 
-BlogCard.propTypes = {
-  post: PropTypes.object,
-}
+// BlogCard.propTypes = {
+//   post: PropTypes.object,
+// }
 
 export default BlogCard
