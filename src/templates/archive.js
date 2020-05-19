@@ -75,7 +75,7 @@ const archiveTemplate = ({
             <ArticleGrid>
               {allWpPost.nodes.map(post => (
                 <h1
-                  key={PerformanceObserverEntryList.id}
+                  key={post.id}
                   dangerouslySetInnerHTML={{ __html: post.title }}
                 />
                 // <BlogCard key={post.id} post={post} />
@@ -99,10 +99,36 @@ export default archiveTemplate
 
 // TODO Fix Archive Query
 
+// export const archiveQuery = graphql`
+//   query($catId: String!, $skip: Int!, $limit: Int!) {
+//     archive: wpCategory(id: { eq: $catId }) {
+//       name
+//       id
+//       posts {
+//         nodes {
+//           title
+//           content
+//           date
+//           eventDate {
+//             dateofevent
+//           }
+//           excerpt
+//           id
+//           slug
+//           uri
+//           link
+//         }
+//       }
+//     }
+//   }
+// `
+
 export const pageQuery = graphql`
-  query($catId: String!, $skip: Int!, $limit: Int!) {
+  query($catName: String!, $skip: Int!, $limit: Int!) {
     allWpPost(
-      filter: { categories: { nodes: { elemMatch: { id: { eq: $catId } } } } }
+      filter: {
+        categories: { nodes: { elemMatch: { name: { eq: $catName } } } }
+      }
       skip: $skip
       limit: $limit
     ) {
