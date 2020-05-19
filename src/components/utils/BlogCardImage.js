@@ -20,7 +20,7 @@ const AltCardImage = () => {
       }
     }
   `)
-  console.log(altImage.image.childImageSharp.fluid)
+  //   console.log(altImage.image.childImageSharp.fluid)
   return altImage.image.childImageSharp.fluid
 }
 

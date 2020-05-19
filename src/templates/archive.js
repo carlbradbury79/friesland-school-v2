@@ -51,11 +51,13 @@ const archiveTemplate = ({
     numberOfPages,
   },
 }) => {
-  // console.log(allWpPost)
+  console.log(allWpPost)
+  console.log(catId)
 
   return (
     <Layout>
-      {console.log("arch", catName)} {console.log(allWpCategory)}
+      {console.log("arch", catName, catId)} {console.log(allWpCategory)}
+      {console.log(allWpPost)}
       <div className="container">
         <div className="row" style={{ marginBottom: "40px" }}>
           <PageContent>
@@ -69,13 +71,11 @@ const archiveTemplate = ({
                 title: catName,
               }}
             />
-            {/* Loop through posts to display on the archive pages */}
-            {/* The 6 are generated from the graphql query */}
+
             <ArticleGrid>
-              {allWpPost.nodes.map(post => {
-                console.log("archive posts", post)
-                return <BlogCard key={post.id} post={post} />
-              })}
+              {allWpPost.nodes.map(post => (
+                <BlogCard key={post.id} post={post} />
+              ))}
             </ArticleGrid>
 
             {/* Pagination */}

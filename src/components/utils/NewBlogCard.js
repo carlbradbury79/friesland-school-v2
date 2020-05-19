@@ -93,7 +93,7 @@ const BlogCard = ({ post }) => {
         </Categories>
       </StyledBackgroundImage>
       <CardContent>
-        {console.log(post.categories.nodes[0].name)}
+        {/* {console.log(post.categories.nodes[0].name)} */}
         {post.categories.nodes[0].name === "Events" ? (
           <p>
             <Moment fromNow>{post.eventDate.dateofevent}</Moment>
