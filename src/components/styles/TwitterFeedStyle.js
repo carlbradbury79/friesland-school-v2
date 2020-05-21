@@ -3,6 +3,7 @@ import { animated } from "react-spring"
 
 export const StyledTwitterFeed = styled(animated.div)`
   margin: 0 0 5rem 0;
+  border-bottom: 0.5rem solid var(--primary);
 `
 
 export const TwitterIcon = styled.div`
@@ -36,6 +37,7 @@ export const TweetRow = styled.div`
 
   @media (max-width: 600px) {
     flex-direction: column;
+    align-items: center;
   }
   /* border: 1px solid var(--primary); */
 `

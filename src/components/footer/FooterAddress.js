@@ -10,7 +10,9 @@ const FooterAddress = () => {
         <li>Sandiacre</li>
         <li>Nottingham</li>
         <li>NG10 5AF</li>
-        <li>0115 9397326</li>
+        <li>
+          <a href="tel:+44-155-9397326">0115 9397326</a>
+        </li>
       </ul>
     </FooterLinkStyle>
   )

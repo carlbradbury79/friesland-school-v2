@@ -3,6 +3,7 @@ import { useStaticQuery, graphql, Link } from "gatsby"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons"
 import styled from "styled-components"
+import MenuItems from "../nav/MenuItems"
 // import NavigationWrapper from "./DropdownStyles"
 import { getSlug } from "../utils/get-slug"
 
@@ -123,37 +124,9 @@ const NavigationWrapper = styled.nav`
 `
 
 const NavDropdown = () => {
-  const { wpMenu } = useStaticQuery(graphql`
-    {
-      wpMenu(id: { eq: "TWVudToyNw==" }) {
-        name
-        id
-        menuId
-        slug
-        menuItems {
-          nodes {
-            url
-            label
-            childItems {
-              nodes {
-                label
-                url
-              }
-            }
-          }
-        }
-      }
-    }
-  `)
-
-  // console.log("menuID", wpMenu)
+  // Get Items for the menu from nav -> MenuItems
+  const wpMenu = MenuItems()
   return (
-    // <div>
-    //   {menu.allWordpressWpApiMenusMenusItems.edges[0].node.items.map(item => {
-    //     return <span>{item.title}</span>
-    //   })}
-    // </div>
-
     <NavigationWrapper>
       <ul>
         {wpMenu.menuItems.nodes.map((item, i) => {

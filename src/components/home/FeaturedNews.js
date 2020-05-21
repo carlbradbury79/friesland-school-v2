@@ -8,6 +8,7 @@ import { Waypoint } from "react-waypoint"
 
 const FeaturedNewsSection = styled(animated.section)`
   /* margin: 2rem 0; */
+  border-bottom: 0.5rem solid var(--primary);
 
   h1 {
     margin-top: 4rem;
@@ -23,8 +24,8 @@ const FeaturedNewsSection = styled(animated.section)`
 const FeaturedNewsContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-column-gap: 36px;
-  grid-row-gap: 36px;
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem;
   padding: 0 40px;
   margin-bottom: 5rem;
 
@@ -43,6 +44,8 @@ const FeaturedNewsContainer = styled.div`
   @media (max-width: 480px) {
     /* grid-template-columns: repeat(1, 1fr); */
     padding: 0 10px;
+    grid-column-gap: 0.5rem;
+    grid-row-gap: 0.5rem;
     /* display: none; */
   }
 `

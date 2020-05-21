@@ -101,10 +101,12 @@ const FeaturedEvents = () => {
     )
 
     const today = Date.now()
+    console.log(sortedEvents)
 
     const newEvents = sortedEvents.filter(
       event => today < event.eventDate.dateofevent
     )
+    console.log("NE", newEvents)
 
     setEvents(newEvents)
   }, [])

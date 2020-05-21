@@ -9,19 +9,17 @@ export const FooterContainer = styled.footer`
   grid-template-columns: repeat(4, 1fr);
   grid-column-gap: 70px;
   grid-row-gap: 36px;
-  padding: 0 40px;
+  padding: 0 2rem 2rem 2rem;
   background: #004c97;
   color: #fff;
   padding: 3rem;
   /* text-align: center; */
   @media (max-width: 860px) {
     grid-template-columns: repeat(2, 1fr);
-    padding: 0 20px;
   }
 
   @media (max-width: 480px) {
     grid-template-columns: repeat(1, 1fr);
-    padding: 0 10px;
     text-align: center;
   }
 `

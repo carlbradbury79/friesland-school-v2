@@ -33,11 +33,8 @@ export const OverlayMenu = styled(animated.nav)`
     justify-content: flex-start;
   }
 
-  div {
-    text-align: center;
-  }
-
   ul {
+    text-align: center;
     list-style: none;
     display: flex;
     flex-direction: column;

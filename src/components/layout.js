@@ -45,8 +45,8 @@ const Layout = ({ children }) => {
     <>
       <GlobalStyle />
       <Helmet>
-        {/* <title>{data.currentPage.title}</title> */}
         <script
+          // Stop the fontawesome icons starting big
           src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"
           data-auto-replace-svg
         ></script>
@@ -60,11 +60,6 @@ const Layout = ({ children }) => {
         <main>{children}</main>
 
         <Footer />
-        {/* <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer> */}
       </div>
     </>
   )
