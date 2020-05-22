@@ -46,7 +46,24 @@ const Event = styled.div`
 `
 
 const FeaturedEvent = ({ event }) => {
-  // console.log("event", event)
+  const today = new Date(Date.now())
+
+  const days = ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"]
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ]
+
   const { title, excerpt, content, featuredImage, eventDate, slug } = event
 
   const altFeaturedEventImage = useStaticQuery(graphql`
@@ -84,12 +101,66 @@ const FeaturedEvent = ({ event }) => {
     <Link to={`/${slug}`}>
       <BackgroundImage fluid={FeaturedEventImage}>
         <Event>
-          {/* <Img fluid={FeaturedEventImage} /> */}
           <h2 dangerouslySetInnerHTML={{ __html: title }} />
-          {/* <p dangerouslySetInnerHTML={{ __html: content }} /> */}
-          <p>
-            <Moment fromNow>{eventDate.dateofevent}</Moment>
-          </p>
+
+          {/* Event yet to start */}
+          {eventDate.dateofevent > today && (
+            <div>
+              <p>
+                Event starts at {eventDate.dateofevent.getHours()}:
+                {eventDate.dateofevent.getMinutes() < 10
+                  ? "0" + eventDate.dateofevent.getMinutes().toString()
+                  : eventDate.dateofevent.getMinutes()}{" "}
+                on {days[eventDate.dateofevent.getDay()]},{" "}
+                {eventDate.dateofevent.getDate()}-
+                {months[eventDate.dateofevent.getMonth() - 1]}-
+                {eventDate.dateofevent.getFullYear()}
+              </p>
+
+              {/* Event starts tomorrow */}
+              {eventDate.dateofevent.getMonth() - today.getMonth() === 0 &&
+              eventDate.dateofevent.getDate() - today.getDate() === 1 ? (
+                <p>
+                  Tomorrow at {eventDate.dateofevent.getHours()}:
+                  {eventDate.dateofevent.getMinutes() < 10
+                    ? "0" + eventDate.dateofevent.getMinutes().toString()
+                    : eventDate.dateofevent.getMinutes()}
+                </p>
+              ) : (
+                <p>
+                  Starts <Moment fromNow>{eventDate.dateofevent}</Moment>
+                </p>
+              )}
+
+              {/* Event Starts today */}
+              {eventDate.dateofevent.getMonth() - today.getMonth() === 0 &&
+                eventDate.dateofevent.getDate() - today.getDate() === 0 && (
+                  <p>
+                    Today at {eventDate.dateofevent.getHours()}:
+                    {eventDate.dateofevent.getMinutes() < 10
+                      ? "0" + eventDate.dateofevent.getMinutes().toString()
+                      : eventDate.dateofevent.getMinutes()}
+                  </p>
+                )}
+            </div>
+          )}
+
+          {/* Event that has started */}
+          {eventDate.endtime > today && eventDate.dateofevent < today && (
+            <div>
+              <p>Event is on right now!</p>
+              <p>
+                Finishes <Moment to={eventDate.endtime}>{today}</Moment>
+              </p>
+              <p>
+                Event finishes at {eventDate.endtime.getHours()}:
+                {eventDate.endtime.getMinutes() < 10
+                  ? "0" + eventDate.endtime.getMinutes().toString()
+                  : eventDate.endtime.getMinutes()}{" "}
+              </p>
+            </div>
+          )}
+
           <p>Read More</p>
           {/* <Link to={`/${slug}`}>Read More</Link> */}
           {/* <p>{acf.date_of_event.toString()}</p> */}

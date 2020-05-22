@@ -55,6 +55,7 @@ const FeaturedEvents = () => {
           title
           eventDate {
             dateofevent
+            endtime
           }
           id
           title
@@ -92,7 +93,10 @@ const FeaturedEvents = () => {
 
   useEffect(() => {
     const eventPosts = FeaturedEventData.allWpPost.nodes.map(event => {
+      console.log("WP date", event.eventDate.dateofevent)
       event.eventDate.dateofevent = new Date(event.eventDate.dateofevent)
+      event.eventDate.endtime = new Date(event.eventDate.endtime)
+      console.log("post WP", event.eventDate.dateofevent)
       return event
     })
 
@@ -100,13 +104,14 @@ const FeaturedEvents = () => {
       (a, b) => a.eventDate.dateofevent - b.eventDate.dateofevent
     )
 
-    const today = Date.now()
-    console.log(sortedEvents)
+    const today = new Date(Date.now())
+    console.log("now", today)
+    console.log("sortedEvents", sortedEvents)
 
     const newEvents = sortedEvents.filter(
-      event => today < event.eventDate.dateofevent
+      event => today < event.eventDate.endtime
     )
-    console.log("NE", newEvents)
+    console.log("newEvents", newEvents)
 
     setEvents(newEvents)
   }, [])
