@@ -117,26 +117,33 @@ const FeaturedEvent = ({ event }) => {
                 {eventDate.dateofevent.getFullYear()}
               </p>
 
+              {/* Event is at least over 1 day away  */}
+              {eventDate.dateofevent.getMonth() - today.getMonth() > 0 ||
+                (eventDate.dateofevent.getDate() - today.getDate() > 1 && (
+                  <p>
+                    This event starts{" "}
+                    <Moment to={eventDate.dateofevent}>{today}</Moment>
+                  </p>
+                ))}
+
               {/* Event starts tomorrow */}
               {eventDate.dateofevent.getMonth() - today.getMonth() === 0 &&
-              eventDate.dateofevent.getDate() - today.getDate() === 1 ? (
-                <p>
-                  Tomorrow at {eventDate.dateofevent.getHours()}:
-                  {eventDate.dateofevent.getMinutes() < 10
-                    ? "0" + eventDate.dateofevent.getMinutes().toString()
-                    : eventDate.dateofevent.getMinutes()}
-                </p>
-              ) : (
-                <p>
-                  Starts <Moment fromNow>{eventDate.dateofevent}</Moment>
-                </p>
-              )}
+                eventDate.dateofevent.getDate() - today.getDate() === 1 && (
+                  <p>
+                    This event starts tomorrow at{" "}
+                    {eventDate.dateofevent.getHours()}:
+                    {eventDate.dateofevent.getMinutes() < 10
+                      ? "0" + eventDate.dateofevent.getMinutes().toString()
+                      : eventDate.dateofevent.getMinutes()}
+                  </p>
+                )}
 
               {/* Event Starts today */}
               {eventDate.dateofevent.getMonth() - today.getMonth() === 0 &&
                 eventDate.dateofevent.getDate() - today.getDate() === 0 && (
                   <p>
-                    Today at {eventDate.dateofevent.getHours()}:
+                    This event starts today at{" "}
+                    {eventDate.dateofevent.getHours()}:
                     {eventDate.dateofevent.getMinutes() < 10
                       ? "0" + eventDate.dateofevent.getMinutes().toString()
                       : eventDate.dateofevent.getMinutes()}

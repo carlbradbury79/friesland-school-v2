@@ -2,6 +2,8 @@ import styled from "styled-components"
 import { animated } from "react-spring"
 
 export const OverlayMenu = styled(animated.nav)`
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
   background: var(--primary);
   color: var(--light-shade);
   position: fixed;
@@ -28,41 +30,43 @@ export const OverlayMenu = styled(animated.nav)`
   }
 
   @media (max-width: 600px) {
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+    /* flex-direction: column; */
+    /* align-items: center; */
+    /* justify-content: flex-start; */
   }
 
   ul {
     text-align: center;
     list-style: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-left: 0;
-    padding: 0;
-    position: static;
-  }
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* justify-content: space-between; */
+    /* align-items: center; */
+    /* margin-left: 0; */
+    padding: 2rem 1rem 2rem 1rem;
+    /* position: static; */
+    /* margin-bottom: 2rem; */
 
-  ul li {
-    padding: 1rem 40px;
-    border-top: 1px solid var(--light-shade-alpha);
-  }
+    li {
+      padding: 0 1rem 2rem 1rem;
+      /* border-top: 1px solid var(--light-shade-alpha); */
 
-  ul li:last-child {
-    border-bottom: 1px solid var(--light-shade-alpha);
-    margin-bottom: 20px;
-  }
+      a {
+        color: #fff;
+        font-size: 1.4rem;
+        /* margin-bottom: 2rem; */
+      }
 
-  ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1rem;
-  }
-  h2 {
-    margin-bottom: 1rem;
-    color: #fff;
-    font-family: "Open Sans", sans-serif;
+      ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: normal;
+      }
+    }
+    li:last-child {
+      /* border-bottom: 1px solid var(--light-shade-alpha);
+      margin-bottom: 20px; */
+    }
   }
 `

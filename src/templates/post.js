@@ -1,5 +1,5 @@
 /* eslint-disable react/no-danger */
-import React from "react"
+import React, { useState } from "react"
 import { graphql } from "gatsby"
 import PropTypes from "prop-types"
 import styled from "styled-components"
@@ -63,35 +63,48 @@ const PostContentText = styled.div`
   }
 `
 
-const postTemplate = ({ data: { post } }) => (
-  <Layout>
-    {/* <PostSidebar
+const postTemplate = ({ data: { post } }) => {
+  const postType = post.categories.nodes.find(
+    category => category.name === "Events"
+  )
+  const today = new Date(Date.now())
+  return (
+    <Layout>
+      {/* <PostSidebar
           date={post.date}
           author={post.author.name}
           categories={post.categories}
         /> */}
-    <PostContent>
-      {/* {console.log("cat", post.categories[0].name)} */}
-      <BreadCrumb
-        parent={{
-          slug: `/blog/${post.categories.nodes[0].slug}`,
-          title: post.categories.nodes[0].name,
-        }}
-      />
-      <h1 dangerouslySetInnerHTML={{ __html: post.title }} />
-      <p>
-        Published:
-        <Moment format="DD-MM-YYYY">
-          <span dangerouslySetInnerHTML={{ __html: post.date }} />
-        </Moment>
-      </p>
+      <PostContent>
+        {/* {console.log("cat", post.categories[0].name)} */}
+        <BreadCrumb
+          parent={{
+            slug: `/blog/${post.categories.nodes[0].slug}`,
+            title: post.categories.nodes[0].name,
+          }}
+        />
+        <h1 dangerouslySetInnerHTML={{ __html: post.title }} />
 
-      <FeaturedImage image={post.featuredImage} />
-      <SocialShare title={post.title} link={post.slug} />
-      <PostContentText dangerouslySetInnerHTML={{ __html: post.content }} />
-    </PostContent>
-  </Layout>
-)
+        {postType ? (
+          <p>
+            Event starts <Moment fromNow>{post.eventDate.dateofevent}</Moment>
+          </p>
+        ) : (
+          <p>
+            Published:
+            <Moment format="DD-MM-YYYY">
+              <span dangerouslySetInnerHTML={{ __html: post.date }} />
+            </Moment>
+          </p>
+        )}
+
+        <FeaturedImage image={post.featuredImage} />
+        <SocialShare title={post.title} link={post.slug} />
+        <PostContentText dangerouslySetInnerHTML={{ __html: post.content }} />
+      </PostContent>
+    </Layout>
+  )
+}
 
 postTemplate.propTypes = {
   data: PropTypes.object.isRequired,
@@ -110,6 +123,10 @@ export const query = graphql`
       status
       slug
       link
+      eventDate {
+        dateofevent
+        endtime
+      }
       categories {
         nodes {
           count

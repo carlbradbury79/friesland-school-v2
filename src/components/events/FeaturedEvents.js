@@ -99,7 +99,7 @@ const FeaturedEvents = () => {
       console.log("post WP", event.eventDate.dateofevent)
       return event
     })
-
+    // Order events
     const sortedEvents = eventPosts.sort(
       (a, b) => a.eventDate.dateofevent - b.eventDate.dateofevent
     )
@@ -108,6 +108,7 @@ const FeaturedEvents = () => {
     console.log("now", today)
     console.log("sortedEvents", sortedEvents)
 
+    // Remove old events
     const newEvents = sortedEvents.filter(
       event => today < event.eventDate.endtime
     )
