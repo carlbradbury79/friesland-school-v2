@@ -2,8 +2,8 @@ import styled from "styled-components"
 import { animated } from "react-spring"
 
 export const StyledTwitterFeed = styled(animated.div)`
-  margin: 0 0 5rem 0;
-  border-bottom: 0.5rem solid var(--primary);
+  /* margin: 0 0 5rem 0;
+  border-bottom: 0.5rem solid var(--primary); */
 `
 
 export const TwitterIcon = styled.div`

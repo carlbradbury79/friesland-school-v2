@@ -94,7 +94,7 @@ const IndexPage = () => {
     <Layout>
       <SEO title="Home" />
 
-      <Welcome style={fadeIn}>Welcome to Friesland School</Welcome>
+      <Welcome style={fadeIn}>Welcome to Friesland Schools</Welcome>
 
       {/* Hero Image with two panel */}
       <HeroContainer>

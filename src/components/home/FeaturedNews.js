@@ -8,7 +8,7 @@ import { Waypoint } from "react-waypoint"
 
 const FeaturedNewsSection = styled(animated.section)`
   /* margin: 2rem 0; */
-  border-bottom: 0.5rem solid var(--primary);
+  /* border-bottom: 0.5rem solid var(--primary); */
 
   h1 {
     margin-top: 4rem;
