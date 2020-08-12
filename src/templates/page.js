@@ -26,6 +26,8 @@ const PageTitle = styled.div`
   }
   h1 {
     margin: 0;
+    font-size: 2em;
+    font-weight: bold;
   }
 `
 

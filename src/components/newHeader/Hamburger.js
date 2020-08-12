@@ -14,7 +14,7 @@ const HamburgerToggle = styled.div`
   .hamburger-line {
     width: 30px;
     height: 3px;
-    background: var(--dark-shade);
+    background: var(--textColor);
   }
 
   @media (min-width: 991px) {

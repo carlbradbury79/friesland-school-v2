@@ -19,7 +19,12 @@ const Header = ({ handleOverlayMenu }) => {
       <HeaderTopContainer>
         <div>
           <FontAwesomeIcon icon={faEnvelope} />
-          <span>enquires@friesland.derbyshire.sch.uk</span>
+          {/* <span>enquires@friesland.derbyshire.sch.uk</span> */}
+          <span>
+            <a href="mailto:enquiries@friesland.derbyshire.sch.uk">
+              enquiries@friesland.derbyshire.sch.uk
+            </a>{" "}
+          </span>
         </div>
         <div>
           <FontAwesomeIcon icon={faPhone} />

@@ -16,6 +16,8 @@ export const HeroContent = styled.div`
     background-color: var(--primary-alpha);
     color: #fff;
     padding: 10px;
+    text-align: center;
+    font-size: var(--h3Size);
   }
 
   a {

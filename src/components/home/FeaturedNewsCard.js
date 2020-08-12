@@ -5,9 +5,10 @@ import styled from "styled-components"
 import Moment from "react-moment"
 
 const NewsCard = styled.div`
-  -webkit-box-shadow: 0px 1px 35px 0px rgba(0, 0, 0, 0.3);
+  /* -webkit-box-shadow: 0px 1px 35px 0px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 0px 1px 35px 0px rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 1px 35px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 1px 35px 0px rgba(0, 0, 0, 0.3); */
+  box-shadow: var(--level-1);
   text-decoration: none;
 
   p {

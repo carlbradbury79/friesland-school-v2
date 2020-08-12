@@ -17,6 +17,8 @@ export const HeroContent = styled.div`
     background-color: var(--primary-alpha);
     color: #fff;
     padding: 10px;
+    text-align: center;
+    font-size: var(--h3Size);
   }
 `
 
@@ -36,7 +38,7 @@ export const HeroLeft = () => {
 
   const links = [
     { to: "/about-friesland", text: "About Friesland", delay: 500 },
-    { to: "/vision-ethos", text: "Headteacher's Welcome", delay: 100 },
+    { to: "/welcome", text: "Headteacher's Welcome", delay: 100 },
     { to: "/curriculum", text: "Curriculum", delay: 300 },
 
     { to: "/ofsted", text: "OfSted and DFE", delay: 700 },

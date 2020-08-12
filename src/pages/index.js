@@ -40,6 +40,10 @@ const HeroContainer = styled.div`
 const Welcome = styled(animated.h1)`
   text-align: center;
   user-select: true;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 1.3rem 0;
+  line-height: 1.5;
 `
 
 const IndexPage = () => {

@@ -18,11 +18,13 @@ export const HeaderTopContainer = styled.div`
   padding: 5px 10px;
   font-family: "Lato";
   font-size: 0.8rem;
+  line-height: 1.1rem;
 
   div {
     display: flex;
     height: 100%;
     align-items: center;
+    color: var(--white);
   }
 
   div span {
@@ -32,7 +34,7 @@ export const HeaderTopContainer = styled.div`
     }
   }
   div span a {
-    color: var(--light-shade);
+    color: var(--white);
   }
 `
 
@@ -82,6 +84,8 @@ export const LogoContainer = styled(Link)`
     padding: 0;
     font-family: "Cormarant Garamond", serif;
     font-weight: 600;
+    font-size: 2rem;
+    line-height: 1.5;
   }
 
   h1 {

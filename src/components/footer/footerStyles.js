@@ -52,6 +52,7 @@ export const FooterSocialIcons = styled.div`
         display: flex;
         flex-direction: row;
         align-items: center;
+        background: none;
         span {
           font-size: 1rem;
           :hover {
@@ -80,7 +81,8 @@ export const FooterLinkStyle = styled.div`
       a {
         color: #fff;
         text-decoration: none;
-
+        background: none;
+        font-size: 1em;
         :hover {
           text-decoration: underline;
         }
