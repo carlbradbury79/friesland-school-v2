@@ -113,7 +113,7 @@ const FeaturedEvent = ({ event }) => {
                   : eventDate.dateofevent.getMinutes()}{" "}
                 on {days[eventDate.dateofevent.getDay()]},{" "}
                 {eventDate.dateofevent.getDate()}-
-                {months[eventDate.dateofevent.getMonth() - 1]}-
+                {months[eventDate.dateofevent.getMonth()]}-
                 {eventDate.dateofevent.getFullYear()}
               </p>
 

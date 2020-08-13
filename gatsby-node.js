@@ -160,6 +160,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               slug
               uri
               status
+              date
             }
           }
         }

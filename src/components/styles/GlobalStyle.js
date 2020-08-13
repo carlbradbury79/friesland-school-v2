@@ -6,6 +6,7 @@ export const GlobalStyle = createGlobalStyle`
   --red: red;
   --black: #16141c;
   --blue: #214f95;
+  --lightBlue: #0A84A2;
   --green: green;
   --white: #fff;
   --light-grey: #f2f4f6;
@@ -28,6 +29,7 @@ export const GlobalStyle = createGlobalStyle`
   --lineColor: var(--light-grey);
   --cardBg: var(--white);
   --pdfIcon: var(--primary);
+  --bigButton: var(--lightBlue);
 
   /* Type */
   --headingFont: 'Cormorant Garamond', serif;
@@ -168,6 +170,16 @@ ul {
   box-shadow: var(--level-1);
 }
 
+/* Bullet List */
+.bullets {
+  list-style: square;
+  padding-left: 16px;
+}
+
+.bullets li {
+  margin-bottom: 8px
+}
+
 /* Buttons */
 
 button {
@@ -186,6 +198,18 @@ button:hover {
   text-decoration: none;
   cursor: pointer;
   box-shadow: var(--level-2);
+}
+
+/* Big Buttons */
+
+.bigButton {
+ font-size: var(--h2Size);
+ padding:1rem;
+ border-radius: 5px;
+}
+
+.bigButton:hover {
+  background-color: var(--bigButton);
 }
 
 /* Components */
@@ -247,6 +271,68 @@ button:hover {
 }
 
 .uniformItem div ul li .fa-times {
+  color: var(--danger);
+}
+
+/* Catering Five Stars */
+.fiveStar {
+  width: 100%;
+  border: 2px solid var(--black);
+
+}
+
+.fiveStar div:nth-child(1) {
+  font-weight: bold;
+  font-size: var(--h3Size);
+  text-transform:uppercase;
+  text-align: center;
+  background-color:#A7C700;
+}
+
+.fiveStar div:nth-child(2) {
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around;
+  padding: 20px 0;
+  background-color:#A7C700;
+}
+
+.fiveStar div:nth-child(2) span{
+  font-size: var(--h4Size);
+  border: 1px solid var(--black);
+  background-color: var(--white);
+  border-radius: 25px;
+  padding: 5px 20px;
+  font-weight:bold;
+}
+
+.fiveStar div:nth-child(2) .hygieneRating{
+  border: 1px solid var(--black);
+  border-radius: 25px;
+  background-color: var(--black);
+  color: var(--white);
+  font-weight:bold;
+}
+
+.fiveStar div:nth-child(3){
+  font-weight: bold;
+  font-size: var(--h3Size);
+  text-transform:uppercase;
+  text-align: center;
+  background-color: var(--black);
+  color: var(--white)
+
+}
+
+.fa-thumbs-down {
+  color: red;
+}
+
+.fa-check {
+color: var(--success);
+}
+
+.fa-times {
   color: var(--danger);
 }
 
