@@ -143,6 +143,18 @@ ul {
   padding-left: 0;
 }
 
+table {
+  width: 100%;
+}
+
+thead tr {
+  text-align: left;
+}
+
+td {
+  border: 1px solid var(--grey);
+}
+
 /* Lists of links (e.g. Policies) */
 .listLinks ul li {
   margin-bottom: 0;
@@ -240,6 +252,25 @@ button:hover {
 /* First item */
 .card > *:first-child {
   margin-top: 0;
+}
+
+
+/* Information Boxes */
+.important {
+  padding: 1rem;
+  font-weight: 600;
+  border: 1px solid var(--grey);
+}
+
+.important::before {
+  content: "Important: ";
+  color: var(--danger);
+}
+
+.new {
+  padding: 1rem;
+  font-weight: 600;
+  border: 1px solid var(--green);
 }
 
 /* Specific Classes */

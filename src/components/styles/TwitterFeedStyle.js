@@ -14,7 +14,8 @@ export const TwitterIcon = styled.div`
 
   a {
     font-family: "Cormorant Garamond", serif;
-    font-size: 32px;
+    /* font-size: 32px; */
+    font-size: var(--h3Size);
     font-weight: 600;
   }
   h2 {
@@ -28,50 +29,56 @@ export const TwitterIcon = styled.div`
 `
 
 export const TweetRow = styled.div`
-  display: flex;
+  /* display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
+  flex-wrap: wrap;
+  flex: 1 1 150px; */
   height: 100%;
-  background: #fff;
+  display: grid;
+  grid-gap: 1rem;
+  padding: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 
   @media (max-width: 600px) {
+    padding: 1rem;
+    margin: 0.5rem;
     flex-direction: column;
     align-items: center;
   }
-  /* border: 1px solid var(--primary); */
 `
 
 export const TweetBox = styled.div`
   flex: 1;
   height: 100%;
-  color: var(--primary);
+  color: var(--textColor);
   padding: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  /* text-align: center; */
-  margin: 2rem 0px;
+  margin: 1rem 0rem;
   line-height: 1.8;
   background: #fff;
   font-family: "Open Sans", sans-serif;
+  box-shadow: var(--level-1);
 
   @media (max-width: 600px) {
     margin: 1rem 0;
     text-align: center;
+    /* flex: 1 1 150px; */
   }
   p {
-    color: var(--primary);
+    /* color: var(--primary); */
+    color: var(--textColor);
   }
 
   span {
-    font-size: 0.8rem;
+    /* font-size: 0.8rem; */
+    font-size: calc(var(--h5Size) - 5px);
     font-weight: 600;
     color: #000;
+    /* font-family: "Cormorant Garamond", serif; */
   }
 
   a {
-    color: purple;
+    text-decoration: none;
+    color: var(--textColor);
+    border-bottom: 2px solid var(--primary);
   }
 `

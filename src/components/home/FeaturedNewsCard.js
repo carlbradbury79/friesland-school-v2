@@ -27,7 +27,7 @@ const NewsCard = styled.div`
   a {
     text-decoration: none;
     :hover {
-      color: #000;
+      /* color: #000; */
     }
   }
 `

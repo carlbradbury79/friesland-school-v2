@@ -15,13 +15,13 @@ const FeaturedEventSection = styled.section`
   }
 `
 
-const EventTitle = styled.h1`
+const EventTitle = styled.h2`
   margin-top: 4rem;
   margin-bottom: 4rem;
-  font-family: "Cormarant Garamond", serif;
-  font-size: 2rem;
-  font-weight: normal;
-  font-weight: Semi-bold;
+  font-family: "Cormorant Garamond", serif;
+  font-size: var(--h3Size);
+  /* font-size: 32px; */
+  font-weight: 600;
   text-align: center;
 `
 

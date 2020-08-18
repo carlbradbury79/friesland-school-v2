@@ -26,7 +26,8 @@ export const InstaIcon = styled.div`
 
   a {
     font-family: "Cormorant Garamond", serif;
-    font-size: 32px;
+    /* font-size: 32px; */
+    font-size: var(--h3Size);
     font-weight: 600;
   }
   h2 {

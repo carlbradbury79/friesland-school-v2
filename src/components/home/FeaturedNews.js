@@ -10,13 +10,13 @@ const FeaturedNewsSection = styled(animated.section)`
   /* margin: 2rem 0; */
   /* border-bottom: 0.5rem solid var(--primary); */
 
-  h1 {
+  h2 {
     margin-top: 4rem;
     margin-bottom: 4rem;
-    font-family: "Cormarant Garamond", serif;
-    font-size: 2rem;
-    font-weight: normal;
-    font-weight: Semi-bold;
+    font-family: "Cormorant Garamond", serif;
+    /* font-size: 32px; */
+    font-size: var(--h3Size);
+    font-weight: 600;
     text-align: center;
   }
 `
@@ -126,7 +126,7 @@ const FeaturedNews = () => {
           isFeaturedNewsVisible ? null : toggleFeaturedNewsVisible(true)
         }
       />
-      <h1>Featured News</h1>
+      <h2>Featured News</h2>
       <FeaturedNewsContainer>
         {FeaturedNewsArticles.map((post, i) => {
           // TODO Sort Query to get 4 posts instead of pulling all of them
