@@ -29,7 +29,8 @@ const SectionSelector = ({ currentPage }) => {
   if (
     currentPage.title === "Curriculum" ||
     currentPage.title === "Sixth Form" ||
-    currentPage.title === "Parent Information"
+    currentPage.title === "Parent Information" ||
+    currentPage.title === "Curriculum: Subjects"
   ) {
     return (
       <Subjects>

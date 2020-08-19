@@ -185,7 +185,8 @@ td {
 /* Bullet List */
 .bullets {
   list-style: square;
-  padding-left: 16px;
+  padding-left: 32px;
+  margin-bottom: 2rem;
 }
 
 .bullets li {
@@ -365,6 +366,76 @@ color: var(--success);
 
 .fa-times {
   color: var(--danger);
+}
+
+/* Governors */
+
+.governors {
+  display: grid;
+  grid-gap: 1rem;
+  padding: 0.5rem;
+  grid-template-columns: repeat(auto-fit, 1fr);
+  grid-row-gap: 2rem;
+}
+
+.governors div h3 {
+  margin-top: 0;
+}
+
+.governors h4 {
+  margin-top: 0;
+  font-size: var(--bodyFont)
+}
+
+.governors > div {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-gap:1rem;
+  padding: 1em;
+  background: var(--cardBg);
+  box-shadow: var(--level-3);
+  border-radius: var(--borderRadius);
+}
+
+@media(max-width: 500px) {
+  .governors > div {
+    grid-template-columns: 1fr;
+  }
+}
+
+.governors img {
+  border-radius:50%;
+  width:auto;
+}
+
+/* KS3 Timetable */
+
+.ks3-timetable {
+  display: grid;
+  grid-gap: 0.5rem;
+  grid-template-columns: repeat(auto-fit, 80px);
+  grid-template-rows: auto;
+}
+
+.ks3-timetable  div {
+  height: 80px;
+  padding: 5px;
+  border: 4px solid red;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.ks3-timetable  div span{
+  font-size:1.2rem;
+  font-weight: 800;
+
+}
+
+.ks3-timetable .core-subject {
+  border-color: blue;
 }
 
 `
