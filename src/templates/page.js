@@ -9,7 +9,9 @@ import BreadCrumb from "../components/utils/BreadCrumb"
 // import FeaturedImage from "../components/utils/FeaturedImage"
 import StyledPageHeaderImage from "../components/utils/PageHeaderImage"
 // import PageHero from "../components/PageHero"
-// import { Helmet } from "renact-helmet"
+import { Helmet } from "react-helmet"
+// import Img from "gatsby-image"
+// import { SpareImage } from "../components/utils/SpareFeaturedImage"
 
 const PageTitle = styled.div`
   height: 100px;
@@ -49,13 +51,27 @@ const pageTemplate = ({ data }) => {
 
   return (
     <Layout>
-      {/* <Helmet>
-        <title>{data.currentPage.title}</title>
-        <script
+      <Helmet>
+        <title>Friesland School | {data.currentPage.title}</title>
+        <meta property="og:title" content={data.currentPage.title} />
+        <meta
+          property="og:description"
+          content="Offering tour packages for individuals or groups."
+        />
+        <meta
+          property="og:image"
+          content="http://euro-travel-example.com/thumbnail.jpg"
+        />
+        <meta
+          property="og:url"
+          content={`http://frieslandschool.com/${data.currentPage.slug}`}
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        {/* <script
           src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"
           data-auto-replace-svg
-        ></script>
-      </Helmet> */}
+        ></script> */}
+      </Helmet>
       {data.currentPage.featuredImage &&
       data.currentPage.featuredImage.remoteFile ? (
         <div style={{ height: "400px", marginBottom: "2rem" }}>
@@ -72,10 +88,12 @@ const pageTemplate = ({ data }) => {
           <h1 dangerouslySetInnerHTML={{ __html: data.currentPage.title }} />
         </PageTitle>
       )}
-
       <SectionSelector currentPage={data.currentPage} />
+      {/* <img fluid={spareImage} /> */}
+      {/* {console.log("spare", SpareImage)} */}
       <PageContent>
         {/* TOTO FIX PAGE BREADCRUMB QUERY */}
+        {console.log("BC", data.currentPage.parent)}
         <BreadCrumb parent={data.currentPage.parent} />
         <div dangerouslySetInnerHTML={{ __html: data.currentPage.content }} />
       </PageContent>
@@ -92,6 +110,8 @@ export const pageQuery = graphql`
       id
       title
       content
+      slug
+
       featuredImage {
         remoteFile {
           childImageSharp {

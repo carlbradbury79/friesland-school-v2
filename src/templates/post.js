@@ -10,6 +10,7 @@ import BreadCrumb from "../components/utils/BreadCrumb"
 // import PostSidebar from "../components/post/PostSidebar"
 import FeaturedImage from "../components/utils/FeaturedImage"
 import SocialShare from "../components/utils/SocialShare"
+import { Helmet } from "react-helmet"
 
 const PostContent = styled.article`
   /* margin: 20px 0 0 0; */
@@ -70,6 +71,20 @@ const postTemplate = ({ data: { post } }) => {
   const today = new Date(Date.now())
   return (
     <Layout>
+      <Helmet>
+        <title>Friesland School | {post.title}</title>
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.meta.description} />
+        <meta
+          property="og:image"
+          content="http://euro-travel-example.com/thumbnail.jpg"
+        />
+        <meta
+          property="og:url"
+          content="http://euro-travel-example.com/index.htm"
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Helmet>
       {/* <PostSidebar
           date={post.date}
           author={post.author.name}
@@ -100,6 +115,7 @@ const postTemplate = ({ data: { post } }) => {
 
         <FeaturedImage image={post.featuredImage} />
         <SocialShare title={post.title} link={post.slug} />
+        {console.log("meta")}
         <PostContentText dangerouslySetInnerHTML={{ __html: post.content }} />
       </PostContent>
     </Layout>
@@ -123,6 +139,9 @@ export const query = graphql`
       status
       slug
       link
+      meta {
+        description
+      }
       eventDate {
         dateofevent
         endtime

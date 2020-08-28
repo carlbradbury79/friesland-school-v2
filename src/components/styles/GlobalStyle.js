@@ -193,6 +193,14 @@ td {
   margin-bottom: 8px
 }
 
+.list li {
+  margin-bottom:0.5rem;
+}
+
+.small-list {
+  font-size: var(--smallText);
+}
+
 /* Buttons */
 
 button {
@@ -412,19 +420,38 @@ color: var(--success);
 
 .ks3-timetable {
   display: grid;
-  grid-gap: 0.5rem;
-  grid-template-columns: repeat(auto-fit, 80px);
+  grid-gap: 1rem;
+  grid-template-columns: 1fr;
   grid-template-rows: auto;
 }
 
-.ks3-timetable  div {
+[data-ks3-amount] {
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+[data-ks3-amount="2"] {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+[data-ks3-amount="3"] {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+[data-ks3-amount="4"] {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.ks3-timetable > [data-ks3-amount] > div {
   height: 80px;
+  width: 80px;
   padding: 5px;
-  border: 4px solid red;
+  border: 2px solid var(--lightBlue);
   border-radius: 50%;
   display: grid;
   place-items: center;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   font-weight: 600;
 }
 
@@ -434,8 +461,29 @@ color: var(--success);
 
 }
 
-.ks3-timetable .core-subject {
-  border-color: blue;
+.ks3-timetable > [data-ks3-amount] .core-subject {
+  border-color: var(--blue);
+}
+
+/* Sixth Form */
+.sixth-form {
+  display: grid;
+  grid-gap: 1rem;
+  padding: 0.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-row-gap: 2rem;
+}
+
+.sixth-form div {
+  padding: 1em;
+  background: var(--cardBg);
+  box-shadow: var(--level-3);
+  border-radius: var(--borderRadius);
+  font-size:var(--h2Size)
+}
+
+Lead{
+  color: red;
 }
 
 `
