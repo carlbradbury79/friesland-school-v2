@@ -54,10 +54,10 @@ const FeaturedNewsCard = ({ post }) => {
 
   // Set the Friesland Logo if there is no featured image
   const FeaturedArticleImage =
-    post.featuredImage === null ||
-    post.featuredImage.remoteFile.childImageSharp === null
+    post.featuredImage.node === null ||
+    post.featuredImage.node.remoteFile.childImageSharp === null
       ? altFeaturedArticleImage.image.childImageSharp.fluid
-      : post.featuredImage.remoteFile.childImageSharp.fluid
+      : post.featuredImage.node.remoteFile.childImageSharp.fluid
 
   return (
     <NewsCard>

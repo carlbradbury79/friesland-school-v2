@@ -88,13 +88,28 @@ const pageTemplate = ({ data }) => {
           <h1 dangerouslySetInnerHTML={{ __html: data.currentPage.title }} />
         </PageTitle>
       )}
+      {console.log("child?", data.currentPage)}
       <SectionSelector currentPage={data.currentPage} />
       {/* <img fluid={spareImage} /> */}
       {/* {console.log("spare", SpareImage)} */}
       <PageContent>
         {/* TOTO FIX PAGE BREADCRUMB QUERY */}
         {console.log("BC", data.currentPage.parent)}
-        <BreadCrumb parent={data.currentPage.parent} />
+
+        <BreadCrumb
+          parent={
+            data.currentPage.ancestors
+              ? {
+                  slug: data.currentPage.ancestors.nodes[0].slug,
+                  title: data.currentPage.ancestors.nodes[0].slug
+                    .split("-")
+                    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                    .join(" "),
+                }
+              : null
+          }
+        />
+
         <div dangerouslySetInnerHTML={{ __html: data.currentPage.content }} />
       </PageContent>
     </Layout>
@@ -111,18 +126,25 @@ export const pageQuery = graphql`
       title
       content
       slug
-
       featuredImage {
-        remoteFile {
-          childImageSharp {
-            fluid(quality: 100, maxWidth: 4000) {
-              ...GatsbyImageSharpFluid_withWebp
+        node {
+          remoteFile {
+            childImageSharp {
+              fluid(quality: 100, maxWidth: 4000) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
             }
           }
         }
       }
-      childPages {
+      ancestors {
         nodes {
+          slug
+        }
+      }
+      children {
+        ... on WpPage {
+          id
           title
           slug
         }

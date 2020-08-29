@@ -79,11 +79,13 @@ const FeaturedNews = () => {
         nodes {
           id
           featuredImage {
-            remoteFile {
-              id
-              childImageSharp {
-                fluid(maxWidth: 2000, maxHeight: 1500, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFluid
+            node {
+              remoteFile {
+                id
+                childImageSharp {
+                  fluid(maxWidth: 2000, maxHeight: 1500, cropFocus: CENTER) {
+                    ...GatsbyImageSharpFluid
+                  }
                 }
               }
             }

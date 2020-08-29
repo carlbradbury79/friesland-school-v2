@@ -7,12 +7,12 @@ import { getSlug } from "../utils/get-slug"
 const FooterLinks = () => {
   const footerLinksMenu = useStaticQuery(graphql`
     {
-      wpMenu(id: { eq: "TWVudTo0NA==" }) {
+      wpMenu(slug: { eq: "footerlinksmenu" }) {
         id
         name
+        slug
         menuItems {
           nodes {
-            id
             label
             url
           }
@@ -21,7 +21,6 @@ const FooterLinks = () => {
     }
   `)
   const footerLinksMenuItems = footerLinksMenu.wpMenu.menuItems.nodes
-
   return (
     <FooterLinkStyle>
       <h3>Links</h3>

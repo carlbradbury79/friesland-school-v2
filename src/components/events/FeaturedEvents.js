@@ -64,16 +64,18 @@ const FeaturedEvents = () => {
           status
           content
           featuredImage {
-            remoteFile {
-              childImageSharp {
-                fluid(
-                  cropFocus: NORTH
-                  fit: CONTAIN
-                  background: "#fff"
-                  maxWidth: 1000
-                  maxHeight: 750
-                ) {
-                  ...GatsbyImageSharpFluid
+            node {
+              remoteFile {
+                childImageSharp {
+                  fluid(
+                    cropFocus: NORTH
+                    fit: CONTAIN
+                    background: "#fff"
+                    maxWidth: 1000
+                    maxHeight: 750
+                  ) {
+                    ...GatsbyImageSharpFluid
+                  }
                 }
               }
             }

@@ -86,9 +86,10 @@ const FeaturedEvent = ({ event }) => {
   `)
 
   const FeaturedEventImage =
-    featuredImage === null || featuredImage.remoteFile.childImageSharp === null
+    featuredImage.node === null ||
+    featuredImage.node.remoteFile.childImageSharp === null
       ? altFeaturedEventImage.image.childImageSharp.fluid
-      : featuredImage.remoteFile.childImageSharp.fluid
+      : featuredImage.node.remoteFile.childImageSharp.fluid
 
   //   const image =
   //     featured_media && featured_media.localFile

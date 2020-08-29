@@ -35,7 +35,7 @@ const SectionSelector = ({ currentPage }) => {
     return (
       <Subjects>
         <ul>
-          {currentPage.childPages.nodes.map(subject => {
+          {currentPage.children.map(subject => {
             return (
               <li key={subject.id}>
                 <Link to={`/${subject.slug}`}>{subject.title}</Link>

@@ -29,7 +29,7 @@ const BreadCrumbWrapper = styled.div`
 `
 
 const BreadCrumb = ({ parent }) => {
-  console.log("parent", parent)
+  // console.log("parent", parent)
   return (
     <div>
       <div>
@@ -38,7 +38,7 @@ const BreadCrumb = ({ parent }) => {
             <Link to="/">
               <span>Home</span>
             </Link>
-            <span className="divider">></span>
+            <span className="divider">{">"}</span>
             {parent ? (
               <>
                 <Link to={`/${parent.slug}`}>

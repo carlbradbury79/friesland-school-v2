@@ -30,9 +30,9 @@ const FeaturedImage = ({ image }) => {
     }
   `)
   const Image =
-    image === null || image.remoteFile.childImageSharp === null
+    image.node === null || image.node.remoteFile.childImageSharp === null
       ? altFeaturedImage.image.childImageSharp.fluid
-      : image.remoteFile.childImageSharp.fluid
+      : image.node.remoteFile.childImageSharp.fluid
   // console.log("Featured Image Component", image)
 
   return <PostImage fluid={Image} />

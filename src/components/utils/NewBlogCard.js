@@ -74,9 +74,9 @@ const CardContent = styled.div`
 const BlogCard = ({ post }) => {
   const altBgImage =
     post.featuredImage === null ||
-    post.featuredImage.remoteFile.childImageSharp === null
+    post.featuredImage.node.remoteFile.childImageSharp === null
       ? AltCardImage()
-      : post.featuredImage.remoteFile.childImageSharp.fluid
+      : post.featuredImage.node.remoteFile.childImageSharp.fluid
 
   return (
     <StyledArticle>

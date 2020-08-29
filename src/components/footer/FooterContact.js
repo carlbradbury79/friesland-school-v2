@@ -6,7 +6,7 @@ import { FooterLinkStyle } from "./footerStyles"
 const FooterContact = () => {
   const footerContactMenu = useStaticQuery(graphql`
     {
-      wpMenu(id: { eq: "TWVudTo0Mw==" }) {
+      wpMenu(slug: { eq: "footercontactmenu" }) {
         id
         name
         menuItems {

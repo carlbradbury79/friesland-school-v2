@@ -156,10 +156,12 @@ export const query = graphql`
         }
       }
       featuredImage {
-        remoteFile {
-          childImageSharp {
-            fluid(cropFocus: NORTH, fit: CONTAIN, background: "#fff") {
-              ...GatsbyImageSharpFluid
+        node {
+          remoteFile {
+            childImageSharp {
+              fluid(cropFocus: NORTH, fit: CONTAIN, background: "#fff") {
+                ...GatsbyImageSharpFluid
+              }
             }
           }
         }

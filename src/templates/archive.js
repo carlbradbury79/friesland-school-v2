@@ -146,10 +146,12 @@ export const pageQuery = graphql`
           dateofevent
         }
         featuredImage {
-          remoteFile {
-            childImageSharp {
-              fluid(maxWidth: 1000, cropFocus: ATTENTION) {
-                ...GatsbyImageSharpFluid
+          node {
+            remoteFile {
+              childImageSharp {
+                fluid(maxWidth: 1000, cropFocus: ATTENTION) {
+                  ...GatsbyImageSharpFluid
+                }
               }
             }
           }
@@ -174,10 +176,12 @@ export const pageQuery = graphql`
             date
             content
             featuredImage {
-              remoteFile {
-                childImageSharp {
-                  fluid(maxWidth: 1000, cropFocus: ATTENTION) {
-                    ...GatsbyImageSharpFluid
+              node {
+                remoteFile {
+                  childImageSharp {
+                    fluid(maxWidth: 1000, cropFocus: ATTENTION) {
+                      ...GatsbyImageSharpFluid
+                    }
                   }
                 }
               }

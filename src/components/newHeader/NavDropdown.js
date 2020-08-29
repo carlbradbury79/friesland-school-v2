@@ -126,26 +126,27 @@ const NavigationWrapper = styled.nav`
 const NavDropdown = () => {
   // Get Items for the menu from nav -> MenuItems
   const wpMenu = MenuItems()
+  // console.log("wpMenu main", wpMenu)
   return (
     <NavigationWrapper>
       <ul>
-        {wpMenu.menuItems.nodes.map((item, i) => {
+        {wpMenu.map((item, i) => {
           const url = getSlug(item.url)
           return (
             <li key={i}>
-              <Link to={`/${url}`}>{item.label}</Link>
+              <Link to={`/${url}`}>{item.title}</Link>
 
-              {item.childItems.nodes.length > 0 ? (
+              {item.children.length > 0 ? (
                 <>
                   <span>
                     <FontAwesomeIcon icon={faAngleDown} />
                   </span>
                   <ul>
-                    {item.childItems.nodes.map((child, iChild) => {
+                    {item.children.map((child, iChild) => {
                       const url = getSlug(child.url)
                       return (
                         <li key={iChild}>
-                          <Link to={`/${url}`}>{child.label}</Link>
+                          <Link to={`/${url}`}>{child.title}</Link>
                         </li>
                       )
                     })}
