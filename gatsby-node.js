@@ -65,7 +65,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         path => path === templatePath
       )
 
-      console.log("CTT?", contentTypeTemplate, typeof contentTypeTemplate)
+      // console.log("CTT?", contentTypeTemplate, typeof contentTypeTemplate)
 
       if (!contentTypeTemplate) {
         reporter.log(``)
@@ -169,7 +169,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   `)
 
   allWpCategory.nodes.forEach(cat => {
-    console.log(cat)
+    // console.log(cat)
     // if (cat.length > 0) {
     paginate({
       createPage,

@@ -1,5 +1,5 @@
 import React from "react"
-import Img from "gatsby-image"
+// import Img from "gatsby-image"
 import { useStaticQuery, graphql } from "gatsby"
 import Moment from "react-moment"
 import { Link } from "gatsby"
@@ -64,7 +64,9 @@ const FeaturedEvent = ({ event }) => {
     "Dec",
   ]
 
-  const { title, excerpt, content, featuredImage, eventDate, slug } = event
+  const { title, featuredImage, eventDate, slug } = event
+
+  // excerpt, content,
 
   const altFeaturedEventImage = useStaticQuery(graphql`
     query {

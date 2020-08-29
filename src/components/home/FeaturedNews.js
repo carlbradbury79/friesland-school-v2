@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import FeaturedNewsCard from "./FeaturedNewsCard"
 import styled from "styled-components"
-import FeaturedNewsSlider from "./NewFeaturedNewsSlider"
+// import FeaturedNewsSlider from "./NewFeaturedNewsSlider"
 import { useSpring, animated, config } from "react-spring"
 import { Waypoint } from "react-waypoint"
 

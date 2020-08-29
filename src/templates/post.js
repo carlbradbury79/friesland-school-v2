@@ -1,5 +1,5 @@
 /* eslint-disable react/no-danger */
-import React, { useState } from "react"
+import React from "react"
 import { graphql } from "gatsby"
 import PropTypes from "prop-types"
 import styled from "styled-components"
@@ -68,7 +68,7 @@ const postTemplate = ({ data: { post } }) => {
   const postType = post.categories.nodes.find(
     category => category.name === "Events"
   )
-  const today = new Date(Date.now())
+  // const today = new Date(Date.now())
   return (
     <Layout>
       <Helmet>

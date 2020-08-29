@@ -51,8 +51,8 @@ const archiveTemplate = ({
     numberOfPages,
   },
 }) => {
-  console.log("all posts", allWpPost)
-  console.log(catId)
+  // console.log("all posts", allWpPost)
+  // console.log(catId)
 
   return (
     <Layout>

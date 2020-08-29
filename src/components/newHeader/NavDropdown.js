@@ -1,5 +1,5 @@
 import React from "react"
-import { useStaticQuery, graphql, Link } from "gatsby"
+import { Link } from "gatsby"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons"
 import styled from "styled-components"
