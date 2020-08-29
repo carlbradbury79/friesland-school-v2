@@ -30,7 +30,7 @@ const FeaturedImage = ({ image }) => {
     }
   `)
   const Image =
-    image.node === null || image.node.remoteFile.childImageSharp === null
+    image === null || image.node.remoteFile.childImageSharp === null
       ? altFeaturedImage.image.childImageSharp.fluid
       : image.node.remoteFile.childImageSharp.fluid
   // console.log("Featured Image Component", image)
