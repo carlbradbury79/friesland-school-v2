@@ -73,11 +73,12 @@ const pageTemplate = ({ data }) => {
         ></script> */}
       </Helmet>
       {data.currentPage.featuredImage &&
-      data.currentPage.featuredImage.remoteFile ? (
+      data.currentPage.featuredImage.node.remoteFile ? (
         <div style={{ height: "400px", marginBottom: "2rem" }}>
           <StyledPageHeaderImage
             image={
-              data.currentPage.featuredImage.remoteFile.childImageSharp.fluid
+              data.currentPage.featuredImage.node.remoteFile.childImageSharp
+                .fluid
             }
           >
             {data.currentPage.title}

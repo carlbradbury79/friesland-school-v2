@@ -71,6 +71,7 @@ body {
   font-weight: 400;
   line-height: 1.65;
   background-color: var(--lightest-grey);
+  margin:0;
 }
 
 p {
