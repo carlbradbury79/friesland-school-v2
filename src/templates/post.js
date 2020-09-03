@@ -74,14 +74,21 @@ const postTemplate = ({ data: { post } }) => {
       <Helmet>
         <title>Friesland School | {post.title}</title>
         <meta property="og:title" content={post.title} />
-        <meta property="og:description" content={post.meta.description} />
+        <meta
+          property="og:description"
+          content={
+            post.meta.description.length > 0
+              ? post.meta.description
+              : "This is an article found on frieslandschool.com"
+          }
+        />
         <meta
           property="og:image"
-          content="http://euro-travel-example.com/thumbnail.jpg"
+          content="https://res.cloudinary.com/frieslandschool/image/upload/v1599168252/Logo/friesland-logo_uadh71.jpg"
         />
         <meta
           property="og:url"
-          content="http://euro-travel-example.com/index.htm"
+          content={`http://frieslandschool.com/${post.slug}`}
         />
         <meta name="twitter:card" content="summary_large_image" />
       </Helmet>

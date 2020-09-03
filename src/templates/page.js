@@ -56,11 +56,11 @@ const pageTemplate = ({ data }) => {
         <meta property="og:title" content={data.currentPage.title} />
         <meta
           property="og:description"
-          content="Offering tour packages for individuals or groups."
+          content="Welcome to Friesland School."
         />
         <meta
           property="og:image"
-          content="http://euro-travel-example.com/thumbnail.jpg"
+          content="https://res.cloudinary.com/frieslandschool/image/upload/v1599168252/Logo/friesland-logo_uadh71.jpg"
         />
         <meta
           property="og:url"
