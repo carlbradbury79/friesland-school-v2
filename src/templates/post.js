@@ -77,7 +77,7 @@ const postTemplate = ({ data: { post } }) => {
         <meta
           property="og:description"
           content={
-            post.meta.description.length > 0
+            post.meta.description && post.meta.description.length > 0
               ? post.meta.description
               : "This is an article found on frieslandschool.com"
           }
