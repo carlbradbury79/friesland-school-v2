@@ -56,7 +56,12 @@ const pageTemplate = ({ data }) => {
         <meta property="og:title" content={data.currentPage.title} />
         <meta
           property="og:description"
-          content="Welcome to Friesland School."
+          content={
+            data.currentPage.meta.description &&
+            data.currentPage.meta.description.length > 0
+              ? data.currentPage.meta.description
+              : "Frieslandschool.com"
+          }
         />
         <meta
           property="og:image"
@@ -127,6 +132,9 @@ export const pageQuery = graphql`
       title
       content
       slug
+      meta {
+        description
+      }
       featuredImage {
         node {
           remoteFile {

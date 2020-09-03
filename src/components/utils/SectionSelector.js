@@ -1,6 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
+// import AllPages from "./AllPages"
+import { useStaticQuery, graphql } from "gatsby"
 
 const Subjects = styled.div`
   padding: 10px;
@@ -25,6 +27,36 @@ const Subjects = styled.div`
 
 const SectionSelector = ({ currentPage }) => {
   console.log("selection", currentPage)
+  // const pageDataArray = AllPages()
+  // console.log("PDA", pageDataArray)
+
+  const AllPages = useStaticQuery(graphql`
+    query {
+      allWpPage {
+        nodes {
+          id
+          parentId
+          title
+          slug
+        }
+      }
+    }
+  `)
+
+  // console.log("ALLP", AllPages)
+  const childPages = AllPages.allWpPage.nodes
+    .filter(item => item.parentId === currentPage.id)
+    .sort((a, b) => {
+      if (a.title < b.title) {
+        return -1
+      } else if (a.title > b.title) {
+        return 1
+      } else {
+        return 0
+      }
+    })
+
+  // console.log("child", childPages)
 
   if (
     currentPage.title === "Curriculum" ||
@@ -35,7 +67,7 @@ const SectionSelector = ({ currentPage }) => {
     return (
       <Subjects>
         <ul>
-          {currentPage.children.map(subject => {
+          {childPages.map(subject => {
             return (
               <li key={subject.id}>
                 <Link to={`/${subject.slug}`}>{subject.title}</Link>
