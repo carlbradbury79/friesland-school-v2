@@ -30,6 +30,7 @@ export const GlobalStyle = createGlobalStyle`
   --cardBg: var(--white);
   --pdfIcon: var(--primary);
   --bigButton: var(--lightBlue);
+  --highlight-text: var(--lightBlue);
 
   /* Type */
   --headingFont: 'Cormorant Garamond', serif;
@@ -112,7 +113,7 @@ h5 {
 }
 
 small,
-.text_small {
+.text-small {
   font-size: var(--smallText);
 }
 
@@ -133,6 +134,10 @@ blockquote {
   padding: 2em;
   background: var(--white);
   box-shadow: var(--level-4);
+}
+.highlight {
+font-weight: bold;
+border-bottom: 2px dotted var(--blue);
 }
 hr {
   border-top: 1px solid var(--grey);
@@ -204,7 +209,7 @@ td {
 
 /* Buttons */
 
-button {
+button, .button {
   background-color: var(--white);
   color: var(--primary);
   border: 2px solid var(--primary);
@@ -420,10 +425,15 @@ color: var(--success);
 /* KS3 Timetable */
 
 .ks3-timetable {
+
   display: grid;
   grid-gap: 1rem;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
+  max-width: 400px;
+  margin: auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 [data-ks3-amount] {
@@ -467,7 +477,7 @@ color: var(--success);
 }
 
 /* Sixth Form */
-.sixth-form {
+/* .sixth-form {
   display: grid;
   grid-gap: 1rem;
   padding: 0.5rem;
@@ -481,10 +491,30 @@ color: var(--success);
   box-shadow: var(--level-3);
   border-radius: var(--borderRadius);
   font-size:var(--h2Size)
+} */
+
+.internal-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-Lead{
-  color: red;
+.internal-links a {
+  background-color: var(--white);
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  padding: 5px 10px;
+  text-align: center;
+  box-shadow: var(--level-1);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.internal-links a:hover{ 
+  background-color: var(--primary);
+  color: var(--white);
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: var(--level-2);
 }
 
 `

@@ -6,6 +6,9 @@ import { useStaticQuery, graphql } from "gatsby"
 
 const Subjects = styled.div`
   padding: 10px;
+  h4 {
+    text-align: center;
+  }
   ul {
     list-style: none;
     display: flex;
@@ -20,6 +23,7 @@ const Subjects = styled.div`
         padding: 5px;
         background-color: var(--primary);
         color: #fff;
+        font-size: 0.8rem;
       }
     }
   }
@@ -62,10 +66,13 @@ const SectionSelector = ({ currentPage }) => {
     currentPage.title === "Curriculum" ||
     currentPage.title === "Sixth Form" ||
     currentPage.title === "Parent Information" ||
-    currentPage.title === "Curriculum: Subjects"
+    currentPage.title === "Curriculum: Subjects" ||
+    currentPage.title === "About Friesland" ||
+    currentPage.title === "Keeping in Touch"
   ) {
     return (
       <Subjects>
+        <h4>{currentPage.title} Links</h4>
         <ul>
           {childPages.map(subject => {
             return (
