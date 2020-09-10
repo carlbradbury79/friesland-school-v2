@@ -80,19 +80,21 @@ const BlogCard = ({ post }) => {
 
   return (
     <StyledArticle>
-      <StyledBackgroundImage fluid={altBgImage}>
-        <Categories>
-          <ul>
-            {post.categories.nodes.map(category => {
-              return (
-                <li key={category.id}>
-                  <Link to={`/blog/${category.slug}`}>{category.name}</Link>
-                </li>
-              )
-            })}
-          </ul>
-        </Categories>
-      </StyledBackgroundImage>
+      <Link to={`/${post.slug}`}>
+        <StyledBackgroundImage fluid={altBgImage}>
+          <Categories>
+            <ul>
+              {post.categories.nodes.map(category => {
+                return (
+                  <li key={category.id}>
+                    <Link to={`/blog/${category.slug}`}>{category.name}</Link>
+                  </li>
+                )
+              })}
+            </ul>
+          </Categories>
+        </StyledBackgroundImage>
+      </Link>
       <CardContent>
         {/* {console.log(post.categories.nodes[0].name)} */}
         {post.categories.nodes[0].name === "Events" ? (

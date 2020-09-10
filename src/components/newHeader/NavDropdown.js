@@ -78,7 +78,7 @@ const NavigationWrapper = styled.nav`
     animation: fadeInMenu 0.3s both ease-in;
     display: none; /* hide all sub menus from view */
     position: absolute;
-    left: 0;
+    left: -10px;
     margin: 0;
     top: 20px; /* this should be the same height as the top level menu -- height + padding + borders */
     padding: 5px 5px 10px 5px;
@@ -92,17 +92,17 @@ const NavigationWrapper = styled.nav`
   ul ul li {
     /* this targets all submenu items */
     width: auto; /* set to the width you want your sub menus to be. This needs to match the value we set below */
-    min-width: 170px;
+    /* min-width: 170px; */
     margin: 10px;
   }
 
   ul ul li:last-child {
-    margin: 10px;
+    margin: 10px 5px;
   }
 
   ul ul li a {
     /* target all sub menu item links */
-    padding: 5px 10px; /* give our sub menu links a nice button feel */
+    padding: 5px 5px; /* give our sub menu links a nice button feel */
     text-decoration: none;
     white-space: nowrap;
     font-size: 1rem;
