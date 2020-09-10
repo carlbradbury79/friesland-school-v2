@@ -68,7 +68,7 @@ const SectionSelector = ({ currentPage }) => {
     currentPage.title === "Parent Information" ||
     currentPage.title === "Curriculum: Subjects" ||
     currentPage.title === "About Friesland" ||
-    currentPage.title === "Keeping in Touch"
+    currentPage.title === "Contact"
   ) {
     return (
       <Subjects>

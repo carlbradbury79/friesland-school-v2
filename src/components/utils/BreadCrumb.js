@@ -29,7 +29,7 @@ const BreadCrumbWrapper = styled.div`
 `
 
 const BreadCrumb = ({ parent }) => {
-  // console.log("parent", parent)
+  console.log("parent", parent)
   return (
     <div>
       <div>
@@ -39,14 +39,20 @@ const BreadCrumb = ({ parent }) => {
               <span>Home</span>
             </Link>
             <span className="divider">{">"}</span>
-            {parent ? (
-              <>
-                <Link to={`/${parent.slug}`}>
-                  <span dangerouslySetInnerHTML={{ __html: parent.title }} />
-                </Link>
-                <span className="divider">></span>
-              </>
-            ) : null}
+            {parent
+              ? parent.map(parent => {
+                  return (
+                    <>
+                      <Link to={`/${parent.slug}`}>
+                        <span
+                          dangerouslySetInnerHTML={{ __html: parent.title }}
+                        />
+                      </Link>
+                      <span className="divider">&gt;</span>
+                    </>
+                  )
+                })
+              : null}
           </BreadCrumbWrapper>
         </div>
       </div>

@@ -100,10 +100,12 @@ const postTemplate = ({ data: { post } }) => {
       <PostContent>
         {/* {console.log("cat", post.categories[0].name)} */}
         <BreadCrumb
-          parent={{
-            slug: `/blog/${post.categories.nodes[0].slug}`,
-            title: post.categories.nodes[0].name,
-          }}
+          parent={[
+            {
+              slug: `/blog/${post.categories.nodes[0].slug}`,
+              title: post.categories.nodes[0].name,
+            },
+          ]}
         />
         <h1 dangerouslySetInnerHTML={{ __html: post.title }} />
 

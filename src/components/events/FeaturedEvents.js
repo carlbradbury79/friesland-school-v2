@@ -6,7 +6,6 @@ import FeaturedEvent from "./FeaturedEvent"
 const FeaturedEventSection = styled.section`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  /* grid-column-gap: 1rem; */
   grid-row-gap: 1rem;
   margin-bottom: 3rem;
 
@@ -20,9 +19,13 @@ const EventTitle = styled.h2`
   margin-bottom: 4rem;
   font-family: "Cormorant Garamond", serif;
   font-size: var(--h3Size);
-  /* font-size: 32px; */
   font-weight: 600;
   text-align: center;
+`
+
+const NoEventMsg = styled.h4`
+  text-align: center;
+  margin-bottom: 2rem;
 `
 
 const FeaturedNewsLink = styled(Link)`
@@ -90,15 +93,14 @@ const FeaturedEvents = () => {
     }
   `)
 
-  // function useCurrentEvents() {
   const [events, setEvents] = useState([])
 
   useEffect(() => {
     const eventPosts = FeaturedEventData.allWpPost.nodes.map(event => {
-      console.log("WP date", event.eventDate.dateofevent)
+      // console.log("WP date", event.eventDate.dateofevent)
       event.eventDate.dateofevent = new Date(event.eventDate.dateofevent)
       event.eventDate.endtime = new Date(event.eventDate.endtime)
-      console.log("post WP", event.eventDate.dateofevent)
+      // console.log("post WP", event.eventDate.dateofevent)
       return event
     })
     // Order events
@@ -107,8 +109,6 @@ const FeaturedEvents = () => {
     )
 
     const today = new Date(Date.now())
-    console.log("now", today)
-    console.log("sortedEvents", sortedEvents)
 
     // Remove old events
     const newEvents = sortedEvents.filter(
@@ -119,20 +119,21 @@ const FeaturedEvents = () => {
     setEvents(newEvents)
   }, [])
   console.log(events)
-  // return events
-  // }
-
-  // const currentEvents = useCurrentEvents()
+  console.log("events 0?", events.length)
 
   return (
     <>
       <EventTitle>Upcoming Events</EventTitle>
-      <FeaturedEventSection>
-        {events.map((event, i) => {
-          // console.log(event)
-          return i < 2 && <FeaturedEvent key={event.id} event={event} />
-        })}
-      </FeaturedEventSection>
+      {events.length > 0 ? (
+        <FeaturedEventSection>
+          {events.map((event, i) => {
+            console.log(event)
+            return i < 2 && <FeaturedEvent key={event.id} event={event} />
+          })}
+        </FeaturedEventSection>
+      ) : (
+        <NoEventMsg>No events coming up right now</NoEventMsg>
+      )}
       <FeaturedNewsLink to="/blog/events">More events</FeaturedNewsLink>
     </>
   )

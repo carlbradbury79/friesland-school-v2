@@ -66,10 +66,12 @@ const archiveTemplate = ({
             <CategoriesMenu categories={allWpCategory.nodes} />
 
             <BreadCrumb
-              parent={{
-                slug: `/blog/${catSlug}`,
-                title: catName,
-              }}
+              parent={[
+                {
+                  slug: `/blog/${catSlug}`,
+                  title: catName,
+                },
+              ]}
             />
 
             <ArticleGrid>

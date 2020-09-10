@@ -48,6 +48,21 @@ const PageContent = styled.div`
 
 const pageTemplate = ({ data }) => {
   // console.log("page", data)
+  let allParents = []
+
+  if (data.currentPage.ancestors) {
+    allParents = data.currentPage.ancestors.nodes.map(ancestor => {
+      return {
+        slug: ancestor.slug,
+        title: ancestor.slug
+          .split("-")
+          .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(" "),
+      }
+    })
+  }
+
+  console.log("AP", allParents)
 
   return (
     <Layout>
@@ -102,19 +117,7 @@ const pageTemplate = ({ data }) => {
         {/* TOTO FIX PAGE BREADCRUMB QUERY */}
         {console.log("BC", data.currentPage.parent)}
 
-        <BreadCrumb
-          parent={
-            data.currentPage.ancestors
-              ? {
-                  slug: data.currentPage.ancestors.nodes[0].slug,
-                  title: data.currentPage.ancestors.nodes[0].slug
-                    .split("-")
-                    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-                    .join(" "),
-                }
-              : null
-          }
-        />
+        <BreadCrumb parent={data.currentPage.ancestors ? allParents : null} />
 
         <div dangerouslySetInnerHTML={{ __html: data.currentPage.content }} />
       </PageContent>
