@@ -115,9 +115,9 @@ const pageTemplate = ({ data }) => {
       {/* {console.log("spare", SpareImage)} */}
       <PageContent>
         {/* TOTO FIX PAGE BREADCRUMB QUERY */}
-        {console.log("BC", data.currentPage.parent)}
+        {/* {console.log("BC", data.currentPage.parent)} */}
 
-        <BreadCrumb parent={data.currentPage.ancestors ? allParents : null} />
+        {/* <BreadCrumb parent={data.currentPage.ancestors ? allParents : null} /> */}
 
         <div dangerouslySetInnerHTML={{ __html: data.currentPage.content }} />
       </PageContent>
@@ -135,6 +135,7 @@ export const pageQuery = graphql`
       title
       content
       slug
+      parentId
       meta {
         description
       }
