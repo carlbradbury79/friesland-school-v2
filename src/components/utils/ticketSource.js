@@ -12,7 +12,11 @@ const TicketSource = () => {
       s.parentNode.insertBefore(el, s)
     })()
   }, [])
-  return <div></div>
+  return (
+    <div>
+      <div id="embedTS_GMJJH"></div>
+    </div>
+  )
 }
 
 export default TicketSource
