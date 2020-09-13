@@ -4,9 +4,7 @@ const TicketSource = () => {
   const [isClient, setClient] = useState(false)
 
   useEffect(() => {
-    if (typeof window === "undefined" || !window.document) {
-      setClient(true)
-    }
+    setClient(true)
   }, [])
   return (
     <div>
