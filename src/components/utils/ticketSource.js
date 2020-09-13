@@ -5,21 +5,14 @@ const TicketSource = () => {
 
   useEffect(() => {
     setClient(true)
+    ;(function() {
+      var el = document.createElement("script")
+      el.src = "https://www.ticketsource.co.uk/ticketshop/GMJJH"
+      var s = document.getElementsByTagName("script")[0]
+      s.parentNode.insertBefore(el, s)
+    })()
   }, [])
-  return (
-    <div>
-      {isClient && (
-        <>
-          {(function() {
-            var el = document.createElement("script")
-            el.src = "https://www.ticketsource.co.uk/ticketshop/GMJJH"
-            var s = document.getElementsByTagName("script")[0]
-            s.parentNode.insertBefore(el, s)
-          })()}
-        </>
-      )}
-    </div>
-  )
+  return <div></div>
 }
 
 export default TicketSource
