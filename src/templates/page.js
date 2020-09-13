@@ -12,6 +12,7 @@ import StyledPageHeaderImage from "../components/utils/PageHeaderImage"
 import { Helmet } from "react-helmet"
 // import Img from "gatsby-image"
 // import { SpareImage } from "../components/utils/SpareFeaturedImage"
+import { ticketSource } from "../components/utils/ticketSource"
 
 const PageTitle = styled.div`
   height: 100px;
@@ -120,6 +121,7 @@ const pageTemplate = ({ data }) => {
         {/* <BreadCrumb parent={data.currentPage.ancestors ? allParents : null} /> */}
 
         <div dangerouslySetInnerHTML={{ __html: data.currentPage.content }} />
+        {data.currentPage.title === "Tickets" && ticketSource()}
       </PageContent>
     </Layout>
   )

@@ -35,12 +35,12 @@ const FooterSocial = () => {
             <FontAwesomeIcon icon={faFacebook} /> <span> Friesland School</span>
           </a>
         </li> */}
-        <li>
+        {/* <li>
           <a href="https://www.facebook.com/pages/category/School/Friesland-Sixth-Form-218985671467360/">
             <FontAwesomeIcon icon={faFacebook} />{" "}
             <span> Friesland Sixth Form</span>
           </a>
-        </li>
+        </li> */}
       </ul>
     </FooterSocialIcons>
   )
