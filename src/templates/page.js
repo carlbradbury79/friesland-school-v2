@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { graphql } from "gatsby"
 import styled from "styled-components"
 import SectionSelector from "../components/utils/SectionSelector"
@@ -121,7 +121,9 @@ const pageTemplate = ({ data }) => {
         {/* <BreadCrumb parent={data.currentPage.ancestors ? allParents : null} /> */}
 
         <div dangerouslySetInnerHTML={{ __html: data.currentPage.content }} />
-        {data.currentPage.title === "Tickets" && ticketSource()}
+        {window.document &&
+          data.currentPage.title === "Tickets" &&
+          ticketSource()}
       </PageContent>
     </Layout>
   )
