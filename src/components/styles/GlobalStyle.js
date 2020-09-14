@@ -199,6 +199,12 @@ td {
   margin-bottom: 8px
 }
 
+.bullets li a {
+  text-decoration: none;
+  color: var(--textColor);
+  border-bottom: 2px solid var(--primary);
+}
+
 .list li {
   margin-bottom:0.5rem;
 }
@@ -508,6 +514,7 @@ color: var(--success);
 
 }
 
+
 .internal-links li a {
   padding: 5px;
   background-color: var(--primary);
@@ -523,7 +530,14 @@ color: var(--success);
 
 
 #222 {
-  scroll-margin-top: 100px;
+  
+}
+
+a.anchor {
+display: block;
+position: relative;
+top: -100px;
+visibility: hidden;
 }
 
 
@@ -535,5 +549,17 @@ color: var(--success);
   visibility: hidden;
   pointer-events:none;
 }  */
+
+.gCalendar {
+  position: relative; padding-bottom: 75%; height: 0; overflow: hidden;
+
+}
+
+
+.gCalendar iframe {
+  
+ position: absolute; top:0; left: 0; width: 100%; height: 100%;
+  
+ }
 
 `
