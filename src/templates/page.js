@@ -12,7 +12,7 @@ import StyledPageHeaderImage from "../components/utils/PageHeaderImage"
 import { Helmet } from "react-helmet"
 // import Img from "gatsby-image"
 // import { SpareImage } from "../components/utils/SpareFeaturedImage"
-import TicketSource from "../components/utils/TicketSource"
+// import TicketSource from "../components/utils/TicketSource"
 
 const PageTitle = styled.div`
   height: 100px;
@@ -92,6 +92,16 @@ const pageTemplate = ({ data }) => {
           src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"
           data-auto-replace-svg
         ></script> */}
+        {data.currentPage.title === "Tickets" && (
+          <script>
+            {`(function() {
+      var el = document.createElement("script")
+      el.src = "https://www.ticketsource.co.uk/ticketshop/GMJJH"
+      var s = document.getElementsByTagName("script")[0]
+      s.parentNode.insertBefore(el, s)
+    })()`}
+          </script>
+        )}
       </Helmet>
       {data.currentPage.featuredImage &&
       data.currentPage.featuredImage.node.remoteFile ? (
@@ -121,7 +131,7 @@ const pageTemplate = ({ data }) => {
         {/* <BreadCrumb parent={data.currentPage.ancestors ? allParents : null} /> */}
 
         <div dangerouslySetInnerHTML={{ __html: data.currentPage.content }} />
-        {data.currentPage.title === "Tickets" && <TicketSource />}
+        {/* {data.currentPage.title === "Tickets" && <TicketSource />} */}
       </PageContent>
     </Layout>
   )
