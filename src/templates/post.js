@@ -98,7 +98,6 @@ const postTemplate = ({ data: { post } }) => {
           categories={post.categories}
         /> */}
       <PostContent>
-        {/* {console.log("cat", post.categories[0].name)} */}
         <BreadCrumb
           parent={[
             {
@@ -124,7 +123,6 @@ const postTemplate = ({ data: { post } }) => {
 
         <FeaturedImage image={post.featuredImage} />
         <SocialShare title={post.title} link={post.slug} />
-        {console.log("meta")}
         <PostContentText dangerouslySetInnerHTML={{ __html: post.content }} />
       </PostContent>
     </Layout>
@@ -178,39 +176,3 @@ export const query = graphql`
     }
   }
 `
-
-// export const pageQuery = graphql`
-//   query($id: String!) {
-//     post: post(id: { eq: $id }) {
-//       content
-//       date(formatString: "DD MMM YYYY")
-//       excerpt
-//       path
-//       slug
-//       title
-//       status
-//       link
-//       categories {
-//         name
-//         slug
-//       }
-//       author
-//       featured_media {
-//         id
-//         wordpress_id
-//         title
-//         status
-//         slug
-//         post
-//         path
-//         localFile {
-//           childImageSharp {
-//             fluid(cropFocus: NORTH, fit: CONTAIN, background: "#fff") {
-//               ...GatsbyImageSharpFluid
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// `

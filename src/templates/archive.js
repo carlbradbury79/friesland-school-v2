@@ -51,13 +51,8 @@ const archiveTemplate = ({
     numberOfPages,
   },
 }) => {
-  // console.log("all posts", allWpPost)
-  // console.log(catId)
-
   return (
     <Layout>
-      {console.log("arch", catName, catId)} {console.log(allWpCategory)}
-      {console.log(allWpPost)}
       <div className="container">
         <div className="row" style={{ marginBottom: "40px" }}>
           <PageContent>

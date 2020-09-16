@@ -114,12 +114,12 @@ const FeaturedEvents = () => {
     const newEvents = sortedEvents.filter(
       event => today < event.eventDate.endtime
     )
-    console.log("newEvents", newEvents)
+    // console.log("newEvents", newEvents)
 
     setEvents(newEvents)
   }, [])
-  console.log(events)
-  console.log("events 0?", events.length)
+  // console.log(events)
+  // console.log("events 0?", events.length)
 
   return (
     <>
@@ -127,7 +127,6 @@ const FeaturedEvents = () => {
       {events.length > 0 ? (
         <FeaturedEventSection>
           {events.map((event, i) => {
-            console.log(event)
             return i < 2 && <FeaturedEvent key={event.id} event={event} />
           })}
         </FeaturedEventSection>

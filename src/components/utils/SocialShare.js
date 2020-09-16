@@ -46,7 +46,7 @@ const SocialShare = ({ title, link }) => {
     <Share>
       <span>Share</span>
       <a
-        href={`mailto:?subject=Check this article from Friesland School&amp;body=Check out this article at http://frieslandschool.com/${link}`}
+        href={`mailto:?subject=Check this article from Friesland School&body=Check out this article at http://frieslandschool.com/${link}`}
         title="Share by Email"
       >
         <FontAwesomeIcon icon={faEnvelope} />

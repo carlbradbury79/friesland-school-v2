@@ -30,10 +30,6 @@ const Subjects = styled.div`
 `
 
 const SectionSelector = ({ currentPage }) => {
-  console.log("selection", currentPage)
-  // const pageDataArray = AllPages()
-  // console.log("PDA", pageDataArray)
-
   const AllPages = useStaticQuery(graphql`
     query {
       allWpPage {
@@ -59,7 +55,6 @@ const SectionSelector = ({ currentPage }) => {
       }
     })
 
-  console.log("Siblings", siblings)
   const childPages = AllPages.allWpPage.nodes
     .filter(item => item.parentId === currentPage.id)
     .sort((a, b) => {
@@ -72,16 +67,6 @@ const SectionSelector = ({ currentPage }) => {
       }
     })
 
-  // console.log("child", childPages)
-
-  // if (
-  //   currentPage.title === "Curriculum" ||
-  //   currentPage.title === "Sixth Form" ||
-  //   currentPage.title === "Parent Information" ||
-  //   currentPage.title === "Curriculum: Subjects" ||
-  //   currentPage.title === "About Friesland" ||
-  //   currentPage.title === "Contact"
-  // ) {
   return (
     <Subjects>
       {currentPage.title === "Curriculum" ||

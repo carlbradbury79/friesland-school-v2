@@ -156,7 +156,6 @@ const BlogCard = ({ post }) => {
       }
     }
   `)
-  console.log(post)
   const altBgImage =
     post.node.featured_media === null ||
     post.node.featured_media.localFile.childImageSharp === null

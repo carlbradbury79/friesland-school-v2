@@ -4,15 +4,11 @@ import styled from "styled-components"
 import SectionSelector from "../components/utils/SectionSelector"
 import Layout from "../components/layout"
 // import Img from "gatsby-image"
-// import PageSidebar from "../components/page/PageSidebar"
-import BreadCrumb from "../components/utils/BreadCrumb"
+// import BreadCrumb from "../components/utils/BreadCrumb"
 // import FeaturedImage from "../components/utils/FeaturedImage"
 import StyledPageHeaderImage from "../components/utils/PageHeaderImage"
 // import PageHero from "../components/PageHero"
 import { Helmet } from "react-helmet"
-// import Img from "gatsby-image"
-// import { SpareImage } from "../components/utils/SpareFeaturedImage"
-// import TicketSource from "../components/utils/TicketSource"
 
 const PageTitle = styled.div`
   height: 100px;
@@ -48,7 +44,6 @@ const PageContent = styled.div`
 `
 
 const pageTemplate = ({ data }) => {
-  // console.log("page", data)
   let allParents = []
 
   if (data.currentPage.ancestors) {
@@ -62,8 +57,6 @@ const pageTemplate = ({ data }) => {
       }
     })
   }
-
-  console.log("AP", allParents)
 
   return (
     <Layout>
@@ -120,18 +113,10 @@ const pageTemplate = ({ data }) => {
           <h1 dangerouslySetInnerHTML={{ __html: data.currentPage.title }} />
         </PageTitle>
       )}
-      {console.log("child?", data.currentPage)}
       <SectionSelector currentPage={data.currentPage} />
-      {/* <img fluid={spareImage} /> */}
-      {/* {console.log("spare", SpareImage)} */}
+
       <PageContent>
-        {/* TOTO FIX PAGE BREADCRUMB QUERY */}
-        {/* {console.log("BC", data.currentPage.parent)} */}
-
-        {/* <BreadCrumb parent={data.currentPage.ancestors ? allParents : null} /> */}
-
         <div dangerouslySetInnerHTML={{ __html: data.currentPage.content }} />
-        {/* {data.currentPage.title === "Tickets" && <TicketSource />} */}
       </PageContent>
     </Layout>
   )
@@ -184,55 +169,3 @@ export const pageQuery = graphql`
     }
   }
 `
-
-// export const pageQuery = graphql`
-//   query($id: String!) {
-//     currentPage: wpPage(id: { eq: $id }) {
-//       id
-//       title
-//       content
-//       wordpress_parent
-//       parent_element {
-//         title
-//       }
-//       acf {
-//         image_for_page {
-//           localFile {
-//             childImageSharp {
-//               fluid(quality: 100, maxWidth: 4000) {
-//                 ...GatsbyImageSharpFluid_withWebp
-//               }
-//             }
-//           }
-//         }
-//       }
-//     }
-//     parentChildren: pages(filter: { wordpress_parent: { eq: $parent } }) {
-//       edges {
-//         node {
-//           id
-//           title
-//           link
-//         }
-//       }
-//     }
-//     children: pages(
-//       filter: { wordpress_parent: { eq: $wpId } }
-//       sort: { order: ASC, fields: title }
-//     ) {
-//       edges {
-//         node {
-//           id
-//           title
-//           link
-//           slug
-//         }
-//       }
-//     }
-//     parent: page(wordpress_id: { eq: $parent }) {
-//       title
-//       link
-//       slug
-//     }
-//   }
-// `

@@ -104,7 +104,7 @@ const FeaturedNews = () => {
     }
   `)
 
-  console.log("FAD", FeaturedArticlesData)
+  // console.log("FAD", FeaturedArticlesData)
 
   const [isFeaturedNewsVisible, toggleFeaturedNewsVisible] = useState(false)
   const visibleAnimation = useSpring({
@@ -119,7 +119,7 @@ const FeaturedNews = () => {
   const FeaturedNewsArticles = FeaturedArticlesData.allWpPost.nodes.sort(
     (a, b) => (a.date > b.date ? -1 : 1)
   )
-  console.log("fad", FeaturedNewsArticles)
+  // console.log("fad", FeaturedNewsArticles)
   return (
     <FeaturedNewsSection style={visibleAnimation}>
       <Waypoint
