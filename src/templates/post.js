@@ -64,6 +64,10 @@ const PostContentText = styled.div`
   }
 `
 
+const PublishDate = styled.p`
+  font-size: 0.8rem;
+`
+
 const postTemplate = ({ data: { post } }) => {
   const postType = post.categories.nodes.find(
     category => category.name === "Events"
@@ -109,16 +113,16 @@ const postTemplate = ({ data: { post } }) => {
         <h1 dangerouslySetInnerHTML={{ __html: post.title }} />
 
         {postType ? (
-          <p>
+          <PublishDate>
             Event starts <Moment fromNow>{post.eventDate.dateofevent}</Moment>
-          </p>
+          </PublishDate>
         ) : (
-          <p>
+          <PublishDate>
             Published:
             <Moment format="DD-MM-YYYY">
               <span dangerouslySetInnerHTML={{ __html: post.date }} />
             </Moment>
-          </p>
+          </PublishDate>
         )}
 
         <FeaturedImage image={post.featuredImage} />

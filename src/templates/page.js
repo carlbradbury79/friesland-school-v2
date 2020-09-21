@@ -9,6 +9,7 @@ import Layout from "../components/layout"
 import StyledPageHeaderImage from "../components/utils/PageHeaderImage"
 // import PageHero from "../components/PageHero"
 import { Helmet } from "react-helmet"
+import Gallery from "../components/utils/Gallery"
 
 const PageTitle = styled.div`
   height: 100px;
@@ -92,7 +93,12 @@ const pageTemplate = ({ data }) => {
       el.src = "https://www.ticketsource.co.uk/ticketshop/GMJJH"
       var s = document.getElementsByTagName("script")[0]
       s.parentNode.insertBefore(el, s)
-    })()`}
+    })()
+    
+    const current = document.querySelector("#current")
+  const imgs = document.querySelectorAll(".imgs img")  
+    
+    `}
           </script>
         )}
       </Helmet>
@@ -114,7 +120,7 @@ const pageTemplate = ({ data }) => {
         </PageTitle>
       )}
       <SectionSelector currentPage={data.currentPage} />
-
+      {data.currentPage.title === "Lettings" && <Gallery />}
       <PageContent>
         <div dangerouslySetInnerHTML={{ __html: data.currentPage.content }} />
       </PageContent>

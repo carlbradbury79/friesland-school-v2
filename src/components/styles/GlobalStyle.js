@@ -562,4 +562,27 @@ visibility: hidden;
   
  }
 
+
+ .galleryContainer{
+  max-width: 750px;
+  margin: auto;
+  padding: 1rem;
+ }
+
+ #current img, .imgs img{
+  width: 100%;
+ }
+
+ .imgs img {
+  cursor: pointer;
+ }
+
+.imgs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 5px;
+  
+}
+
+
 `

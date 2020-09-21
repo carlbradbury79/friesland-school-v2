@@ -28,7 +28,7 @@ const FooterLinks = () => {
         {footerLinksMenuItems.map(item => {
           const url = getSlug(item.url)
           return (
-            <li key={item.slug}>
+            <li key={item.url}>
               <Link to={`/${url}`}>
                 <span dangerouslySetInnerHTML={{ __html: item.label }} />
               </Link>
