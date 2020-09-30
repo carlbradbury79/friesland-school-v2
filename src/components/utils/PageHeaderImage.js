@@ -10,6 +10,10 @@ const HeroContent = styled.div`
   font-size: 3rem;
   margin-bottom: 2rem;
 
+  @media (min-width: 800px) {
+    height: 500px;
+  }
+
   h1 {
     padding: 20px;
     margin: 0;

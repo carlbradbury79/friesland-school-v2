@@ -31,6 +31,15 @@ const PageTitle = styled.div`
   }
 `
 
+const PageHeaderWrapper = styled.div`
+  height: 400px;
+  margin-bottom: 2rem;
+
+  @media (min-width: 800px) {
+    height: 500px;
+  }
+`
+
 const PageContent = styled.div`
   max-width: 800px;
   margin: auto;
@@ -105,7 +114,7 @@ const pageTemplate = ({ data }) => {
       </Helmet>
       {data.currentPage.featuredImage &&
       data.currentPage.featuredImage.node.remoteFile ? (
-        <div style={{ height: "400px", marginBottom: "2rem" }}>
+        <PageHeaderWrapper>
           <StyledPageHeaderImage
             image={
               data.currentPage.featuredImage.node.remoteFile.childImageSharp
@@ -114,7 +123,7 @@ const pageTemplate = ({ data }) => {
           >
             {data.currentPage.title}
           </StyledPageHeaderImage>
-        </div>
+        </PageHeaderWrapper>
       ) : (
         <PageTitle>
           <h1 dangerouslySetInnerHTML={{ __html: data.currentPage.title }} />
