@@ -57,6 +57,10 @@ const HeroRight = () => {
         <h1>Current Students</h1>
         <Link to="/term-dates">Term Dates</Link>
         <Link to="/blog/letters">Latest Letters</Link>
+        <a href="https://classroom.google.com/h">Google Classroom</a>
+        <a href="https://apps.libresoft.co.uk/8305409-r72gi709iqc4qfwfsqjs-fs/">
+          Library Books
+        </a>
         {/* <Link to="/newsletter">Newsletter</Link> */}
       </HeroContent>
     </BackgroundImage>

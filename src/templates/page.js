@@ -46,6 +46,7 @@ const PageContent = styled.div`
 
 const pageTemplate = ({ data }) => {
   let allParents = []
+  console.log(data)
 
   if (data.currentPage.ancestors) {
     allParents = data.currentPage.ancestors.nodes.map(ancestor => {
@@ -158,18 +159,16 @@ export const pageQuery = graphql`
           slug
         }
       }
-      children {
-        ... on WpPage {
+      wpChildren {
+        nodes {
           id
-          title
           slug
         }
       }
-      parent {
-        ... on WpPage {
+      wpParent {
+        node {
           id
           slug
-          title
         }
       }
     }
