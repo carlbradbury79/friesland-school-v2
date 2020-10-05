@@ -97,7 +97,7 @@ const NavigationWrapper = styled.nav`
   }
 
   ul ul li:last-child {
-    margin: 10px 5px;
+    margin: 10px 10px;
   }
 
   ul ul li a {

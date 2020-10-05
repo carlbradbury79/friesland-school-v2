@@ -69,16 +69,11 @@ const SectionSelector = ({ currentPage }) => {
 
   return (
     <Subjects>
-      {currentPage.title === "Curriculum" ||
-      currentPage.title === "Sixth Form" ||
-      currentPage.title === "Parent Information" ||
-      currentPage.title === "Curriculum: Subjects" ||
-      currentPage.title === "About Friesland" ||
-      currentPage.title === "Contact" ? (
+      {siblings.length > 0 && currentPage.ancestors ? (
         <>
-          <h4>{currentPage.title} Links</h4>
+          {/* <h4>Related Pages</h4> */}
           <ul>
-            {childPages.map(subject => {
+            {siblings.map(subject => {
               return (
                 <li key={subject.id}>
                   <Link to={`/${subject.slug}`}>{subject.title}</Link>
@@ -89,11 +84,23 @@ const SectionSelector = ({ currentPage }) => {
         </>
       ) : null}
 
-      {siblings.length > 0 && currentPage.ancestors ? (
+      {currentPage.title === "Curriculum" ||
+      currentPage.title === "Sixth Form" ||
+      currentPage.title === "Parent Information" ||
+      currentPage.title === "Curriculum: Subjects" ||
+      currentPage.title === "About Friesland" ||
+      currentPage.title === "Courses" ||
+      currentPage.title === "Contact" ? (
         <>
-          <h4>Related Pages</h4>
+          {currentPage.title === "Courses" && <h4>Sixth Form Courses</h4>}
+          {currentPage.title === "Curriculum: Subjects" && <h4>Subjects</h4>}
+          {currentPage.title !== "Curriculum: Subjects" &&
+            currentPage.title !== "Courses" && (
+              <h4>{currentPage.title} Links</h4>
+            )}
+
           <ul>
-            {siblings.map(subject => {
+            {childPages.map(subject => {
               return (
                 <li key={subject.id}>
                   <Link to={`/${subject.slug}`}>{subject.title}</Link>

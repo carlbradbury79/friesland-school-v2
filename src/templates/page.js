@@ -1,6 +1,7 @@
 import React from "react"
-import { graphql } from "gatsby"
-import styled from "styled-components"
+import { graphql, Link } from "gatsby"
+import styled, { keyframes } from "styled-components"
+
 import SectionSelector from "../components/utils/SectionSelector"
 import Layout from "../components/layout"
 // import Img from "gatsby-image"
@@ -9,6 +10,9 @@ import Layout from "../components/layout"
 import StyledPageHeaderImage from "../components/utils/PageHeaderImage"
 // import PageHero from "../components/PageHero"
 import { Helmet } from "react-helmet"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons"
+
 import Gallery from "../components/utils/Gallery"
 
 const PageTitle = styled.div`
@@ -28,6 +32,7 @@ const PageTitle = styled.div`
     margin: 0;
     font-size: 2em;
     font-weight: bold;
+    text-align: center;
   }
 `
 
@@ -38,6 +43,27 @@ const PageHeaderWrapper = styled.div`
   @media (min-width: 800px) {
     height: 500px;
   }
+`
+
+const float = keyframes`
+0% {
+		transform: translatey(0px);
+	}
+	50% {
+		transform: translatey(-10px);
+	}
+	100% {
+		transform: translatey(0px);
+	}
+`
+
+const GoToStart = styled.a`
+  display: block;
+  text-align: center;
+  font-size: 2rem;
+  animation-name: ${float};
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
 `
 
 const PageContent = styled.div`
@@ -129,7 +155,12 @@ const pageTemplate = ({ data }) => {
           <h1 dangerouslySetInnerHTML={{ __html: data.currentPage.title }} />
         </PageTitle>
       )}
+      <GoToStart href="#start">
+        <FontAwesomeIcon icon={faChevronDown} />
+      </GoToStart>
       <SectionSelector currentPage={data.currentPage} />
+      <a class="anchor" id="start"></a>
+
       {data.currentPage.title === "Lettings" && <Gallery />}
       <PageContent>
         <div dangerouslySetInnerHTML={{ __html: data.currentPage.content }} />
