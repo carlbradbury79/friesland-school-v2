@@ -20,7 +20,7 @@ const PageTitle = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 3rem;
+  font-size: 2rem;
   padding: 0 30px;
   margin-top: 1rem;
   margin-bottom: 2rem;

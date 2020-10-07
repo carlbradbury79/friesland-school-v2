@@ -80,6 +80,8 @@ p {
   /* max-width: 40em; */
 }
 
+
+
 h1,
 h2,
 h3,
@@ -135,6 +137,12 @@ blockquote {
   background: var(--white);
   box-shadow: var(--level-4);
 }
+
+.highlightBgBlue {
+  background-color: var(--lightBlue);
+  color:var(--white)
+}
+
 .highlight {
 font-weight: bold;
 border-bottom: 2px dotted var(--blue);
@@ -223,9 +231,10 @@ button, .button {
   text-align: center;
   box-shadow: var(--level-1);
   transition: background-color 0.3s, color 0.3s;
+  margin: auto;
 }
 
-button:hover {
+button:hover, .button:hover {
   background-color: var(--primary);
   color: var(--white);
   text-decoration: none;
@@ -600,4 +609,67 @@ visibility: hidden;
  }
 
 
+.sixthFormOpenEve {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+    justify-content: center;
+    gap:2rem;
+    margin-bottom:4rem;
+    text-align:center;
+
+
+}
+
+@media (max-width: 600px) {
+  .sixthFormOpenEve{
+    flex-direction: column;
+    margin-bottom: 12rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .sixthFormOpenEve{
+    flex-direction: column;
+    margin-bottom: 8rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .sixthFormOpenEve{
+    flex-direction: column;
+    margin-bottom: 4rem;
+  }
+}
+
+.sixthFormOpenEve > div {
+  flex: 1 1 150px; /*  No stretching: */
+    margin: 5px;
+}
+
+.sixthFormOpenEve h2 {
+  margin-top:0;
+  font-weight:bold;
+}
+
+.sixthFormOpenEve > div > p:nth-child(2){
+font-weight: bold;}
+
+
+.sixthFormProspectus {
+  text-align:center;
+  margin-bottom: 2rem;
+}
+
+.downloadApplication {
+  text-align:center;
+  font-size: 1.1rem;
+  margin-bottom: 4rem;
+}
+
+.sfH2 {
+  text-align:center;
+  font-weight: bold;
+  margin-bottom:2rem;
+}
 `
