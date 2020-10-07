@@ -29,7 +29,7 @@ const BreadCrumbWrapper = styled.div`
 `
 
 const BreadCrumb = ({ parent }) => {
-  console.log("parent", parent)
+  // console.log("parent", parent)
   return (
     <div>
       <div>
@@ -43,7 +43,7 @@ const BreadCrumb = ({ parent }) => {
               ? parent.map(parent => {
                   return (
                     <>
-                      <Link to={`/${parent.slug}`}>
+                      <Link to={`/${parent.slug}`} key={parent.slug}>
                         <span
                           dangerouslySetInnerHTML={{ __html: parent.title }}
                         />
@@ -61,7 +61,7 @@ const BreadCrumb = ({ parent }) => {
 }
 
 BreadCrumb.propTypes = {
-  parent: PropTypes.object,
+  parent: PropTypes.array,
 }
 
 export default BreadCrumb

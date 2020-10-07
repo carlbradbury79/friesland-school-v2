@@ -69,7 +69,10 @@ const SectionSelector = ({ currentPage }) => {
 
   return (
     <Subjects>
-      {siblings.length > 0 && currentPage.ancestors ? (
+      {siblings.length > 0 &&
+      currentPage.ancestors &&
+      currentPage.title !== "Courses" &&
+      currentPage.title !== "Curriculum: Subjects" ? (
         <>
           {/* <h4>Related Pages</h4> */}
           <ul>

@@ -35,7 +35,7 @@ const Share = styled.div`
 `
 
 const SocialShare = ({ title, link }) => {
-  console.log("link", link)
+  // console.log("link", link)
 
   const twitterStart = "Check out this article about Friesland School: "
     .split(" ")

@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import styled, { keyframes } from "styled-components"
 
 import SectionSelector from "../components/utils/SectionSelector"
@@ -81,7 +81,7 @@ const PageContent = styled.div`
 
 const pageTemplate = ({ data }) => {
   let allParents = []
-  console.log(data)
+  // console.log(data)
 
   if (data.currentPage.ancestors) {
     allParents = data.currentPage.ancestors.nodes.map(ancestor => {

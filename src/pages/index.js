@@ -115,48 +115,6 @@ const IndexPage = () => {
       <TwitterFeed />
 
       {/* ------------------ InstaGram ----------------------------- */}
-      <StyledInstaSection style={visibleInstaAnimation}>
-        <Waypoint
-          bottomOffset="20%"
-          onEnter={() => (isInstaVisible ? null : toggleInstaVisible(true))}
-        />
-        <InstaIcon>
-          <h2>
-            <a href="https://twitter.com/frieslandschool">
-              <FontAwesomeIcon icon={faInstagram} />
-            </a>
-          </h2>
-          <a href="https://google.com">FrieslandSchool</a>
-        </InstaIcon>
-        <GramContainer>
-          {gramz.map(gram => (
-            <Gram
-              key={gram.id}
-              bg={gram.thumbnail}
-              // onClick={() => setModalVisible(true)}
-              // onClick={() => getGram(gram.id)}
-              getGram={getGram}
-              gram={gram}
-            />
-          ))}
-        </GramContainer>
-      </StyledInstaSection>
-
-      {/* Display Modal */}
-      {transitions.map(
-        ({ item, key, props: style }) =>
-          item && (
-            <Modal
-              style={style}
-              closeModal={() => setModalVisible(false)}
-              key={key}
-              gram={gramForModal}
-            />
-          )
-      )}
-
-      {/* Modal visibility controls the overlay */}
-      {modalVisible && <InstaOverlay />}
     </Layout>
   )
 }

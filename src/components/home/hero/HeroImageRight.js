@@ -61,6 +61,7 @@ const HeroRight = () => {
         <a href="https://apps.libresoft.co.uk/8305409-r72gi709iqc4qfwfsqjs-fs/">
           Library Books
         </a>
+        <Link to="/blog/covid-19">Covid-19 Documents</Link>
         {/* <Link to="/newsletter">Newsletter</Link> */}
       </HeroContent>
     </BackgroundImage>
