@@ -88,7 +88,7 @@ const FeaturedEvent = ({ event }) => {
   `)
 
   const FeaturedEventImage =
-    featuredImage.node === null ||
+    featuredImage === null ||
     featuredImage.node.remoteFile.childImageSharp === null
       ? altFeaturedEventImage.image.childImageSharp.fluid
       : featuredImage.node.remoteFile.childImageSharp.fluid

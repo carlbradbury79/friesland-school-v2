@@ -83,7 +83,7 @@ const postTemplate = ({ data: { post } }) => {
           content={
             post.meta.description && post.meta.description.length > 0
               ? post.meta.description
-              : "This is an article found on frieslandschool.com"
+              : "This is an article on frieslandschool.com"
           }
         />
         <meta

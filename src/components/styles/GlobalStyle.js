@@ -672,4 +672,12 @@ font-weight: bold;}
   font-weight: bold;
   margin-bottom:2rem;
 }
+
+.mb2 {
+  margin-bottom:2rem;
+}
+
+.center {
+  text-align:center;
+}
 `
