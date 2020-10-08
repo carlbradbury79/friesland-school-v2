@@ -63,7 +63,7 @@ const HeroRight = () => {
         </a>
         <Link to="/blog/covid-19">Covid-19 Documents</Link>
         <a href="https://sites.google.com/frieslandschool.com/performing-arts-hub/home">
-          Peforming Arts Hub
+          Performing Arts Hub
         </a>
         {/* <Link to="/newsletter">Newsletter</Link> */}
       </HeroContent>
