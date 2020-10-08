@@ -1,7 +1,7 @@
 import React from "react"
 // import { Link } from "gatsby"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faTwitter, faFacebook } from "@fortawesome/free-brands-svg-icons"
+import { faTwitter, faYoutube } from "@fortawesome/free-brands-svg-icons"
 
 import { FooterSocialIcons } from "./footerStyles"
 
@@ -28,6 +28,11 @@ const FooterSocial = () => {
         <li>
           <a href="https://twitter.com/FrieslandPta">
             <FontAwesomeIcon icon={faTwitter} /> <span> @FrieslandPta</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/user/frieslandschool/videos">
+            <FontAwesomeIcon icon={faYoutube} /> <span> Friesland School</span>
           </a>
         </li>
         {/* <li>
