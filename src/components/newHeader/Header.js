@@ -29,7 +29,7 @@ const Header = ({ handleOverlayMenu }) => {
         <div>
           <FontAwesomeIcon icon={faPhone} />
           <span>
-            <a href="tel:+44-155-9397326">0115 9397326</a>
+            <a href="tel:+44-115-9397326">0115 9397326</a>
           </span>
         </div>
       </HeaderTopContainer>
