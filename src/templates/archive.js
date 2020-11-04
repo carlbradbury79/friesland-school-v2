@@ -63,7 +63,7 @@ const archiveTemplate = ({
             <BreadCrumb
               parent={[
                 {
-                  slug: `/blog/${catSlug}`,
+                  slug: `/${catSlug}`,
                   title: catName,
                 },
               ]}

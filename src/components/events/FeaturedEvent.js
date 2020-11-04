@@ -162,12 +162,12 @@ const FeaturedEvent = ({ event }) => {
               <p>
                 Finishes <Moment to={eventDate.endtime}>{today}</Moment>
               </p>
-              <p>
+              {/* <p>
                 Event finishes at {eventDate.endtime.getHours()}:
                 {eventDate.endtime.getMinutes() < 10
                   ? "0" + eventDate.endtime.getMinutes().toString()
                   : eventDate.endtime.getMinutes()}{" "}
-              </p>
+              </p> */}
             </div>
           )}
 

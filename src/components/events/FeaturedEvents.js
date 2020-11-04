@@ -133,7 +133,8 @@ const FeaturedEvents = () => {
       ) : (
         <NoEventMsg>No events coming up right now</NoEventMsg>
       )}
-      <FeaturedNewsLink to="/blog/events">More events</FeaturedNewsLink>
+      {/* <FeaturedNewsLink to="/blog/events">More events</FeaturedNewsLink> */}
+      <FeaturedNewsLink to="/events">More events</FeaturedNewsLink>
     </>
   )
 }

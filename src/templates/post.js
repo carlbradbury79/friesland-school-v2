@@ -72,7 +72,13 @@ const postTemplate = ({ data: { post } }) => {
   const postType = post.categories.nodes.find(
     category => category.name === "Events"
   )
-  // const today = new Date(Date.now())
+  const now = new Date(Date.now())
+  const eventStart = new Date(post.eventDate.dateofevent)
+  const eventEnd = new Date(post.eventDate.endtime)
+  // console.log(now)
+  // console.log(eventStart)
+  // console.log(eventEnd)
+  // console.log(post)
   return (
     <Layout>
       <Helmet>
@@ -105,7 +111,7 @@ const postTemplate = ({ data: { post } }) => {
         <BreadCrumb
           parent={[
             {
-              slug: `/blog/${post.categories.nodes[0].slug}`,
+              slug: `/${post.categories.nodes[0].slug}`,
               title: post.categories.nodes[0].name,
             },
           ]}
@@ -114,13 +120,14 @@ const postTemplate = ({ data: { post } }) => {
 
         {postType ? (
           <PublishDate>
-            Event starts <Moment fromNow>{post.eventDate.dateofevent}</Moment>
+            {eventStart > now? <span>Event starts <Moment fromNow>{post.eventDate.dateofevent}</Moment></span> : now > eventEnd?<span>Event finshed <Moment fromNow>{post.eventDate.endtime}</Moment></span>:<span>Event on now!</span>}
+            {/* Event starts <Moment fromNow>{post.eventDate.dateofevent}</Moment> */}
           </PublishDate>
         ) : (
           <PublishDate>
-            Published:
-            <Moment format="DD-MM-YYYY">
-              <span dangerouslySetInnerHTML={{ __html: post.date }} />
+            Posted:{" "}
+            <Moment format="DD-MM-YYYY">{post.date}
+              {/* <span dangerouslySetInnerHTML={{ __html: post.date }} /> */}
             </Moment>
           </PublishDate>
         )}

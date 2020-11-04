@@ -159,7 +159,7 @@ const pageTemplate = ({ data }) => {
         <FontAwesomeIcon icon={faChevronDown} />
       </GoToStart>
       <SectionSelector currentPage={data.currentPage} />
-      <a class="anchor" id="start"></a>
+      <a className="anchor" id="start"></a>
 
       {data.currentPage.title === "Lettings" && <Gallery />}
       <PageContent>

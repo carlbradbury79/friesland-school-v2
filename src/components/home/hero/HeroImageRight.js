@@ -56,12 +56,12 @@ const HeroRight = () => {
       <HeroContent>
         <h1>Current Students</h1>
         <Link to="/term-dates">Term Dates</Link>
-        <Link to="/blog/letters">Latest Letters</Link>
+        <Link to="/letters">Latest Letters</Link>
         <a href="https://classroom.google.com/h">Google Classroom</a>
         <a href="https://apps.libresoft.co.uk/8305409-r72gi709iqc4qfwfsqjs-fs/">
           Library Books
         </a>
-        <Link to="/blog/covid-19">Covid-19 Documents</Link>
+        <Link to="/covid-19">Covid-19 Documents</Link>
         <a href="https://sites.google.com/frieslandschool.com/performing-arts-hub/home">
           Performing Arts Hub
         </a>

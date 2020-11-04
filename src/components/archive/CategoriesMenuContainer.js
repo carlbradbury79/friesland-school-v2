@@ -42,7 +42,7 @@ const CategoriesMenuContainer = ({ style, categories }) => {
           return (
             category.posts.nodes.length > 0 && (
               <li key={category.id}>
-                <Link to={`/blog/${category.slug}`}>{category.name}</Link>
+                <Link to={`/${category.slug}`}>{category.name}</Link>
               </li>
             )
           )

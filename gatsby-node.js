@@ -175,7 +175,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       createPage,
       items: cat.posts.nodes,
       itemsPerPage: 6,
-      pathPrefix: `blog/${cat.slug}`,
+      // pathPrefix: `blog/${cat.slug}`,
+      pathPrefix: `${cat.slug}`,
       component: slash(archiveTemplate),
       context: {
         catId: cat.id,

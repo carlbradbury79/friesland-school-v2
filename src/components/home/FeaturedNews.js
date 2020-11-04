@@ -136,7 +136,7 @@ const FeaturedNews = () => {
         })}
       </FeaturedNewsContainer>
       {/* <FeaturedNewsSlider post={FeaturedNewsArticles} /> */}
-      <FeaturedNewsLink to="/blog/news">More Articles</FeaturedNewsLink>
+      <FeaturedNewsLink to="/news">More Articles</FeaturedNewsLink>
     </FeaturedNewsSection>
   )
 }

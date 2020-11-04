@@ -42,14 +42,14 @@ const BreadCrumb = ({ parent }) => {
             {parent
               ? parent.map(parent => {
                   return (
-                    <>
-                      <Link to={`/${parent.slug}`} key={parent.slug}>
+                    <span key={parent.slug}>
+                      <Link to={`/${parent.slug}`} >
                         <span
                           dangerouslySetInnerHTML={{ __html: parent.title }}
                         />
                       </Link>
                       <span className="divider">&gt;</span>
-                    </>
+                    </span>
                   )
                 })
               : null}
