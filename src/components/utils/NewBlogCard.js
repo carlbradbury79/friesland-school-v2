@@ -87,7 +87,7 @@ const BlogCard = ({ post }) => {
               {post.categories.nodes.map(category => {
                 return (
                   <li key={category.id}>
-                    <Link to={`/blog/${category.slug}`}>{category.name}</Link>
+                    <Link to={`/${category.slug}`}>{category.name}</Link>
                   </li>
                 )
               })}

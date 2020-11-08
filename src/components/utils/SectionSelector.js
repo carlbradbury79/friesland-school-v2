@@ -43,8 +43,36 @@ const SectionSelector = ({ currentPage }) => {
     }
   `)
 
-  const siblings = AllPages.allWpPage.nodes
-    .filter(item => item.parentId === currentPage.parentId)
+
+
+  let siblings = AllPages.allWpPage.nodes
+    .filter(item => item.parentId === currentPage.parentId).sort((a, b) => {
+      if (a.title < b.title) {
+        return -1
+      } else if (a.title > b.title) {
+        return 1
+      } else {
+        return 0
+      }
+    })
+    
+
+  // const top = AllPages.allWpPage.nodes.filter(item => item.id === siblings[0].parentId)
+  //   console.log(top)
+  //   if (top.length === 0) {
+  //     console.log('yep')
+  //     siblings.push({title:currentPage.title, slug: currentPage.slug, id : currentPage.id})
+  //   } else {
+  //     console.log('no')
+  //     siblings.push({title:top[0].title, slug: top[0].slug, id : currentPage.id})
+  //   }
+
+    
+
+    console.log(siblings)
+
+  const childPages = AllPages.allWpPage.nodes
+    .filter(item => item.parentId === currentPage.id )
     .sort((a, b) => {
       if (a.title < b.title) {
         return -1
@@ -55,17 +83,7 @@ const SectionSelector = ({ currentPage }) => {
       }
     })
 
-  const childPages = AllPages.allWpPage.nodes
-    .filter(item => item.parentId === currentPage.id)
-    .sort((a, b) => {
-      if (a.title < b.title) {
-        return -1
-      } else if (a.title > b.title) {
-        return 1
-      } else {
-        return 0
-      }
-    })
+  
 
   return (
     <Subjects>
@@ -89,6 +107,7 @@ const SectionSelector = ({ currentPage }) => {
 
       {currentPage.title === "Curriculum" ||
       currentPage.title === "Sixth Form" ||
+      currentPage.title == "Safeguarding" ||
       currentPage.title === "Parent Information" ||
       currentPage.title === "Curriculum: Subjects" ||
       currentPage.title === "About Friesland" ||
@@ -110,6 +129,7 @@ const SectionSelector = ({ currentPage }) => {
                 </li>
               )
             })}
+            {/* <li><Link to={`/{currentPage.slug}`}>{currentPage.title}</Link></li> */}
           </ul>
         </>
       ) : null}

@@ -5,7 +5,7 @@ import styled, { keyframes } from "styled-components"
 import SectionSelector from "../components/utils/SectionSelector"
 import Layout from "../components/layout"
 // import Img from "gatsby-image"
-// import BreadCrumb from "../components/utils/BreadCrumb"
+import BreadCrumb from "../components/utils/BreadCrumb"
 // import FeaturedImage from "../components/utils/FeaturedImage"
 import StyledPageHeaderImage from "../components/utils/PageHeaderImage"
 // import PageHero from "../components/PageHero"
@@ -162,7 +162,17 @@ const pageTemplate = ({ data }) => {
       <a className="anchor" id="start"></a>
 
       {data.currentPage.title === "Lettings" && <Gallery />}
+      
+      
       <PageContent>
+      {data.currentPage.wpParent && <BreadCrumb
+          parent={[
+            {
+              slug: `/${data.currentPage.wpParent.node.slug}`,
+              title: data.currentPage.wpParent.node.slug.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" "),
+            },
+          ]}
+        />}
         <div dangerouslySetInnerHTML={{ __html: data.currentPage.content }} />
       </PageContent>
     </Layout>
