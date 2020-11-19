@@ -11,6 +11,7 @@ import BreadCrumb from "../components/utils/BreadCrumb"
 import FeaturedImage from "../components/utils/FeaturedImage"
 import SocialShare from "../components/utils/SocialShare"
 import { Helmet } from "react-helmet"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const PostContent = styled.article`
   /* margin: 20px 0 0 0; */
