@@ -43,10 +43,9 @@ const SectionSelector = ({ currentPage }) => {
     }
   `)
 
-
-
   let siblings = AllPages.allWpPage.nodes
-    .filter(item => item.parentId === currentPage.parentId).sort((a, b) => {
+    .filter(item => item.parentId === currentPage.parentId)
+    .sort((a, b) => {
       if (a.title < b.title) {
         return -1
       } else if (a.title > b.title) {
@@ -55,7 +54,6 @@ const SectionSelector = ({ currentPage }) => {
         return 0
       }
     })
-    
 
   // const top = AllPages.allWpPage.nodes.filter(item => item.id === siblings[0].parentId)
   //   console.log(top)
@@ -67,12 +65,10 @@ const SectionSelector = ({ currentPage }) => {
   //     siblings.push({title:top[0].title, slug: top[0].slug, id : currentPage.id})
   //   }
 
-    
-
-    console.log(siblings)
+  console.log(siblings)
 
   const childPages = AllPages.allWpPage.nodes
-    .filter(item => item.parentId === currentPage.id )
+    .filter(item => item.parentId === currentPage.id)
     .sort((a, b) => {
       if (a.title < b.title) {
         return -1
@@ -83,16 +79,13 @@ const SectionSelector = ({ currentPage }) => {
       }
     })
 
-  
-
   return (
     <Subjects>
-      {siblings.length > 0 &&
+      {/* {siblings.length > 0 &&
       currentPage.ancestors &&
       currentPage.title !== "Courses" &&
       currentPage.title !== "Curriculum: Subjects" ? (
         <>
-          {/* <h4>Related Pages</h4> */}
           <ul>
             {siblings.map(subject => {
               return (
@@ -103,7 +96,7 @@ const SectionSelector = ({ currentPage }) => {
             })}
           </ul>
         </>
-      ) : null}
+      ) : null} */}
 
       {currentPage.title === "Curriculum" ||
       currentPage.title === "Sixth Form" ||

@@ -680,4 +680,70 @@ font-weight: bold;}
 .center {
   text-align:center;
 }
+
+/* PSHE */
+
+.pshe-term {
+  display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    height: auto;
+}
+
+.pshe-term div {
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding: 1rem;
+  
+}
+
+.pshe-term h4 {
+  margin:0;
+  text-align: center;
+  font-family: var(--bodyFont);
+  font-size: var(--h5Size);
+}
+
+.pshe-term span {
+  margin: auto;
+  display: flex;
+  align-items:center;
+  justify-content:center;
+  background-color: var(--primary);
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  color: white;
+  text-align: center;
+  font-size:var(--h4Size);
+  
+  
+  
+}
+
+.pshe-term span::before {
+  content: 'Y';
+}
+
+
+.headteacher {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.headteacher div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.headteacher div span:nth-child(1){
+  font-weight: bold;
+}
+
+.headteacher div span:nth-child(2){
+  font-size: var(--smallText);
+}
+
 `
