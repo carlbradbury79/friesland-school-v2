@@ -65,7 +65,7 @@ const SectionSelector = ({ currentPage }) => {
   //     siblings.push({title:top[0].title, slug: top[0].slug, id : currentPage.id})
   //   }
 
-  console.log(siblings)
+  // console.log(siblings)
 
   const childPages = AllPages.allWpPage.nodes
     .filter(item => item.parentId === currentPage.id)

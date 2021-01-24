@@ -746,4 +746,18 @@ font-weight: bold;}
   font-size: var(--smallText);
 }
 
+
+.importantBox {
+  border: 2px dashed var(--blue);
+  background-color: var(--lightBlue);
+  text-align: center;
+  padding: 1rem;
+  color: var(--white);
+  border-radius: 16px;
+}
+
+.importantBox a {
+  color: var(--white)
+}
+
 `
