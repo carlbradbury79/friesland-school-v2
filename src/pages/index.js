@@ -111,7 +111,7 @@ const IndexPage = () => {
       </HeroContainer>
       {/* <CurriculumChart data={yearSevenAndEight} /> */}
       <FeaturedEvents />
-      <FeaturedNews />
+      <FeaturedNews cat="Letters" />
       <TwitterFeed />
 
       {/* ------------------ InstaGram ----------------------------- */}

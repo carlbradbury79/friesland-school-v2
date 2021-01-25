@@ -186,6 +186,7 @@ td {
   color: var(--white);
   background-color: var(--primary);
   margin-bottom:5px;
+  border-radius: 5px;
 }
 
 /* .listLinks ul li a i {
@@ -757,7 +758,15 @@ font-weight: bold;}
 }
 
 .importantBox a {
-  color: var(--white)
+  color: var(--white);
+  text-decoration: none;
+  
 }
+
+
+
+
+/* newsletter */
+
 
 `

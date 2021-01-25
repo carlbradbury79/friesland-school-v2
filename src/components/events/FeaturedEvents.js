@@ -5,9 +5,10 @@ import FeaturedEvent from "./FeaturedEvent"
 
 const FeaturedEventSection = styled.section`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  /* grid-template-columns: repeat(2, 1fr); */
   grid-row-gap: 1rem;
   margin-bottom: 3rem;
+  grid-template-columns: repeat(auto-fit, 1fr);
 
   @media (max-width: 600px) {
     grid-template-columns: repeat(1, 1fr);
@@ -124,6 +125,7 @@ const FeaturedEvents = () => {
   return (
     <>
       <EventTitle>Upcoming Events</EventTitle>
+      {console.log(events)}
       {events.length > 0 ? (
         <FeaturedEventSection>
           {events.map((event, i) => {
