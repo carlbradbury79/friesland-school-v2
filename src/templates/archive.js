@@ -7,7 +7,7 @@ import Layout from "../components/layout"
 import BreadCrumb from "../components/utils/BreadCrumb"
 import Pagination from "../components/archive/Pagination"
 // import PageHero from '../components/PageHero';
-import BlogCard from "../components/utils/NewBlogCard"
+import BlogCard from "../components/archive/NewBlogCard"
 
 import styled from "styled-components"
 import CategoriesMenu from "../components/archive/CategoriesMenu"

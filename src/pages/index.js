@@ -1,28 +1,30 @@
-import React, { useState } from "react"
+import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 // import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
-import FeaturedNews from "../components/home/FeaturedNews"
 import StyledHeroLeft from "../components/home/hero/HeroImageLeft"
 import StyledHeroRight from "../components/home/hero/HeroImageRight"
 import TwitterFeed from "../components/twitterFeed/TwitterFeed"
-import { useSpring, animated, config, useTransition } from "react-spring"
+import { useSpring, animated, config } from "react-spring"
 // import CurriculumChart from "../components/curriculum/CurriculumChart"
 // import { yearSevenAndEight } from "../components/curriculum/year7and8"
 import FeaturedEvents from "../components/events/FeaturedEvents"
-import { useInstagram } from "../components/instagram/UseInstagram"
-import InstaOverlay from "../components/instagram/InstaOverlay"
-import Gram from "../components/instagram/Instagram"
-import Modal from "../components/instagram/Modal"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faInstagram } from "@fortawesome/free-brands-svg-icons"
-import { Waypoint } from "react-waypoint"
-import {
-  StyledInstaSection,
-  GramContainer,
-  InstaIcon,
-} from "../components/styles/InstaStyles"
+// import { useInstagram } from "../components/instagram/UseInstagram"
+// import InstaOverlay from "../components/instagram/InstaOverlay"
+// import Gram from "../components/instagram/Instagram"
+// import Modal from "../components/instagram/Modal"
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+// import { faInstagram } from "@fortawesome/free-brands-svg-icons"
+// import { Waypoint } from "react-waypoint"
+// import {
+//   StyledInstaSection,
+//   GramContainer,
+//   InstaIcon,
+// } from "../components/styles/InstaStyles"
+
+import CardLayout from "../components/cardLayouts/CardLayout"
+import { useAllPosts } from "../components/graphql/AllPosts"
 
 const HeroContainer = styled.div`
   display: flex;
@@ -56,43 +58,64 @@ const IndexPage = () => {
   })
 
   // ---------------------- Instagram -----------------------------------
-  const gramz = useInstagram()
+  // const gramz = useInstagram()
 
-  // The currently selected instagram photo object
-  const [gramForModal, setGramForModel] = useState(false)
+  // // The currently selected instagram photo object
+  // const [gramForModal, setGramForModel] = useState(false)
 
-  // Is the modal visible
-  const [modalVisible, setModalVisible] = useState(false)
+  // // Is the modal visible
+  // const [modalVisible, setModalVisible] = useState(false)
 
-  // Animation
-  const transitions = useTransition(modalVisible, null, {
-    from: { opacity: 0, transform: "translateY(-40px)" },
-    enter: { opacity: 1, transform: "translateY(0px)" },
-    leave: { opacity: 0, transform: "translateY(-40px)" },
-  })
+  // // Animation
+  // const transitions = useTransition(modalVisible, null, {
+  //   from: { opacity: 0, transform: "translateY(-40px)" },
+  //   enter: { opacity: 1, transform: "translateY(0px)" },
+  //   leave: { opacity: 0, transform: "translateY(-40px)" },
+  // })
 
-  // Get the clicked instagram photo and set gramForModal
-  function getGram(id) {
-    const newGram = gramz.filter(g => {
-      console.log("getGram", id, g.id)
-      return g.id === id
-    })
-    console.log("newGram", newGram)
-    setGramForModel(newGram)
-    console.log("state", gramForModal)
-    setModalVisible(true)
-  }
+  // // Get the clicked instagram photo and set gramForModal
+  // function getGram(id) {
+  //   const newGram = gramz.filter(g => {
+  //     console.log("getGram", id, g.id)
+  //     return g.id === id
+  //   })
+  //   console.log("newGram", newGram)
+  //   setGramForModel(newGram)
+  //   console.log("state", gramForModal)
+  //   setModalVisible(true)
+  // }
 
-  // Instagram visible animation
-  const [isInstaVisible, toggleInstaVisible] = useState(false)
-  const visibleInstaAnimation = useSpring({
-    opacity: isInstaVisible ? 1 : 0,
-    transform: isInstaVisible
-      ? "translate3d(0,0px,0)"
-      : "translate3d(0,150px,0)",
-    config: config.molasses,
-  })
+  // // Instagram visible animation
+  // const [isInstaVisible, toggleInstaVisible] = useState(false)
+  // const visibleInstaAnimation = useSpring({
+  //   opacity: isInstaVisible ? 1 : 0,
+  //   transform: isInstaVisible
+  //     ? "translate3d(0,0px,0)"
+  //     : "translate3d(0,150px,0)",
+  //   config: config.molasses,
+  // })
   // ------------------------End Insta--------------------------------------
+
+  // All WP Posts
+  const allPostData = useAllPosts()
+
+  // Covid-19 Posts
+  const covidPosts = allPostData.allWpPost.nodes.filter(post => {
+    // if (post.categories.nodes.find(obj => obj.name === "Covid-19")) {
+    //   return post
+    // }
+    return post.categories.nodes.find(obj => obj.name === "Covid-19") && post
+  })
+
+  // Event Posts
+  const eventPosts = allPostData.allWpPost.nodes.filter(post => {
+    // if (post.categories.nodes.find(obj => obj.name === "Events")) {
+    //   return post
+    // }
+    return post.categories.nodes.find(obj => obj.name === "Events") && post
+  })
+
+  console.log(eventPosts)
 
   return (
     <Layout>
@@ -109,10 +132,27 @@ const IndexPage = () => {
           <StyledHeroRight></StyledHeroRight>
         </div>
       </HeroContainer>
-      {/* <CurriculumChart data={yearSevenAndEight} /> */}
-      <FeaturedEvents />
-      <FeaturedNews cat="Letters" />
+      <FeaturedEvents
+        data={eventPosts}
+        link="/events"
+        title="Upcoming Events"
+      />
+      <CardLayout
+        title="Featured News"
+        data={allPostData.allWpPost.nodes}
+        link="/news"
+        number={4}
+        includeDate={true}
+      />
       <TwitterFeed />
+
+      <CardLayout
+        title="Covid-19"
+        data={covidPosts}
+        link="/covid-19"
+        number={4}
+        includeDate={false}
+      />
 
       {/* ------------------ InstaGram ----------------------------- */}
     </Layout>

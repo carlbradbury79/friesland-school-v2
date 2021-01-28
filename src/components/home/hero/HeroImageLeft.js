@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { graphql, useStaticQuery } from "gatsby"
 import BackgroundImage from "gatsby-background-image"
 // import { Link } from "gatsby"
-import HeroLink from "../../utils/HeroLink"
+import HeroLink from "./HeroLink"
 
 export const HeroContent = styled.div`
   display: flex;

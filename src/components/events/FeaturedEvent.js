@@ -1,10 +1,10 @@
 import React from "react"
 // import Img from "gatsby-image"
-import { useStaticQuery, graphql } from "gatsby"
 import Moment from "react-moment"
 import { Link } from "gatsby"
 import styled from "styled-components"
 import BackgroundImage from "gatsby-background-image"
+import { useArticleImage } from "../graphql/useArticleImage"
 
 const Event = styled.div`
   display: flex;
@@ -68,24 +68,7 @@ const FeaturedEvent = ({ event }) => {
 
   // excerpt, content,
 
-  const altFeaturedEventImage = useStaticQuery(graphql`
-    query {
-      image: file(relativePath: { eq: "friesland-logo.jpg" }) {
-        id
-        childImageSharp {
-          fluid(
-            maxWidth: 1000
-            maxHeight: 750
-            cropFocus: NORTH
-            fit: CONTAIN
-            background: "#fff"
-          ) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  `)
+  const altFeaturedEventImage = useArticleImage()
 
   const FeaturedEventImage =
     featuredImage === null ||
@@ -93,13 +76,6 @@ const FeaturedEvent = ({ event }) => {
       ? altFeaturedEventImage.image.childImageSharp.fluid
       : featuredImage.node.remoteFile.childImageSharp.fluid
 
-  //   const image =
-  //     featured_media && featured_media.localFile
-  //       ? featured_media.localFile.childImageSharp
-  //       : SpareImage.image.childImageSharp;
-
-  // console.log(FeaturedEventImage)
-  // console.log(acf.date_of_event)
   return (
     <Link to={`/${slug}`}>
       <BackgroundImage fluid={FeaturedEventImage}>

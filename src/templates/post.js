@@ -11,7 +11,7 @@ import BreadCrumb from "../components/utils/BreadCrumb"
 import FeaturedImage from "../components/utils/FeaturedImage"
 import SocialShare from "../components/utils/SocialShare"
 import { Helmet } from "react-helmet"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const PostContent = styled.article`
   /* margin: 20px 0 0 0; */
@@ -121,13 +121,25 @@ const postTemplate = ({ data: { post } }) => {
 
         {postType ? (
           <PublishDate>
-            {eventStart > now? <span>Event starts <Moment fromNow>{post.eventDate.dateofevent}</Moment></span> : now > eventEnd?<span>Event finshed <Moment fromNow>{post.eventDate.endtime}</Moment></span>:<span>Event on now!</span>}
+            {eventStart > now ? (
+              <span>
+                Event starts{" "}
+                <Moment fromNow>{post.eventDate.dateofevent}</Moment>
+              </span>
+            ) : now > eventEnd ? (
+              <span>
+                Event finshed <Moment fromNow>{post.eventDate.endtime}</Moment>
+              </span>
+            ) : (
+              <span>Event on now!</span>
+            )}
             {/* Event starts <Moment fromNow>{post.eventDate.dateofevent}</Moment> */}
           </PublishDate>
         ) : (
           <PublishDate>
             Posted:{" "}
-            <Moment format="DD-MM-YYYY">{post.date}
+            <Moment format="DD-MM-YYYY">
+              {post.date}
               {/* <span dangerouslySetInnerHTML={{ __html: post.date }} /> */}
             </Moment>
           </PublishDate>

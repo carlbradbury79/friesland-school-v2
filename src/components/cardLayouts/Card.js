@@ -1,8 +1,9 @@
 import React from "react"
 import Img from "gatsby-image"
-import { Link, graphql, useStaticQuery } from "gatsby"
+import { Link } from "gatsby"
 import styled from "styled-components"
 import Moment from "react-moment"
+import { useArticleImage } from "../graphql/useArticleImage"
 
 const NewsCard = styled.div`
   /* -webkit-box-shadow: 0px 1px 35px 0px rgba(0, 0, 0, 0.3);
@@ -32,25 +33,9 @@ const NewsCard = styled.div`
   }
 `
 
-const FeaturedNewsCard = ({ post }) => {
-  const altFeaturedArticleImage = useStaticQuery(graphql`
-    query {
-      image: file(relativePath: { eq: "friesland-logo.jpg" }) {
-        id
-        childImageSharp {
-          fluid(
-            maxWidth: 2000
-            maxHeight: 1500
-            cropFocus: NORTH
-            fit: CONTAIN
-            background: "#fff"
-          ) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  `)
+const Card = ({ post, includeDate }) => {
+  // Default image of the Friesland Fish
+  const altFeaturedArticleImage = useArticleImage()
 
   // Set the Friesland Logo if there is no featured image
   const FeaturedArticleImage =
@@ -58,15 +43,16 @@ const FeaturedNewsCard = ({ post }) => {
     post.featuredImage.node.remoteFile.childImageSharp === null
       ? altFeaturedArticleImage.image.childImageSharp.fluid
       : post.featuredImage.node.remoteFile.childImageSharp.fluid
-
   return (
     <NewsCard>
       <Link to={`/${post.slug}`}>
         <Img fluid={FeaturedArticleImage} title={post.title} alt={post.title} />
       </Link>
-      <p>
-        <Moment fromNow>{post.date}</Moment>
-      </p>
+      {includeDate && (
+        <p>
+          <Moment fromNow>{post.date}</Moment>
+        </p>
+      )}
       <Link to={`/${post.slug}`}>
         <h3 dangerouslySetInnerHTML={{ __html: post.title }} />
       </Link>
@@ -74,4 +60,4 @@ const FeaturedNewsCard = ({ post }) => {
   )
 }
 
-export default FeaturedNewsCard
+export default Card

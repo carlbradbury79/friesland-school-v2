@@ -83,6 +83,7 @@ const pageTemplate = ({ data }) => {
   let allParents = []
   // console.log(data)
 
+  // Does the page have ancestors?
   if (data.currentPage.ancestors) {
     allParents = data.currentPage.ancestors.nodes.map(ancestor => {
       return {
@@ -122,6 +123,8 @@ const pageTemplate = ({ data }) => {
           src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"
           data-auto-replace-svg
         ></script> */}
+
+        {/* Dynamic ticket widget */}
         {data.currentPage.title === "Tickets" && (
           <script>
             {`(function() {
@@ -162,17 +165,21 @@ const pageTemplate = ({ data }) => {
       <a className="anchor" id="start"></a>
 
       {data.currentPage.title === "Lettings" && <Gallery />}
-      
-      
+
       <PageContent>
-      {data.currentPage.wpParent && <BreadCrumb
-          parent={[
-            {
-              slug: `/${data.currentPage.wpParent.node.slug}`,
-              title: data.currentPage.wpParent.node.slug.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" "),
-            },
-          ]}
-        />}
+        {data.currentPage.wpParent && (
+          <BreadCrumb
+            parent={[
+              {
+                slug: `/${data.currentPage.wpParent.node.slug}`,
+                title: data.currentPage.wpParent.node.slug
+                  .split("-")
+                  .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                  .join(" "),
+              },
+            ]}
+          />
+        )}
         <div dangerouslySetInnerHTML={{ __html: data.currentPage.content }} />
       </PageContent>
     </Layout>

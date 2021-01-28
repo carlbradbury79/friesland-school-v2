@@ -5,7 +5,7 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 import BackgroundImage from "gatsby-background-image"
 import Moment from "react-moment"
-import AltCardImage from "../utils/BlogCardImage"
+import AltCardImage from "./BlogCardImage"
 
 const StyledArticle = styled.article`
   padding: 1rem;

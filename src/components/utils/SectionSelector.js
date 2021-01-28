@@ -43,17 +43,17 @@ const SectionSelector = ({ currentPage }) => {
     }
   `)
 
-  let siblings = AllPages.allWpPage.nodes
-    .filter(item => item.parentId === currentPage.parentId)
-    .sort((a, b) => {
-      if (a.title < b.title) {
-        return -1
-      } else if (a.title > b.title) {
-        return 1
-      } else {
-        return 0
-      }
-    })
+  // let siblings = AllPages.allWpPage.nodes
+  //   .filter(item => item.parentId === currentPage.parentId)
+  //   .sort((a, b) => {
+  //     if (a.title < b.title) {
+  //       return -1
+  //     } else if (a.title > b.title) {
+  //       return 1
+  //     } else {
+  //       return 0
+  //     }
+  //   })
 
   // const top = AllPages.allWpPage.nodes.filter(item => item.id === siblings[0].parentId)
   //   console.log(top)
@@ -100,7 +100,7 @@ const SectionSelector = ({ currentPage }) => {
 
       {currentPage.title === "Curriculum" ||
       currentPage.title === "Sixth Form" ||
-      currentPage.title == "Safeguarding" ||
+      currentPage.title === "Safeguarding" ||
       currentPage.title === "Parent Information" ||
       currentPage.title === "Curriculum: Subjects" ||
       currentPage.title === "About Friesland" ||
