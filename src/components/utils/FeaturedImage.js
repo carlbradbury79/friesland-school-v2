@@ -4,8 +4,14 @@ import { graphql, useStaticQuery } from "gatsby"
 import styled from "styled-components"
 
 const PostImage = styled(Img)`
-  display: block;
-  max-height: 100%;
+  /* display: block; */
+  /* max-height: 100%; */
+`
+
+const ImgContainer = styled.div`
+  @media (min-width: 500px) {
+    height: 60vh;
+  }
 `
 
 const FeaturedImage = ({ image }) => {
@@ -17,10 +23,9 @@ const FeaturedImage = ({ image }) => {
         id
         childImageSharp {
           fluid(
-            maxWidth: 2000
             maxHeight: 400
             cropFocus: NORTH
-            fit: CONTAIN
+            fit: COVER
             background: "#fff"
           ) {
             ...GatsbyImageSharpFluid
@@ -35,7 +40,15 @@ const FeaturedImage = ({ image }) => {
       : image.node.remoteFile.childImageSharp.fluid
   // console.log("Featured Image Component", image)
 
-  return <PostImage fluid={Image} />
+  return (
+    <ImgContainer>
+      <PostImage
+        fluid={Image}
+        style={{ maxHeight: "100%", maxWidth: "100%" }}
+        imgStyle={{ objectFit: "contain" }}
+      />
+    </ImgContainer>
+  )
 }
 
 export default FeaturedImage
