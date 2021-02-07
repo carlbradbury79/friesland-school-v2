@@ -71,3 +71,5 @@ yarn-error.log
 friesland-old/
 # Local Netlify folder
 .netlify
+
+newsletter.js

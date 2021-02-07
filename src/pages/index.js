@@ -115,6 +115,10 @@ const IndexPage = () => {
     return post.categories.nodes.find(obj => obj.name === "Events") && post
   })
 
+  const newsLetterPosts = allPostData.allWpPost.nodes.filter(post => {
+    return post.categories.nodes.find(obj => obj.name === "Newsletters") && post
+  })
+
   console.log(eventPosts)
 
   return (
@@ -138,11 +142,20 @@ const IndexPage = () => {
         title="Upcoming Events"
       />
       <CardLayout
+        title="Latest Newsletter"
+        data={newsLetterPosts}
+        link="/newsletters"
+        number={4}
+        includeDate={true}
+        displayNumber={6}
+      />
+      <CardLayout
         title="Featured News"
         data={allPostData.allWpPost.nodes}
         link="/news"
         number={4}
         includeDate={true}
+        displayNumber={4}
       />
       <TwitterFeed />
 
@@ -152,6 +165,7 @@ const IndexPage = () => {
         link="/covid-19"
         number={4}
         includeDate={false}
+        displayNumber={4}
       />
 
       {/* ------------------ InstaGram ----------------------------- */}

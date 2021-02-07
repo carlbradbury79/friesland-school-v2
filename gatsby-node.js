@@ -20,6 +20,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // const pageTemplate = path.resolve("./src/templates/page.js")
   const archiveTemplate = path.resolve("./src/templates/archive.js")
   // const postTemplate = path.resolve("./src/templates/post.js")
+  const newsletterTemplate = path.resolve("./src/templates/newsletter.js")
 
   const {
     data: {
@@ -188,6 +189,34 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
     // }
   })
+
+  // Newsletter --------------------------------------------------------
+  // const {
+  //   data: { allWpPost },
+  // } = await graphql(/* GraphQL */ `
+  //   {
+  //     allWpPost(
+  //       filter: {
+  //         categories: { nodes: { elemMatch: { name: { eq: "Newsletters" } } } }
+  //       }
+  //     ) {
+  //       nodes {
+  //         id
+  //         slug
+  //       }
+  //     }
+  //   }
+  // `)
+
+  // allWpPost.nodes.forEach(newsletter => {
+  //   createPage({
+  //     path: `${newsletter.slug}`,
+  //     component: slash(newsletterTemplate),
+  //     context: {
+  //       id: newsletter.id,
+  //     },
+  //   })
+  // })
 }
 // console.log(data)
 

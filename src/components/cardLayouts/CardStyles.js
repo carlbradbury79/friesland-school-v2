@@ -19,7 +19,7 @@ export const LayoutSection = styled(animated.section)`
 
 export const LayoutContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(${props => props.displayNumber}, 1fr);
   grid-column-gap: 1rem;
   grid-row-gap: 1rem;
   padding: 0 40px;

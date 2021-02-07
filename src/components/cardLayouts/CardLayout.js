@@ -6,7 +6,14 @@ import { useSpring, config } from "react-spring"
 import { Waypoint } from "react-waypoint"
 import { LayoutSection, LayoutContainer, SectionLink } from "./CardStyles"
 
-const CardLayout = ({ data, title, link, number, includeDate }) => {
+const CardLayout = ({
+  data,
+  title,
+  link,
+  number,
+  displayNumber,
+  includeDate,
+}) => {
   // UseSpring animation for component
   const [isComponentVisible, toggleComponentVisible] = useState(false)
   const visibleAnimation = useSpring({
@@ -33,12 +40,12 @@ const CardLayout = ({ data, title, link, number, includeDate }) => {
         }
       />
       <h2>{title}</h2>
-      <LayoutContainer>
+      <LayoutContainer displayNumber={displayNumber}>
         {articles.map((post, i) => {
           // If number of posts is 4 allow 4, else show them all
-          if (number === 4) {
+          if (number === displayNumber) {
             return (
-              i <= 3 && (
+              i <= displayNumber - 1 && (
                 <Card key={post.id} post={post} includeDate={includeDate} />
               )
             )

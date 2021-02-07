@@ -153,8 +153,8 @@ hr {
 }
 
 ul {
-  list-style: none;
-  padding-left: 0;
+  /* list-style: none; */
+  /* padding-left: 0; */
 }
 
 table {
@@ -767,6 +767,15 @@ font-weight: bold;}
 
 
 /* newsletter */
+.image-gallery {
+  max-width: 100%;
+  display:flex;
+  flex-direction:column;
+  align-items: center;
+}
 
+.image-gallery img {
+  max-width: 100%;
+}
 
 `
