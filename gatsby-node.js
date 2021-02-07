@@ -5,7 +5,7 @@ const { paginate } = require("gatsby-awesome-pagination")
 const glob = require(`glob`)
 const chunk = require(`lodash/chunk`)
 
-// Get archive, post and page templates
+// Get archive, post and page templates from the directory
 const getTemplates = () => {
   const sitePath = path.resolve(`./`)
   return glob.sync(`./src/templates/*.js`, { cwd: sitePath })
@@ -15,12 +15,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
   const templates = getTemplates()
 
-  // console.log("templates", templates)
-
   // const pageTemplate = path.resolve("./src/templates/page.js")
   const archiveTemplate = path.resolve("./src/templates/archive.js")
   // const postTemplate = path.resolve("./src/templates/post.js")
-  const newsletterTemplate = path.resolve("./src/templates/newsletter.js")
+  // const newsletterTemplate = path.resolve("./src/templates/newsletter.js")
 
   const {
     data: {
@@ -42,31 +40,20 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     }
   `)
 
-  // console.log("gatsbyNode", contentNodes)
-
   const contentTypeTemplateDirectory = `./src/templates/`
 
   const contentTypeTemplates = templates.filter(path =>
     path.includes(contentTypeTemplateDirectory)
   )
 
-  // console.log("CTT", contentTypeTemplates)
-
   await Promise.all(
     contentNodes.map(async (node, i) => {
       const { nodeType, uri, id, slug } = node
-      // console.log("nodeType", nodeType)
       const templatePath = `${contentTypeTemplateDirectory}${nodeType.toLowerCase()}.js`
-
-      // console.log("templatePath", templatePath)
-      // console.log("slug", slug)
-      // console.log("uri", uri)
 
       const contentTypeTemplate = contentTypeTemplates.find(
         path => path === templatePath
       )
-
-      // console.log("CTT?", contentTypeTemplate, typeof contentTypeTemplate)
 
       if (!contentTypeTemplate) {
         reporter.log(``)
@@ -80,8 +67,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         )
       }
 
-      // console.log(contentTypeTemplate)
-
+      // Create pages and posts
       await createPage({
         component: resolve(contentTypeTemplate),
         path: `/${slug}`,

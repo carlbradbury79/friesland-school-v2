@@ -115,11 +115,32 @@ const IndexPage = () => {
     return post.categories.nodes.find(obj => obj.name === "Events") && post
   })
 
+  const newsPosts = allPostData.allWpPost.nodes.filter(post => {
+    return post.categories.nodes.find(obj => obj.name === "News") && post
+  })
+
+  Date.prototype.removeTimeFromDate = function() {
+    var newDate = new Date(this)
+    newDate.setHours(0, 0, 0, 0)
+    return newDate
+  }
+
+  // Get Newsletter Posts
   const newsLetterPosts = allPostData.allWpPost.nodes.filter(post => {
     return post.categories.nodes.find(obj => obj.name === "Newsletters") && post
   })
-
-  console.log(eventPosts)
+  // Get latest date from newsletters
+  const latest = new Date(
+    Math.max(...newsLetterPosts.map(e => new Date(e.date)))
+  )
+  // Get latest newletters
+  const latestNewsLetterPosts = newsLetterPosts.filter(post => {
+    const postTime = new Date(post.date).removeTimeFromDate()
+    return (
+      new Date(post.date).removeTimeFromDate().getTime() ==
+      latest.removeTimeFromDate().getTime()
+    )
+  })
 
   return (
     <Layout>
@@ -143,15 +164,14 @@ const IndexPage = () => {
       />
       <CardLayout
         title="Latest Newsletter"
-        data={newsLetterPosts}
+        data={latestNewsLetterPosts}
         link="/newsletters"
         number={4}
-        includeDate={true}
-        displayNumber={6}
+        displayNumber={latestNewsLetterPosts.length}
       />
       <CardLayout
         title="Featured News"
-        data={allPostData.allWpPost.nodes}
+        data={newsPosts}
         link="/news"
         number={4}
         includeDate={true}
