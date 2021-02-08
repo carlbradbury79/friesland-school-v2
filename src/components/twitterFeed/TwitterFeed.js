@@ -63,7 +63,7 @@ function TwitterFeed() {
                 <div
                   dangerouslySetInnerHTML={{
                     __html: anchorme({
-                      input: t.text,
+                      input: t.full_text,
                       // use some options
                       options: {
                         attributes: {
