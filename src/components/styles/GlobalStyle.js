@@ -778,4 +778,28 @@ font-weight: bold;}
   max-width: 100%;
 }
 
+a.hashtag {
+  border-bottom-color: orange;
+}
+
+a.detected {
+  border-bottom-color: green;
+}
+a.mention {
+  border-bottom-color: purple;
+}
+
+.ReactModal__Overlay {
+    opacity: 0;
+    transition: opacity 200ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open{
+    opacity: 1;
+}
+
+.ReactModal__Overlay--before-close{
+    opacity: 0;
+}
+
 `

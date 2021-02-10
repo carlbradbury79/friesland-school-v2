@@ -80,12 +80,12 @@ const PageContent = styled.div`
 `
 
 const pageTemplate = ({ data }) => {
-  let allParents = []
+  // let allParents = []
   // console.log(data)
 
   // Does the page have ancestors?
   if (data.currentPage.ancestors) {
-    allParents = data.currentPage.ancestors.nodes.map(ancestor => {
+    data.currentPage.ancestors.nodes.map(ancestor => {
       return {
         slug: ancestor.slug,
         title: ancestor.slug

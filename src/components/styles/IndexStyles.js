@@ -1,5 +1,5 @@
 import styled from "styled-components"
-// import { animated } from "react-spring"
+import { animated } from "react-spring"
 
 export const StyledHomeHeading = styled.h2`
   /* Todo needs syncing with Events, News, Twitter and Insta */
@@ -35,5 +35,54 @@ export const StyledHomeCard = styled.div`
     :hover {
       color: #000;
     }
+  }
+`
+export const HeroContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
+  div {
+    height: 400px;
+    flex: 1;
+  }
+`
+
+export const Welcome = styled(animated.h1)`
+  text-align: center;
+  user-select: true;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 1.3rem 0;
+  line-height: 1.5;
+`
+
+export const modalStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    maxHeight: "100%",
+    maxWidth: "600px",
+  },
+  overlay: { zIndex: "1000" },
+}
+
+export const ModalCloseDiv = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`
+
+export const ModalButton = styled.button`
+  border: none;
+  color: black;
+  margin: 0;
+  :hover {
+    background-color: #fff;
   }
 `

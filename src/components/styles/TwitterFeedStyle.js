@@ -82,3 +82,9 @@ export const TweetBox = styled.div`
     border-bottom: 2px solid var(--primary);
   }
 `
+export const TwitterImages = styled.div`
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  margin-bottom: 1rem;
+`

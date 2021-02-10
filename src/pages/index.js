@@ -1,52 +1,23 @@
-import React from "react"
+import React, { useState } from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-// import { useStaticQuery, graphql } from "gatsby"
-import styled from "styled-components"
 import StyledHeroLeft from "../components/home/hero/HeroImageLeft"
 import StyledHeroRight from "../components/home/hero/HeroImageRight"
 import TwitterFeed from "../components/twitterFeed/TwitterFeed"
 import { useSpring, animated, config } from "react-spring"
-// import CurriculumChart from "../components/curriculum/CurriculumChart"
-// import { yearSevenAndEight } from "../components/curriculum/year7and8"
+import Modal from "react-modal"
+
 import FeaturedEvents from "../components/events/FeaturedEvents"
-// import { useInstagram } from "../components/instagram/UseInstagram"
-// import InstaOverlay from "../components/instagram/InstaOverlay"
-// import Gram from "../components/instagram/Instagram"
-// import Modal from "../components/instagram/Modal"
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-// import { faInstagram } from "@fortawesome/free-brands-svg-icons"
-// import { Waypoint } from "react-waypoint"
-// import {
-//   StyledInstaSection,
-//   GramContainer,
-//   InstaIcon,
-// } from "../components/styles/InstaStyles"
 
 import CardLayout from "../components/cardLayouts/CardLayout"
 import { useAllPosts } from "../components/graphql/AllPosts"
-
-const HeroContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-
-  @media (max-width: 600px) {
-    flex-direction: column;
-  }
-  div {
-    height: 400px;
-    flex: 1;
-  }
-`
-
-const Welcome = styled(animated.h1)`
-  text-align: center;
-  user-select: true;
-  font-size: 2rem;
-  font-weight: bold;
-  margin: 1.3rem 0;
-  line-height: 1.5;
-`
+import {
+  modalStyles,
+  ModalCloseDiv,
+  ModalButton,
+  Welcome,
+  HeroContainer,
+} from "../components/styles/IndexStyles"
 
 const IndexPage = () => {
   const fadeIn = useSpring({
@@ -57,61 +28,33 @@ const IndexPage = () => {
     config: config.molasses,
   })
 
-  // ---------------------- Instagram -----------------------------------
-  // const gramz = useInstagram()
+  // Todo Find root node in Gatsby
+  // Modal.setAppElement(document.getElementById("root"))
 
-  // // The currently selected instagram photo object
-  // const [gramForModal, setGramForModel] = useState(false)
+  const [modalIsOpen, setIsOpen] = useState(false)
 
-  // // Is the modal visible
-  // const [modalVisible, setModalVisible] = useState(false)
+  function closeModal() {
+    setIsOpen(false)
+  }
 
-  // // Animation
-  // const transitions = useTransition(modalVisible, null, {
-  //   from: { opacity: 0, transform: "translateY(-40px)" },
-  //   enter: { opacity: 1, transform: "translateY(0px)" },
-  //   leave: { opacity: 0, transform: "translateY(-40px)" },
-  // })
+  const [twitterImageForModal, setTwitterImageForModal] = useState(null)
 
-  // // Get the clicked instagram photo and set gramForModal
-  // function getGram(id) {
-  //   const newGram = gramz.filter(g => {
-  //     console.log("getGram", id, g.id)
-  //     return g.id === id
-  //   })
-  //   console.log("newGram", newGram)
-  //   setGramForModel(newGram)
-  //   console.log("state", gramForModal)
-  //   setModalVisible(true)
-  // }
+  // Get twitter image url and open modal, passing in img url
+  const getTwitterPic = e => {
+    setTwitterImageForModal(e.target.src)
+    setIsOpen(true)
+  }
 
-  // // Instagram visible animation
-  // const [isInstaVisible, toggleInstaVisible] = useState(false)
-  // const visibleInstaAnimation = useSpring({
-  //   opacity: isInstaVisible ? 1 : 0,
-  //   transform: isInstaVisible
-  //     ? "translate3d(0,0px,0)"
-  //     : "translate3d(0,150px,0)",
-  //   config: config.molasses,
-  // })
-  // ------------------------End Insta--------------------------------------
-
-  // All WP Posts
+  // All WP Posts from query
   const allPostData = useAllPosts()
 
   // Covid-19 Posts
   const covidPosts = allPostData.allWpPost.nodes.filter(post => {
-    // if (post.categories.nodes.find(obj => obj.name === "Covid-19")) {
-    //   return post
-    // }
     return post.categories.nodes.find(obj => obj.name === "Covid-19") && post
   })
 
   // Event Posts
   const eventPosts = allPostData.allWpPost.nodes.filter(post => {
-    // if (post.categories.nodes.find(obj => obj.name === "Events")) {
-    //   return post
-    // }
     return post.categories.nodes.find(obj => obj.name === "Events") && post
   })
 
@@ -119,8 +62,9 @@ const IndexPage = () => {
     return post.categories.nodes.find(obj => obj.name === "News") && post
   })
 
+  // Remove hours from date so day can be compared
   Date.prototype.removeTimeFromDate = function() {
-    var newDate = new Date(this)
+    let newDate = new Date(this)
     newDate.setHours(0, 0, 0, 0)
     return newDate
   }
@@ -135,9 +79,8 @@ const IndexPage = () => {
   )
   // Get latest newletters
   const latestNewsLetterPosts = newsLetterPosts.filter(post => {
-    const postTime = new Date(post.date).removeTimeFromDate()
     return (
-      new Date(post.date).removeTimeFromDate().getTime() ==
+      new Date(post.date).removeTimeFromDate().getTime() ===
       latest.removeTimeFromDate().getTime()
     )
   })
@@ -150,7 +93,7 @@ const IndexPage = () => {
 
       {/* Hero Image with two panel */}
       <HeroContainer>
-        <div>
+        <div id="main">
           <StyledHeroLeft></StyledHeroLeft>
         </div>
         <div>
@@ -177,7 +120,7 @@ const IndexPage = () => {
         includeDate={true}
         displayNumber={4}
       />
-      <TwitterFeed />
+      <TwitterFeed getTwitterPic={getTwitterPic} />
 
       <CardLayout
         title="Covid-19"
@@ -188,7 +131,26 @@ const IndexPage = () => {
         displayNumber={4}
       />
 
-      {/* ------------------ InstaGram ----------------------------- */}
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={modalStyles}
+        contentLabel="Example Modal"
+        shouldCloseOnOverlayClick={true}
+        twitterImageForModal={twitterImageForModal}
+        ariaHideApp={false}
+      >
+        <ModalCloseDiv>
+          <ModalButton onClick={closeModal}>
+            <i style={{ color: "gray" }} className="fas fa-times"></i>
+          </ModalButton>
+        </ModalCloseDiv>
+        <img
+          style={{ maxWidth: "100%", maxHeight: "400vh" }}
+          src={twitterImageForModal}
+          alt=""
+        />
+      </Modal>
     </Layout>
   )
 }

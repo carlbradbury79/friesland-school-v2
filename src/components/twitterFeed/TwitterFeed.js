@@ -3,27 +3,42 @@ import { useQuery } from "@apollo/react-hooks"
 import gql from "graphql-tag"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTwitter } from "@fortawesome/free-brands-svg-icons"
-import anchorme from "anchorme"
+import UseAnchorme from "./UseAnchorme"
 import { Waypoint } from "react-waypoint"
 import { useSpring, config } from "react-spring"
+import Moment from "react-moment"
 import {
   StyledTwitterFeed,
   TwitterIcon,
   TweetRow,
   TweetBox,
+  TwitterImages,
 } from "../styles/TwitterFeedStyle"
+import TwitterPic from "./TwitterPic"
 
 const APOLLO_QUERY = gql`
   {
     tweets {
-      text
+      full_text
       created_at
       id_str
+      entities {
+        media {
+          media_url_https
+        }
+      }
+      extended_entities {
+        media {
+          media_url_https
+          type
+          id_str
+        }
+      }
     }
   }
 `
 
-function TwitterFeed() {
+function TwitterFeed({ getTwitterPic }) {
   const { loading, error, data } = useQuery(APOLLO_QUERY)
 
   const [isTwitterVisible, toggleTwitterVisible] = useState(false)
@@ -52,47 +67,58 @@ function TwitterFeed() {
       <TweetRow>
         {loading && <p>Loading Tweets...</p>}
         {error && console.log("e", error)}
-        {/* {console.log("twit", data)} */}
         {data &&
           data.tweets.map(t => {
+            // console.log(t)
+            const linkToTwitter = t.full_text
+              .trim()
+              .split(" ")
+              .splice(-1)
+            const full_text = t.full_text.substring(
+              0,
+              t.full_text.lastIndexOf(" ")
+            )
+
             return (
               <TweetBox key={t.id_str}>
-                <span>{t.created_at.split(" ", 3).join(" ")}</span>
-                {/* <div dangerouslySetInnerHTML={{ __html: anchorme(t.text) }} /> */}
-
+                {/* <span>{t.created_at.split(" ", 3).join(" ")}</span> */}
+                <span>
+                  Tweeted <Moment fromNow>{t.created_at}</Moment>
+                </span>
+                <TwitterImages>
+                  {t.extended_entities &&
+                    t.extended_entities.media &&
+                    t.extended_entities.media.map(entity => {
+                      if (entity.type === "photo") {
+                        return (
+                          <TwitterPic
+                            key={entity.id_str}
+                            src={entity.media_url_https}
+                            getTwitterPic={getTwitterPic}
+                          />
+                        )
+                      } else {
+                        return null
+                      }
+                    })}
+                </TwitterImages>
                 <div
+                  style={{ marginBottom: "1rem" }}
                   dangerouslySetInnerHTML={{
-                    __html: anchorme({
-                      input: t.text,
-                      // use some options
-                      options: {
-                        attributes: {
-                          target: "_blank",
-                          class: "detected",
-                        },
-                      },
-                      // and extensions
-                      extensions: [
-                        // an extension for hashtag search
-                        {
-                          test: /#(\w|_)+/gi,
-                          transform: string =>
-                            `<a href="https://twitter.com?s=${string.substr(
-                              1
-                            )}">${string}</a>`,
-                        },
-                        // an extension for mentions
-                        {
-                          test: /@(\w|_)+/gi,
-                          transform: string =>
-                            `<a href="https://twitter.com/${string.substr(
-                              1
-                            )}">${string}</a>`,
-                        },
-                      ],
-                    }),
+                    __html: UseAnchorme(full_text),
                   }}
                 />
+                <a
+                  href={linkToTwitter}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FontAwesomeIcon
+                    style={{ color: "var(--lightBlue)" }}
+                    icon={faTwitter}
+                  />
+                  Read on Twitter
+                </a>
               </TweetBox>
             )
           })}
