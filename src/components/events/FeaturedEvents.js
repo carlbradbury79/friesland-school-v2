@@ -42,9 +42,13 @@ const FeaturedEvents = ({ data: eventData, link, title }) => {
     <>
       <SectionTitle>{title}</SectionTitle>
       {events.length > 0 ? (
-        <EventLayoutContainer>
+        <EventLayoutContainer displayNumber={events.length}>
           {events.map((event, i) => {
-            return i < 2 && <FeaturedEvent key={event.id} event={event} />
+            return (
+              i < events.length && (
+                <FeaturedEvent key={event.id} event={event} />
+              )
+            )
           })}
         </EventLayoutContainer>
       ) : (

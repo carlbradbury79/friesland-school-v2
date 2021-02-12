@@ -23,6 +23,10 @@ const Event = styled.div`
     background: rgba(0, 0, 0, 0.6);
     color: #fff;
     display: inline-block;
+
+    @media (max-width: 850px) {
+      font-size: 2rem;
+    }
   }
 
   p {
@@ -94,16 +98,19 @@ const FeaturedEvent = ({ event }) => {
                 {eventDate.dateofevent.getDate()}-
                 {months[eventDate.dateofevent.getMonth()]}-
                 {eventDate.dateofevent.getFullYear()}
+                {/* {" ("}
+                <Moment to={eventDate.dateofevent}>{today}</Moment>
+                {")"} */}
               </p>
 
               {/* Event is at least over 1 day away  */}
-              {eventDate.dateofevent.getMonth() - today.getMonth() > 0 ||
+              {/* {eventDate.dateofevent.getMonth() - today.getMonth() > 0 ||
                 (eventDate.dateofevent.getDate() - today.getDate() > 1 && (
                   <p>
                     This event starts{" "}
                     <Moment to={eventDate.dateofevent}>{today}</Moment>
                   </p>
-                ))}
+                ))} */}
 
               {/* Event starts tomorrow */}
               {eventDate.dateofevent.getMonth() - today.getMonth() === 0 &&

@@ -52,7 +52,9 @@ export const EventLayoutContainer = styled.div`
   grid-row-gap: 1rem;
   padding: 0 40px;
   margin-bottom: 5rem;
-  grid-template-columns: repeat(auto-fill, 1fr);
+  /* grid-template-columns: repeat(4, 1fr); */
+  /* grid-template-columns: repeat(auto-fill, 1fr); */
+  grid-template-columns: repeat(${props => props.displayNumber}, 1fr);
 
   @media (max-width: 600px) {
     grid-template-columns: repeat(1, 1fr);
