@@ -58,11 +58,21 @@ function TwitterFeed({ getTwitterPic }) {
       />
       <TwitterIcon>
         <h2>
-          <a href="https://twitter.com/frieslandschool">
+          <a
+            href="https://twitter.com/frieslandschool"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
             <FontAwesomeIcon icon={faTwitter} />
           </a>
         </h2>
-        <a href="https://twitter.com/frieslandschool">@FrieslandSchool</a>
+        <a
+          href="https://twitter.com/frieslandschool"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          @FrieslandSchool
+        </a>
       </TwitterIcon>
       <TweetRow>
         {loading && <p>Loading Tweets...</p>}
@@ -70,14 +80,14 @@ function TwitterFeed({ getTwitterPic }) {
         {data &&
           data.tweets.map(t => {
             // console.log(t)
-            const linkToTwitter = t.full_text
-              .trim()
-              .split(" ")
-              .splice(-1)
-            const full_text = t.full_text.substring(
-              0,
-              t.full_text.lastIndexOf(" ")
-            )
+            // const linkToTwitter = t.full_text
+            //   .trim()
+            //   .split(" ")
+            //   .splice(-1)
+            // const full_text = t.full_text.substring(
+            //   0,
+            //   t.full_text.lastIndexOf(" ")
+            // )
 
             return (
               <TweetBox key={t.id_str}>
@@ -105,10 +115,10 @@ function TwitterFeed({ getTwitterPic }) {
                 <div
                   style={{ marginBottom: "1rem" }}
                   dangerouslySetInnerHTML={{
-                    __html: UseAnchorme(full_text),
+                    __html: UseAnchorme(t.full_text),
                   }}
                 />
-                <a
+                {/* <a
                   href={linkToTwitter}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -118,7 +128,7 @@ function TwitterFeed({ getTwitterPic }) {
                     icon={faTwitter}
                   />
                   Read on Twitter
-                </a>
+                </a> */}
               </TweetBox>
             )
           })}
