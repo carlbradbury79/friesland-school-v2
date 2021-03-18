@@ -135,7 +135,22 @@ blockquote {
   margin: 10px;
   padding: 2em;
   background: var(--white);
-  box-shadow: var(--level-4);
+  box-shadow: var(--level-1);
+  border-left: 10px solid #666;
+  position: relative;
+}
+
+blockquote:before {
+  position: absolute;
+  display: inline;
+  top: 60px;
+  left: 5px;
+  content:	"“";
+  color: #666;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
 }
 
 .highlightBgBlue {
@@ -172,7 +187,12 @@ td {
 /* Lists of links (e.g. Policies) */
 .listLinks ul li {
   margin-bottom: 0;
+  list-style:none;
+}
 
+.listLinks ul {
+  margin-bottom: 0;
+  padding: 0;
 }
 
 
