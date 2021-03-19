@@ -50,7 +50,6 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#214f95`,
         display: `minimal-ui`,
-        icon: `src/images/friesland-logo.jpg`, // This path is relative to the root of the site.
       },
     },
     {
