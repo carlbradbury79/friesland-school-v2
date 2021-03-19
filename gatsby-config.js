@@ -113,7 +113,39 @@ module.exports = {
         },
       },
     },
-
+    // {
+    //   resolve: "gatsby-source-wordpress",
+    //   options: {
+    //     // excludedRoutes: [
+    //     //   "/wp/v2/users/**",
+    //     //   "/wp/v2/themes",
+    //     //   "/wp/v2/settings*",
+    //     //   "wp/wp-json/siteground-optimizer/**",
+    //     //   "/wp/wp-json/siteground-optimizer/v1/**",
+    //     // ],
+    //     includedRoutes: [
+    //       "**/categories",
+    //       "**/posts",
+    //       "**/pages",
+    //       "**/media",
+    //       "**/tags",
+    //       "**/taxonomies",
+    //       "**/menus",
+    //     ],
+    //     baseUrl: "frieslandschoolv2.local",
+    //     // baseUrl: "codeaday.co.uk/friesland",
+    //     // baseUrl: "frieslandschool.com",
+    //     protocol: "http",
+    //     hostingWPCOM: false,
+    //     useACF: true,
+    //     concurrentRequests: 2,
+    //     // searchAndReplaceContentUrls: {
+    //     //   sourceUrl: "http://frieslandschool.com",
+    //     //   sourceUrl: "http://codeaday.co.uk/friesland",
+    //     //   replacementUrl: "",
+    //     // },
+    //   },
+    // },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

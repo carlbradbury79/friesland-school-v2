@@ -36,8 +36,7 @@ const FeaturedEvents = ({ data: eventData, link, title }) => {
     )
 
     setEvents(newEvents)
-    console.log(events)
-  }, [])
+  }, [eventData])
 
   return (
     <>
