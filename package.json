@@ -2,7 +2,7 @@
   "name": "gatsby-starter-default",
   "private": true,
   "description": "A Gatsby Site using Wordpress as a headless CMS for Friesland School",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "author": "Carl Bradbury <frontside720@gmail.com>",
   "dependencies": {
     "@apollo/react-hooks": "^3.1.5",
