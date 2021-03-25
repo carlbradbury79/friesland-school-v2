@@ -19,6 +19,9 @@ export const useAllPosts = () => {
             slug
             status
             content
+            postPlus {
+              sticky
+            }
             featuredImage {
               node {
                 remoteFile {

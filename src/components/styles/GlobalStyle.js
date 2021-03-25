@@ -778,6 +778,11 @@ font-weight: bold;}
   max-width: 100%;
 }
 
+img {
+  max-width:100%;
+}
+
+
 a.hashtag {
   border-bottom-color: orange;
 }

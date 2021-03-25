@@ -41,7 +41,7 @@ export const HeroLeft = () => {
     { to: "/welcome", text: "Headteacher's Welcome", delay: 100 },
     { to: "/curriculum", text: "Curriculum", delay: 300 },
     { to: "/ofsted", text: "Ofsted and DFE", delay: 700 },
-    { to: "/openeve", text: "Y6 Virtual Open Day", delay: 900 },
+    { to: "/september-2021-intake", text: "September 2021 Intake", delay: 900 },
   ]
 
   const LeftImage = HeroImageLeft.file.childImageSharp.fluid

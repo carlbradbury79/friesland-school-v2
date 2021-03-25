@@ -106,20 +106,22 @@ const IndexPage = () => {
         title="Upcoming Events"
       />
       <CardLayout
-        title="Latest Newsletter"
-        data={latestNewsLetterPosts}
-        link="/newsletters"
-        number={4}
-        displayNumber={latestNewsLetterPosts.length}
-      />
-      <CardLayout
-        title="Featured News"
+        title="Essential News"
         data={newsPosts}
         link="/news"
         number={4}
         includeDate={true}
         displayNumber={4}
       />
+      <CardLayout
+        title="Latest Newsletter Articles"
+        data={newsLetterPosts}
+        link="/newsletters"
+        number={6}
+        includeDate={true}
+        displayNumber={6}
+      />
+
       <TwitterFeed getTwitterPic={getTwitterPic} />
 
       <CardLayout

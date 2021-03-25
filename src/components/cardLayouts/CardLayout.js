@@ -26,11 +26,26 @@ const CardLayout = ({
 
   // Sort the dates from all of the nodes from WP from newest to oldest
   //   Refactored to accept an array only
-  const articles = data.sort(
+  const articlesInOrder = data.sort(
     (a, b) => (a.date > b.date ? -1 : 1)
     //   const articles = data.allWpPost.nodes.sort((a, b) =>
     //     a.date > b.date ? -1 : 1
   )
+
+  // Find first sticky article in all posts for this component
+  const latestSticky = articlesInOrder.find(a => a.postPlus.sticky)
+
+  let articles = []
+
+  if (latestSticky) {
+    // Remove latest sticky article
+    articles = articlesInOrder.filter(article => article.id !== latestSticky.id)
+    // Inser the sticky article at the front
+    articles.splice(0, 0, latestSticky)
+  } else {
+    articles.push(...articlesInOrder)
+  }
+
   return (
     <LayoutSection style={visibleAnimation}>
       <Waypoint
